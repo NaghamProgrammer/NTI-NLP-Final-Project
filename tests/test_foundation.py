@@ -2,8 +2,8 @@
 Requires GOOGLE_API_KEY set in .env
 """
 
-from schemas import ParsedIdea
-from llm_client import call_structured
+from src.schemas import ParsedIdea
+from src.llm_client import call_structured
 
 PROMPT = """
 Extract structured info from this project idea and return it as JSON matching
