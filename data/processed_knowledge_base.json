@@ -1,0 +1,3032 @@
+[
+  {
+    "doc_id": "KB_001",
+    "title": "انقطاع الإنترنت وظهور لمبة LOS باللون الأحمر",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "عند إبلاغ العميل بانقطاع خدمة الإنترنت مع ظهور مؤشر LOS باللون الأحمر أو وميضه، فهذا يشير غالبًا إلى فقدان الإشارة الضوئية القادمة من شبكة الألياف إلى جهاز ONT/ONU. يجب أولًا تحديد ما إذا كانت المشكلة محصورة في منزل العميل أم مرتبطة بعطل في منطقة الخدمة. الخطوة الأولى: اطلب من العميل فحص كابل الألياف الضوئية والتأكد من أنه موصل بإحكام في منفذ Optical/PON في جهاز ONT، مع التنبيه إلى عدم ثني الكابل بزاوية حادة أو الضغط عليه أو فصل الطرف الضوئي بشكل متكرر. الخطوة الثانية: تحقق من حالة مؤشرات PON وLOS وPower. إذا كان Power مضاءً وLOS أحمر بينما PON غير ثابت أو غير مضاء، فهذا يدعم احتمال وجود مشكلة في الإشارة الضوئية. الخطوة الثالثة: اطلب من العميل إيقاف جهاز ONT لمدة 30 إلى 60 ثانية ثم تشغيله والانتظار عدة دقائق حتى تكتمل عملية المزامنة. لا ينبغي اعتبار إعادة التشغيل حلًا نهائيًا إذا عاد مؤشر LOS الأحمر. الخطوة الرابعة: تحقق من أن العطل لا ينتج عن أعمال صيانة أو انقطاع جماعي في المنطقة من خلال نظام مراقبة الشبكة. إذا لم توجد مشكلة جماعية واستمر LOS، يجب إنشاء بلاغ فني يتضمن رقم الخدمة، وقت بداية العطل، حالة مؤشرات الجهاز، ونتائج اختبارات الإشارة. لا يُنصح بتوجيه العميل إلى إعادة ضبط المصنع Factory Reset، لأن ذلك قد يؤدي إلى فقد إعدادات الخدمة دون معالجة سبب فقدان الإشارة. إذا أثبتت اختبارات الشبكة أن الإشارة غير موجودة حتى نقطة التوزيع، يتم تصعيد الحالة إلى فريق الألياف الميداني لفحص الكابل، الـ splitter، منفذ الـ OLT أو نقطة التوزيع. أما إذا كانت الإشارة موجودة على مستوى الشبكة ولكن لا تصل إلى جهاز العميل، فيجب فحص وصلة الألياف الداخلية أو جهاز ONT. يجب إبلاغ العميل بوضوح أن لمبة LOS الحمراء تختلف عن مشكلة كلمة مرور Wi-Fi أو ضعف تغطية الشبكة اللاسلكية، وأن تغيير اسم الشبكة أو كلمة المرور لن يحل فقدان الإشارة الضوئية.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_002",
+    "title": "بطء سرعة الإنترنت رغم أن الاشتراك يعمل",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "لو العميل بيقول إن النت شغال بس بطيء جدًا، ماينفعش نفترض على طول إن المشكلة من الخط. الأول لازم نحدد هل البطء حاصل على كل الأجهزة ولا جهاز واحد بس، وهل المشكلة في كل المواقع والتطبيقات ولا موقع أو خدمة معينة. ابدأ بسؤال العميل عن السرعة المتوقعة حسب الباقة، وبعدها خليه يعمل Speed Test من جهاز متصل بالراوتر عن طريق كابل Ethernet لو متاح، لأن اختبار السرعة على Wi-Fi ممكن يتأثر بقوة الإشارة والتداخل. لو السرعة بالكابل قريبة من السرعة المتعاقد عليها، فغالبًا المشكلة Wi-Fi وليست مشكلة في خط الإنترنت نفسه. لو السرعة أقل بوضوح حتى باستخدام الكابل، يتم فحص حالة الخط، مستوى الـ synchronization، وجود أخطاء أو packet loss، وحالة الـ DSL/ONT حسب نوع الخدمة. كمان لازم نسأل العميل إذا كان فيه أجهزة كتير شغالة في نفس الوقت، مثل Smart TV أو PlayStation أو كاميرات أو أجهزة بتعمل cloud backup، لأن استهلاك bandwidth من أجهزة أخرى ممكن يخلي المستخدم يحس إن السرعة ضعيفة. بالنسبة للـ Wi-Fi، نطلب من العميل يقرب من الراوتر ويجرب تاني، ولو النتيجة اتحسنت بشكل واضح يبقى لازم نركز على التغطية أو التداخل. ممكن كمان نجرب فصل الأجهزة غير الضرورية مؤقتًا وإعادة الاختبار. لو المشكلة ظهرت في أوقات معينة فقط، مثل بالليل، يتم مراجعة وجود congestion أو ازدحام على الشبكة في المنطقة. مهم جدًا عدم وعد العميل بسرعة ثابتة على كل الأجهزة إذا كان الاختبار يتم لاسلكيًا، لأن السرعة الفعلية عبر Wi-Fi بتتأثر بمسافة الجهاز، الحوائط، التداخل، قدرات الجهاز نفسه، وعدد المستخدمين. لو الاختبارات بالكابل ما زالت أقل من الحد المتوقع، يتم فتح بلاغ فني مع تسجيل نتائج Speed Test، وقت الاختبار، نوع الاتصال، سرعة الـ sync، وبيانات الجهاز المستخدم. ولو السرعة طبيعية على الكابل، يتم توجيه العميل لحلول Wi-Fi بدل تصعيد المشكلة كعطل في الخط.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_003",
+    "title": "Wi-Fi Disconnects and Signal Interference Troubleshooting",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "When a customer reports that Wi-Fi disconnects repeatedly while the Internet service itself appears to remain active, the troubleshooting process should distinguish between an Internet access problem and a wireless connectivity problem. First, ask whether all connected devices lose Wi-Fi at the same time or whether only one device is affected. If only one phone, laptop, or smart device disconnects, the issue may be related to that device's wireless adapter, driver, power-saving settings, or software. If multiple devices disconnect simultaneously while the router remains powered on, investigate the wireless environment and router behavior. Ask the customer to test the connection close to the router. If stability improves significantly near the router, distance, walls, or radio interference may be contributing factors. Common sources of interference include neighboring Wi-Fi networks, Bluetooth devices, microwave ovens, wireless cameras, cordless equipment, and dense physical obstacles. The customer should avoid placing the router inside cabinets, behind large appliances, near electrical equipment, or directly on the floor. For dual-band routers, test both 2.4 GHz and 5 GHz networks. The 2.4 GHz band generally provides better range but is more susceptible to congestion, while 5 GHz can provide higher throughput over shorter distances. If supported by the router, selecting a less congested wireless channel may improve stability. The agent should also verify whether the router firmware is current and whether the router is overheating or restarting unexpectedly. Ask the customer to observe the router LEDs during a disconnection. If Wi-Fi disappears but the WAN/Internet indicator remains normal, the problem is likely local wireless connectivity. If the Internet indicator also drops, the problem may involve the upstream connection. A temporary Ethernet test is highly valuable: if a wired device remains stable while Wi-Fi devices disconnect, escalate the case as a wireless/router issue rather than a line outage. Factory reset should only be recommended when configuration corruption is suspected and the customer can safely restore the required settings. Every escalation should include affected devices, frequency of disconnections, approximate distance from the router, tested frequency band, wired-test results, and router model.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_004",
+    "title": "DNS Problems Causing Website Access Failures",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "إذا كان العميل يستطيع الاتصال بالإنترنت ولكن بعض المواقع لا تفتح بينما تعمل تطبيقات أو مواقع أخرى، فيجب التحقق من احتمال وجود مشكلة في DNS قبل اعتبار الحالة انقطاعًا كاملًا للخدمة. يبدأ التشخيص بالتأكد من أن الجهاز متصل بالشبكة وأن لديه عنوان IP صالحًا وأن الاتصال بالبوابة الافتراضية Gateway يعمل. يمكن اختبار الوصول إلى عنوان IP معروف بدلًا من اسم النطاق؛ فإذا أمكن الوصول إلى العنوان مباشرة بينما يفشل اسم النطاق، فقد تكون المشكلة مرتبطة بحل أسماء النطاقات DNS. يجب كذلك تحديد ما إذا كانت المشكلة تؤثر على جهاز واحد أم جميع الأجهزة الموجودة على الشبكة. إذا كان جهاز واحد فقط متأثرًا، يمكن تنظيف DNS cache على الجهاز وتجديد إعدادات الشبكة ثم إعادة الاختبار. إذا كانت المشكلة على جميع الأجهزة، يتم فحص إعدادات DNS الموزعة من جهاز الراوتر أو DHCP. يجب التأكد من عدم وجود إعداد DNS يدوي غير صحيح أو خادم DNS غير متاح. يمكن اختبار خادم DNS بديل موثوق وفق سياسة الشركة، ثم مقارنة النتائج. كما ينبغي تجربة مواقع متعددة وليس موقعًا واحدًا فقط، لأن المشكلة قد تكون ناتجة عن خادم الموقع نفسه أو مشكلة توجيه خارج شبكة مزود الخدمة. إذا كان DNS يعمل بشكل طبيعي ولكن الموقع المطلوب لا يزال غير متاح، يجب إجراء اختبارات مثل ping أو traceroute وفق الأدوات المتاحة في بيئة الدعم، مع مراعاة أن بعض الخوادم تمنع ICMP وبالتالي فإن فشل ping وحده لا يثبت وجود انقطاع. في حالة ظهور المشكلة لدى عدد كبير من العملاء في المنطقة، يجب التحقق من أنظمة المراقبة بحثًا عن عطل في خوادم DNS أو البنية التحتية. عند التصعيد يجب تسجيل أسماء النطاقات المتأثرة، وقت حدوث المشكلة، هل المشكلة تشمل جميع الأجهزة، نتائج اختبار DNS، ونتائج الاتصال المباشر بالـ IP إن أمكن. لا ينبغي تغيير إعدادات DNS بشكل عشوائي إذا كانت الشركة تستخدم إعدادات مُدارة أو سياسات أمنية خاصة.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_005",
+    "title": "Billing Due Dates, Late Payments, and Service Suspension Policy",
+    "category": "Billing_Policies",
+    "language": "English",
+    "content": "The billing policy should clearly define the customer's billing cycle, invoice generation date, payment due date, grace period, and consequences of non-payment. An invoice should display the subscribed plan, recurring monthly charge, applicable taxes, approved add-ons, discounts, previous balance if applicable, payments received, and the final amount due. Customers should be able to verify the invoice before making payment. If a customer misses the due date, the account may enter a grace period according to the company's published policy. During the grace period, the customer should be informed of the outstanding balance and the date by which payment must be completed. Service restriction or suspension should not be described as an immediate consequence unless the actual policy explicitly states that. If the account becomes suspended due to non-payment, the customer should receive instructions for settling the outstanding amount and restoring service. Where payment has already been made but the account still shows an unpaid balance, the agent should verify the transaction reference, payment channel, amount, and payment timestamp before advising the customer to pay again. Customers should not be charged twice simply because the first payment has not yet synchronized with the billing system. Any applicable reconnection fee must be disclosed before payment and must follow the official tariff. Late-payment fees, if applicable, should be clearly stated in the service agreement or billing terms. Agents must not invent fees or waive charges outside their authorized limits. If a customer disputes a charge, the disputed amount should be investigated using the billing record rather than being automatically treated as a payment failure. If the account is suspended and payment is successfully confirmed, restoration should follow the company's normal provisioning process. The knowledge base should distinguish between an unpaid invoice, a failed payment attempt, a delayed payment settlement, and a billing-system synchronization issue because each scenario requires a different resolution path.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_006",
+    "title": "ترقية أو تخفيض الباقة وتوقيت تطبيق الرسوم",
+    "category": "Billing_Policies",
+    "language": "Egyptian_Colloquial",
+    "content": "لما العميل يطلب Upgrade أو Downgrade للباقة، لازم الموظف يوضح له بالضبط إمتى التغيير هيتم وإزاي هيتحسب المبلغ، لأن طريقة الحساب ممكن تختلف حسب نظام الفوترة والعقد. أول حاجة يتم التأكد من الباقة الحالية، الباقة المطلوبة، السعر الشهري لكل واحدة، وأي خصم أو عرض مرتبط بالباقة الحالية. لو الترقية متاحة فورًا، لازم العميل يعرف هل هيتم احتساب فرق السعر عن الأيام المتبقية من دورة الفاتورة بنظام prorated billing ولا هيدفع قيمة الباقة الجديدة كاملة من بداية دورة جديدة. نفس الكلام ينطبق على الـ Downgrade، خصوصًا لو الباقة الحالية عليها التزام أو عقد لفترة محددة. لازم نتأكد إن تخفيض الباقة مش هيؤدي إلى فقدان خصم أو عرض ترويجي. قبل تنفيذ التغيير، الموظف يراجع أي رسوم إضافية أو شروط تعاقدية ويبلغ العميل بيها بوضوح. لو العميل دفع بالفعل للباقة الحالية، ماينفعش نقوله إن المبلغ ضاع؛ لازم نرجع لسياسة الشركة لمعرفة هل فيه رصيد متبقٍ يتم ترحيله أو هل يتم حساب الفرق بشكل نسبي. لو الترقية مرتبطة بزيادة السرعة، ممكن تحتاج عملية provisioning أو إعادة تهيئة للخدمة، وبالتالي العميل لازم يعرف إن التغيير ممكن يحتاج وقتًا معينًا قبل ظهور السرعة الجديدة. في حالة الـ Downgrade، يجب التأكد من أن الباقة الجديدة مناسبة لاستهلاك العميل، لكن بدون ضغط عليه لاتخاذ قرار أعلى تكلفة. لو النظام رفض الطلب بسبب وجود فاتورة مستحقة أو التزام تعاقدي، لازم نشرح السبب بدل ما نقول فقط إن الطلب غير متاح. كل عملية تغيير لازم يتم تسجيلها بتاريخ التنفيذ، الباقة القديمة، الباقة الجديدة، الرسوم الناتجة، وأي خصم أو التزام تم الحفاظ عليه أو تغييره. الهدف إن العميل يخرج من المكالمة وهو فاهم بالضبط هيدفع كام، وإمتى، وإيه اللي هيتغير في الخدمة.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_007",
+    "title": "Refund Eligibility and Incorrect Billing Investigation",
+    "category": "Billing_Policies",
+    "language": "Arabic_Standard",
+    "content": "يجب التعامل مع طلبات استرداد الأموال بناءً على سبب الطلب ونوع الخدمة وشروط العقد وسياسة الشركة المعتمدة، وليس بناءً على تقدير الموظف الشخصي. عند اعتراض العميل على مبلغ تم تحصيله، يجب أولًا تحديد طبيعة الاعتراض: هل تم تحصيل مبلغ مرتين، هل استمر الخصم بعد إلغاء الخدمة، هل تم تطبيق رسوم غير متوقعة، هل تم احتساب خدمة إضافية لم يطلبها العميل، أم أن العميل يطلب استردادًا بسبب عدم استخدام الخدمة؟ بعد تحديد السبب، يجب مراجعة سجل الفواتير والمدفوعات وتاريخ الاشتراك وأي طلبات سابقة مسجلة على الحساب. في حالة الدفع المكرر، يجب التحقق من عمليتي الدفع باستخدام مراجع المعاملات قبل إنشاء طلب استرداد. إذا ثبت وجود تحصيل غير صحيح، يتم تطبيق سياسة الاسترداد الخاصة بالشركة وتحديد وسيلة إعادة المبلغ والمدة المتوقعة للمعالجة. في حالة وجود خصم بعد إلغاء الخدمة، يجب التحقق من تاريخ طلب الإلغاء وتاريخ تنفيذ الإلغاء وتاريخ إصدار الفاتورة؛ فقد تكون الفاتورة قد صدرت قبل اكتمال الإلغاء. إذا كان العميل قد اشترك في خدمة إضافية بشكل صحيح، فلا ينبغي تصنيف الرسوم كرسوم غير مصرح بها دون مراجعة سجل الطلب أو الموافقة. بالنسبة لطلبات الاسترداد الناتجة عن عدم استخدام الخدمة، يجب الرجوع إلى شروط العقد لأن عدم الاستخدام لا يعني بالضرورة أن الرسوم الشهرية غير مستحقة. يجب على الموظف عدم إعطاء وعد نهائي باسترداد المبلغ قبل اكتمال التحقق إذا كانت الحالة تحتاج إلى مراجعة مالية. يجب توثيق رقم الفاتورة، المبلغ المتنازع عليه، سبب الاعتراض، تاريخ الدفع، حالة الخدمة، والنتيجة النهائية للتحقيق. وفي جميع الحالات، ينبغي تزويد العميل برقم مرجعي للطلب إذا تم تصعيده إلى فريق الفوترة، مع توضيح الخطوة التالية والمدة المتوقعة وفق السياسة الرسمية.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_008",
+    "title": "Unexpected Charges and Hidden Fee Investigation",
+    "category": "Billing_Policies",
+    "language": "English",
+    "content": "When a customer reports an unexpected charge and describes it as a hidden fee, the agent should avoid immediately confirming that the fee is incorrect. The correct approach is to identify the exact charge and trace its origin in the billing system. First, review the invoice line by line and identify whether the amount represents a recurring subscription fee, a one-time activation charge, equipment rental, installation-related cost, an optional add-on, a late-payment fee, a reconnection charge, taxes, or a prorated adjustment. Next, compare the charge against the customer's current plan, contract terms, order history, previous invoices, promotional conditions, and any service changes made during the billing period. If the charge is related to an optional service, verify whether there is an authorization or order record. If it is a one-time fee, verify the event that triggered it and whether the customer was informed according to the applicable policy. Taxes should be clearly separated from service charges where required by the billing format. If the charge is legitimate, the agent should explain it in simple language instead of simply repeating the invoice description. If the charge cannot be explained from available records, it should be escalated to billing for investigation. The customer should not be instructed to make another payment merely to remove an unexplained charge. If an incorrect charge is confirmed, the company should apply the approved adjustment or refund process. Any discretionary fee waiver must remain within the employee's authorization level. For recurring unexpected charges, investigate whether an add-on or promotional period ended and automatically converted into a paid service according to the applicable terms. The final case record should contain the disputed amount, invoice number, charge description, relevant dates, customer explanation, verification performed, and final resolution. This information is essential for preventing repeated billing disputes and for identifying patterns affecting multiple customers.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_009",
+    "title": "el net bywa2 w yrg3 w el router sh8al",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "لو العميل بيقول: \"el net bywa2 kol shwaya w yrg3 lwa7do\" أو إن النت بيفصل ويرجع من غير ما الراوتر يطفي، لازم نحدد الأول هل الانقطاع من الإنترنت نفسه ولا من الـ Wi-Fi. اسأل العميل هل كل الأجهزة بتفصل في نفس اللحظة ولا جهاز واحد بس. لو الموبايل بس اللي بيفصل، جرب جهاز تاني عشان نعرف إذا كانت المشكلة من الموبايل. لو كل الأجهزة بتفصل مع بعض، بص على لمبات الراوتر وقت المشكلة: هل Internet/DSL/PON بتفصل؟ هل Power ثابت؟ وهل لمبة Wi-Fi نفسها بتختفي؟ لو الـ Wi-Fi بيختفي لكن لمبة الإنترنت ثابتة، فغالبًا المشكلة من wireless أو الراوتر. ساعتها خلي العميل يقرب من الراوتر ويجرب، ويبعد الراوتر عن الأجهزة الكهربائية والتلفزيون والميكروويف وأي مصدر تداخل واضح. لو الراوتر Dual Band، جرب 2.4GHz و5GHz وشوف أي واحدة أكثر استقرارًا. لو لمبة DSL أو PON بتفصل وتعمل Sync من جديد، فالموضوع غالبًا مش مجرد Wi-Fi وعايز فحص للخط أو الإشارة. مهم نسأل العميل هل المشكلة بتحصل في أوقات معينة، لأن لو بتحصل مثلًا كل يوم بالليل ممكن يكون فيه congestion أو مشكلة في المنطقة، لكن ماينفعش نفترض ده من غير فحص. لو عنده لابتوب، نطلب منه يجرب Ethernet مباشرة في الراوتر. لو الكابل مستقر والـ Wi-Fi بيفصل، نركز على إعدادات wireless أو مكان الراوتر أو التداخل. لو الكابل نفسه بيفصل، نكمل فحص الخط والـ WAN. إعادة تشغيل الراوتر ممكن تكون خطوة تشخيصية، لكن لو المشكلة بتتكرر لازم نعرف السبب بدل ما نخلي العميل يعيد التشغيل كل مرة. وفي البلاغ الفني لازم نسجل عدد مرات الفصل تقريبًا، مدة كل فصل، حالة اللمبات، نتيجة تجربة Ethernet، والأجهزة المتأثرة.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_010",
+    "title": "Late Payment, Reconnection, and Account Balance Clarification",
+    "category": "Billing_Policies",
+    "language": "English",
+    "content": "Customer billing cases involving late payment should be handled by separating three different states: an invoice that is simply overdue, an account that has been restricted or suspended, and a payment that has already been made but has not yet been reflected in the billing system. If the customer says, \"I paid yesterday but my Internet is still suspended,\" the agent should first request or locate the payment reference and verify the payment amount, date, channel, and account number. The customer should not be asked to make a second payment until the first transaction has been checked. If the payment is confirmed but the account status has not updated, the case may require payment reconciliation or manual restoration according to the company's process. If the invoice is genuinely unpaid, the agent should explain the outstanding balance, due date, and any applicable late-payment or reconnection charges based strictly on the published policy. If a grace period exists, the agent should explain when it ends and what service restrictions may occur after that point. If service has already been suspended, the agent should explain whether restoration occurs automatically after payment or requires a separate provisioning step. Any reconnection fee must be disclosed before the customer completes payment. If the customer disputes the balance, the agent should compare the current invoice with previous invoices and payment history instead of assuming that the customer is wrong. If the disputed amount is caused by a duplicate payment, incorrect add-on, incorrect plan charge, or billing-system error, the appropriate correction process should be initiated. Agents should never create an unofficial discount, remove a legitimate fee without authorization, or promise an immediate refund without checking the applicable rules. The case notes should clearly record the customer's reported payment date, transaction reference, invoice number, account status, amount due, verification results, and action taken. This structure helps both the billing and technical teams distinguish a true technical outage from a service restriction caused by account status.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_011",
+    "title": "انخفاض سرعة الإنترنت بسبب ضعف جودة خط DSL",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "عند ملاحظة انخفاض سرعة اتصال DSL أو تذبذب السرعة، يجب التحقق من جودة الخط قبل تغيير إعدادات جهاز العميل. تبدأ عملية التشخيص بمراجعة سرعة المزامنة الحالية Downstream وUpstream ومقارنتها بالسرعة المتوقعة للخدمة. بعد ذلك يتم فحص قيم SNR Margin وLine Attenuation ومعدل أخطاء الخط مثل CRC Errors وFEC Errors وفق الأدوات المتاحة لموظف الدعم. انخفاض SNR بشكل كبير أو ارتفاع معدل الأخطاء قد يشير إلى وجود تشويش على الخط. يجب سؤال العميل عما إذا كانت المشكلة مستمرة طوال اليوم أم تظهر في أوقات محددة، وما إذا كانت الهواتف الأرضية أو أجهزة أخرى تستخدم نفس التوصيلات. إذا كان جهاز DSL متصلًا من خلال Splitter، يمكن اختبار الخط مؤقتًا باستخدام التوصيلة الصحيحة وفق تعليمات الشركة، مع فصل الأجهزة الهاتفية الأخرى للتأكد من عدم تسببها في التشويش. يجب فحص وجود أسلاك تالفة أو وصلات غير محكمة أو تمديدات داخلية طويلة وغير مناسبة. إذا تحسنت جودة الخط بعد إزالة الأجهزة أو تغيير التوصيلة الداخلية، فقد يكون مصدر المشكلة داخل منزل العميل. أما إذا بقيت قيم الخط سيئة رغم سلامة التوصيلات الداخلية، فيجب تصعيد الحالة لفريق الشبكة لفحص الكابل الخارجي أو نقطة التوزيع. لا ينبغي رفع سرعة الباقة كحل لمشكلة جودة الخط، لأن زيادة السرعة المطلوبة قد تزيد من عدم الاستقرار. يجب توثيق قيم SNR وAttenuation وSync Rate وعدد مرات إعادة المزامنة ووقت حدوث المشكلة ونتائج أي اختبار داخلي قبل التصعيد.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_012",
+    "title": "الراوتر شغال لكن مفيش نت على أي جهاز",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "لو الراوتر منور وكل اللمبات شكلها طبيعي لكن مفيش إنترنت على أي جهاز، لازم نمشي في التشخيص خطوة خطوة بدل ما نعمل Reset للراوتر على طول. أول سؤال: هل الأجهزة متصلة بالـ Wi-Fi فعلًا ولا بتظهر رسالة Connected without Internet؟ لو الأجهزة متصلة بالراوتر لكن مفيش تصفح، نراجع لمبة Internet أو WAN أو PON حسب نوع الجهاز. بعد كده نجرب جهاز تاني، لأن لو جهاز واحد بس هو اللي مش بيفتح مواقع ممكن المشكلة تكون في الجهاز نفسه. لو كل الأجهزة متأثرة، نجرب فتح أكتر من موقع أو تطبيق عشان نتأكد إن المشكلة مش من خدمة واحدة. ممكن كمان نعمل اختبار للـ Gateway أو نراجع هل الجهاز واخد IP address بشكل صحيح. لو كل الأجهزة واخدة IP لكن مفيش وصول للإنترنت، يتم فحص حالة الـ WAN session أو PPPoE session من النظام لو البيانات متاحة لموظف الدعم. لو الـ WAN session ساقطة، ممكن نحتاج إعادة الاتصال أو إعادة تشغيل الراوتر حسب إجراءات الشركة. لو الخدمة بتحتاج username/password للـ PPPoE، ماينفعش نطلب من العميل يغيرهم أو يدخل بيانات عشوائية، خصوصًا لو الحساب Managed من الشركة. لو بعد إعادة التشغيل الخدمة رجعت، نسجل الحالة ونشوف هل المشكلة تكررت. لو رجعت تاني بشكل متكرر، لازم نراجع logs أو حالة الخط بدل ما نعتبر إن Restart هو الحل النهائي. ولو المشكلة موجودة على كل الأجهزة مع وجود عطل في المنطقة، يتم ربط الحالة بالـ outage الموجود بدل فتح بلاغات منفصلة بدون داعي. الهدف إننا نفرق بين مشكلة Wi-Fi، مشكلة WAN، مشكلة DNS، ومشكلة outage قبل تحديد الحل.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_013",
+    "title": "Intermittent Internet Connection and Packet Loss Investigation",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "Intermittent connectivity should be investigated differently from a complete Internet outage because the service may appear operational while still experiencing packet loss or repeated reconnections. Start by determining the frequency and duration of the interruptions. Ask whether the issue affects wired and wireless devices simultaneously. A wired Ethernet test is preferred because it removes most Wi-Fi variables. If the customer can reproduce the issue on Ethernet, test connectivity to the local gateway first and then to an external destination. Loss of connectivity to the gateway may indicate a local router, Ethernet, or LAN problem, while a stable gateway combined with external packet loss may indicate an upstream connectivity issue. Review modem or ONT event logs when available and look for repeated WAN disconnects, DSL resynchronizations, optical signal events, DHCP failures, or PPP authentication failures. The exact interpretation depends on the access technology. The agent should also determine whether packet loss occurs continuously or only during specific periods. If the customer reports that online gaming or video calls are affected while normal browsing appears acceptable, packet loss and latency should be considered rather than speed alone. Speed tests may not reveal short intermittent outages. Where supported, collect multiple latency or packet-loss samples and record timestamps. If the issue correlates with router reboot events, overheating, unstable power, or firmware crashes, the router should be investigated. If the router remains stable while the WAN session repeatedly drops, escalate the case to the network team. Do not promise that replacing the router will solve the problem until evidence indicates that the router is the source. The escalation record should contain connection type, router model, wired-test result, packet-loss observations, timestamps, modem/ONT indicators, and relevant system events.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_014",
+    "title": "Wi-Fi ضعيف في غرفة بعيدة عن الراوتر",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "إذا كانت سرعة الإنترنت جيدة عند اختبارها بجوار جهاز الراوتر ولكنها تنخفض بشدة في غرفة بعيدة، فالمشكلة غالبًا مرتبطة بتغطية Wi-Fi وليست بسرعة الباقة. يجب أولًا مقارنة الأداء بالقرب من الراوتر وفي المكان الذي يعاني فيه العميل من ضعف الإشارة. تؤثر المسافة وعدد الجدران ونوع مواد البناء وموقع الراوتر على قوة الإشارة وجودتها. يوصى بوضع الراوتر في مكان مركزي ومرتفع نسبيًا ومفتوح، بعيدًا عن الخزائن المغلقة والأجهزة الكهربائية ومصادر التداخل. إذا كان الجهاز يدعم نطاقي 2.4 GHz و5 GHz، يمكن تجربة النطاقين في الغرفة المتأثرة. يتميز 2.4 GHz عادة بمدى أطول وقدرة أفضل على اختراق بعض العوائق، بينما يوفر 5 GHz أداءً أعلى على المسافات الأقصر. في المنازل الكبيرة، يمكن استخدام Mesh Wi-Fi أو Access Point إضافي وفق المنتجات التي تدعمها الشركة. يجب وضع نقطة التوسعة في مكان لا يزال يستقبل إشارة جيدة من الراوتر الرئيسي؛ وضعها داخل المنطقة التي لا تصل إليها الإشارة أصلًا قد يؤدي إلى توسيع إشارة ضعيفة بدل تحسين الشبكة. يجب كذلك تجنب تركيب عدة أجهزة Wi-Fi بطريقة تسبب تداخلًا أو إنشاء شبكات متداخلة بإعدادات غير صحيحة. عند تقييم المشكلة، ينبغي تسجيل المسافة التقريبية، عدد الجدران، نطاق التردد المستخدم، قوة الإشارة، سرعة الاتصال بالقرب من الراوتر، وسرعة الاتصال في المنطقة المتأثرة. لا ينبغي ترقية الباقة فقط لعلاج مشكلة التغطية، لأن زيادة سرعة الاشتراك لا تزيد تلقائيًا قوة الإشارة اللاسلكية.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_015",
+    "title": "The Router Overheats and Internet Keeps Dropping Repeatedly",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "If the customer says the router overheats or restarts on its own and the internet keeps dropping, the first thing we need to know is whether the issue is with the power, the router hardware, the Wi-Fi, or the WAN connection. Ask the customer: when the internet drops, do all the router's LEDs turn off, or does the Power light stay on? If all the LEDs turn off and then come back on, it could be a power issue or the router rebooting. We can try a different power adapter, but only one approved by the company and matching the required specifications — never use an adapter with the wrong voltage or current. We also need to know whether the router is in a hot or enclosed spot, since overheating can cause repeated restarts. Have the customer place the router in an open, well-ventilated area away from heat sources. If the Power light stays steady but the Internet still drops, the problem is probably not a full router reboot, and could instead be a WAN/DSL/PON issue. If only the Wi-Fi disappears, focus on the wireless settings, firmware, or the router's hardware. We can ask the customer to try a wired Ethernet connection while the issue is happening, if they have a suitable device. If Ethernet stays stable while Wi-Fi is unstable, continue investigating in the Wi-Fi direction. If both Ethernet and Wi-Fi drop, review the WAN status. We should also ask whether the issue happens after a certain number of devices connect or during large downloads, since that can point to a capacity issue or the router running out of resources. A restart may be a temporary workaround, but it is not a diagnosis. If the problem continues after confirming the power, heat, and connections, review the logs, and only replace the device if the tests indicate the device itself is the cause.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_016",
+    "title": "إجراءات التأخر في السداد وفترة السماح",
+    "category": "Billing_Policies",
+    "language": "Arabic_Standard",
+    "content": "تحدد سياسة الفوترة تاريخ إصدار الفاتورة وتاريخ الاستحقاق وأي فترة سماح متاحة للعميل قبل تقييد أو إيقاف الخدمة. عند تأخر العميل عن السداد، يجب على موظف خدمة العملاء أولًا التحقق من حالة الحساب بدل افتراض أن الخدمة تم إيقافها بسبب عدم الدفع. قد يكون الحساب في حالة متأخر فقط، أو قد يكون قد دخل مرحلة التقييد، أو قد تكون هناك عملية دفع تمت بالفعل ولكنها لم تنعكس بعد في النظام. إذا لم يتم السداد، يجب توضيح المبلغ المستحق وتاريخ الاستحقاق وأي رسوم تأخير تنطبق وفق السياسة الرسمية. يجب عدم اختراع فترة سماح أو وعد العميل بأن الخدمة لن تتأثر في تاريخ معين إذا لم يكن ذلك ظاهرًا في النظام أو الشروط المعتمدة. إذا قام العميل بالدفع، فيجب التحقق من حالة المعاملة قبل طلب دفع جديد. عند وجود تأخير في تحديث الدفع، يتم إنشاء طلب reconciliation أو متابعة مالية حسب الإجراء المعتمد. وإذا كانت الخدمة قد تم تقييدها، يجب توضيح ما إذا كانت ستعود تلقائيًا بعد تسجيل الدفع أم تحتاج إلى إجراء إضافي. أي رسوم لإعادة تشغيل الخدمة يجب الإفصاح عنها قبل تنفيذ الدفع. وفي حالة وجود اعتراض على الرصيد، تتم مقارنة الفاتورة الحالية بسجل المدفوعات والفواتير السابقة. يجب تسجيل حالة الحساب، المبلغ المستحق، تاريخ الاستحقاق، طريقة الدفع، رقم المعاملة، وتاريخ الدفع، بالإضافة إلى الإجراء المتخذ. الهدف من هذه السياسة هو منع تكرار الدفع، وتجنب إيقاف الخدمة بسبب أخطاء تسجيل المدفوعات، وتوفير معلومات واضحة للعميل.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_017",
+    "title": "Prorated Charges After Mid-Cycle Plan Changes",
+    "category": "Billing_Policies",
+    "language": "English",
+    "content": "When a customer changes a telecom plan in the middle of a billing cycle, the resulting invoice may contain prorated charges or credits depending on the company's billing model. The agent must first identify the exact effective date of the plan change and the billing cycle boundaries. The previous plan may be charged for the number of days it was active, while the new plan may be charged from its activation date until the end of the cycle. If the company applies credits for unused days of the previous plan, that credit should appear separately or be reflected according to the invoice format. The agent should explain that a prorated amount is not necessarily an additional hidden fee; it can be a calculation that reflects partial-period service. If the customer upgraded immediately, the first invoice after the change may be higher than the standard monthly price because it can include the remaining portion of the previous cycle plus the normal charge for the next cycle, depending on the billing date. If the customer downgraded, the first invoice may include a credit or adjustment rather than simply showing the new monthly price. Promotional discounts must also be checked because changing plans can affect eligibility. If an early termination or minimum-term commitment exists, the agent must verify whether the requested change triggers a contractual charge. Agents should never calculate a final amount manually when the billing system provides the official amount, especially where taxes or promotional adjustments are involved. If the invoice appears inconsistent with the recorded effective date, open a billing investigation and attach the relevant plan-change order. The case notes should include the old plan, new plan, effective date, billing-cycle dates, promotional status, displayed prorated amount, and customer's question. This information allows the billing team to reproduce the calculation and correct it if necessary.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_018",
+    "title": "Customer Requests a Refund After Service Cancellation",
+    "category": "Billing_Policies",
+    "language": "Egyptian_Colloquial",
+    "content": "لو العميل لغى الخدمة وبيطلب Refund، لازم الأول نحدد هو ألغى إمتى، والخدمة اتقفلت فعليًا إمتى، وآخر فاتورة اتصدرت إمتى، وهل كان فيه مبلغ مدفوع مقدمًا. مش كل حالة إلغاء معناها إن العميل يستحق استرداد كامل، لأن الموضوع بيعتمد على شروط الباقة والعقد وطريقة الفوترة. لو العميل دفع شهر كامل وبعد كده طلب الإلغاء في نص الشهر، لازم نراجع سياسة الشركة: هل فيه استرداد للجزء غير المستخدم؟ هل الإلغاء بيتم في نهاية دورة الفوترة؟ وهل فيه minimum commitment؟ كمان لازم نتأكد إن الخدمة اتوقفت فعلًا في النظام، لأن ممكن العميل يكون قدم طلب إلغاء لكن الطلب لسه pending، وبالتالي الفاتورة اتولدت قبل تاريخ التنفيذ. لو فيه مبلغ متبقي للعميل، لازم نحدد هل هيرجع لنفس وسيلة الدفع ولا فيه إجراء تاني حسب سياسة الشركة. لو العميل بيقول إن بعد الإلغاء اتخصم منه مبلغ جديد، نراجع تاريخ الإلغاء، تاريخ الخصم، والفاتورة المرتبطة بالخصم. لو ثبت إن الخصم حصل بعد انتهاء الخدمة ومن غير سبب صحيح، يتم فتح refund أو billing adjustment حسب النظام. مهم جدًا ما نقولش للعميل \"هتاخد فلوسك بكرة\" إلا لو المدة دي مكتوبة ومؤكدة في النظام أو السياسة. كمان لازم الموظف يوضح إذا كان فيه أي outstanding balance قبل تنفيذ الاسترداد، لأن ممكن الحساب يكون عليه مبلغ مستحق وفي نفس الوقت فيه credit. في نهاية الحالة، نسجل cancellation date، service termination date، آخر invoice، المبلغ المدفوع، المبلغ المطلوب استرداده، سبب الطلب، والقرار النهائي. ده بيمنع مشاكل كتير لما العميل يتواصل مرة تانية مع فريق مختلف.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_019",
+    "title": "One-Time Installation and Equipment Charges",
+    "category": "Billing_Policies",
+    "language": "English",
+    "content": "Installation and equipment-related charges should be clearly separated from the recurring monthly subscription fee. When a customer questions an installation charge, the agent should verify the original order, selected plan, installation type, equipment arrangement, promotional offer, and applicable tariff. Some plans may include standard installation while charging separately for special installation requirements, additional cabling, relocation, or equipment not included in the base package. The agent should not assume that every installation-related amount is a hidden fee. Instead, identify the exact invoice line and match it against the customer's order and terms. If the customer was offered a promotion that waived an installation fee, verify whether the promotion was active at the time of order and whether any eligibility conditions applied. Equipment charges should also be checked carefully because the customer may have purchased, rented, or received equipment under a deposit or loan arrangement. If an equipment deposit is refundable after return, the agent should explain the return requirements and expected refund process according to policy. If equipment was not returned after service cancellation, the account may legitimately contain a charge if the agreement allows it. However, the agent should confirm that the equipment assignment and return status are correctly recorded before applying any charge. If the invoice contains a charge that cannot be matched to an order, service request, equipment record, or published fee, the case should be escalated for billing investigation. Agents must provide a clear explanation of verified charges and must not invent reasons based only on the description printed on the invoice. Documentation should include the installation order number, installation date, equipment serial number if relevant, promotional code, invoice line, disputed amount, and final resolution.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_020",
+    "title": "تعارض بين سرعة الباقة والسرعة التي تظهر للعميل",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "عند اعتراض العميل على أن السرعة التي يحصل عليها أقل من السرعة المعلنة للباقة، يجب أولًا تحديد نوع السرعة المقصودة: السرعة المتعاقد عليها من مزود الخدمة، سرعة المزامنة بين جهاز الوصول والشبكة، أم السرعة التي تم قياسها على جهاز العميل. هذه القيم ليست بالضرورة متطابقة. تبدأ عملية التشخيص بالتأكد من الباقة الفعلية المسجلة على الحساب وعدم وجود تغيير حديث لم يتم تفعيله. بعد ذلك يتم إجراء اختبار سرعة باستخدام اتصال Ethernet مباشر إذا كان ذلك ممكنًا، مع إيقاف التطبيقات والأجهزة التي تستهلك النطاق الترددي أثناء الاختبار. يجب إجراء أكثر من اختبار إذا كانت النتائج متذبذبة، ويفضل استخدام خادم اختبار مناسب وقريب نسبيًا من موقع العميل عندما يكون ذلك جزءًا من إجراءات الشركة. إذا كانت السرعة بالكابل ضمن النطاق المتوقع، بينما تكون أقل بكثير عبر Wi-Fi، فالمشكلة غالبًا في الاتصال اللاسلكي. أما إذا كانت السرعة منخفضة عبر Ethernet أيضًا، فيجب مراجعة حالة الخط أو جلسة الاتصال والقياسات المتاحة من أنظمة الشبكة. بالنسبة لخدمات الألياف، ينبغي التحقق من حالة ONT ومستوى الإشارة الضوئية وسرعة المنفذ وفق الأدوات المتاحة. بالنسبة لخدمات DSL، يتم فحص سرعة المزامنة وجودة الخط ومعدل الأخطاء. يجب أيضًا مراعاة قدرة جهاز العميل نفسه، حيث قد تكون بعض الأجهزة أو بطاقات الشبكة غير قادرة على الوصول إلى السرعة القصوى للباقة. إذا كانت نتائج الشبكة سليمة ولكن الجهاز المستخدم محدود الأداء، لا ينبغي فتح بلاغ على الشبكة دون دليل. عند وجود فرق حقيقي ومستمر بين السرعة المتعاقد عليها والسرعة المقاسة بالطريقة الصحيحة، يتم تصعيد الحالة مع إرفاق نتائج الاختبار، نوع الاتصال، الجهاز المستخدم، وقت الاختبار، بيانات الباقة، وقياسات الشبكة. يجب شرح الفرق للعميل بلغة واضحة لتجنب الخلط بين سرعة الاشتراك وسرعة Wi-Fi.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_021",
+    "title": "عميل يبلغ عن انقطاع كامل للإنترنت بعد إعادة تشغيل الراوتر",
+    "category": "Customer_Calls_Dataset",
+    "language": "Arabic_Standard",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بيك، معاك أحمد من خدمة العملاء. إزاي أقدر أساعدك النهاردة؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "عندي مشكلة كبيرة أوي. النت فاصل من إمبارح وأنا بحاول أعمل ريستارت للراوتر كل شوية ومفيش أي فايدة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهم إن الموضوع مُتعِب، وهنمشي مع بعض خطوة بخطوة. ممكن تقولي دلوقتي إيه اللمبات الشغالة على الراوتر؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "الباور شغالة، الواي فاي شغالة، بس الإنترنت مش شغالة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. الواي فاي شغالة يعني الأجهزة بتتصل بالراوتر، بس ممكن الاتصال الخارجي مش شغال. ممكن تقولي لو فتحتِ أي موقع من الموبايل أو اللابتوب، بيقول Connected without Internet؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة، كل الأجهزة نفس الحاجة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. خلينا نعمل اختبار. لو ممكن، اتأكدي إن كابل الإنترنت أو كابل الفايبر داخل في المنفذ بتاعه كويس ومش متعوج أوي. متفصليش كابل الفايبر لو الاتصال فايبر."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أهو داخل كويس."
+      },
+      {
+        "speaker": "Agent",
+        "text": "كويس. دلوقتي افصلي الراوتر من الكهرباء، استني 60 ثانية، وشغليه تاني. بعد ما يشتغل، استني 3 لـ5 دقايق عشان الاتصال يعمل مزامنة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا عملت كده قبل كده، بس هعملها تاني."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. أنا هفضل معاكِ. بعد ما يشتغل، قوليلي لمبة الإنترنت ولمبة PON/DSL عاملة إيه."
+      },
+      {
+        "speaker": "Customer",
+        "text": "شغالين دلوقتي، بس الإنترنت لسه مش شغال."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. بما إن المشكلة موجودة على كل الأجهزة ومؤشر الإنترنت لسه مش ثابت، ممكن يكون فيه مشكلة في جلسة WAN أو انقطاع عام في المنطقة. هراجع حالة الخدمة على النظام."
+      },
+      {
+        "speaker": "Customer",
+        "text": "يعني عندي اجتماع بعد نص ساعة، ومش هعرف أشتغل كده."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهمة ضيقتك. الفحوصات الأولية ما رجعتش الخدمة، فهعمل تصعيد دلوقتي بدل ما أخليكِ تعيدي نفس الخطوات. هسجل إن الباور شغالة، الواي فاي شغالة، كل الأجهزة متأثرة، وإن إعادة التشغيل ما حلتش المشكلة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "تمام بس من فضلك متقوليش استني 48 ساعة وخلاص."
+      },
+      {
+        "speaker": "Agent",
+        "text": "لأ، مش هقولك مدة من عندي. هديكِ رقم البلاغ بعد تسجيله، وأي تحديث هيتم حسب نتيجة الفحص. لو الخدمة رجعت قبل ما الفريق يتواصل معاكِ، تقدري تستخدميها عادي، ولو استمرت المشكلة يبقى البلاغ قائم حسب الإجراء."
+      },
+      {
+        "speaker": "Customer",
+        "text": "تمام، شكرًا على التوضيح."
+      },
+      {
+        "speaker": "Agent",
+        "text": "العفو، وأنا آسف على تعطيل شغلك. هثبت كل التفاصيل في البلاغ عشان ما تضطريش تعيدي المشكلة من الأول لو احتجتِ متابعة."
+      }
+    ],
+    "sentiment": "Frustrated"
+  },
+  {
+    "doc_id": "KB_022",
+    "title": "Customer complains about slow Wi-Fi in another room",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hi, this is Sara from technical support. Can you tell me what's going on?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "The internet is great right next to the router, but as soon as I go to the other room it gets really slow."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Got it — that suggests the issue might be Wi-Fi coverage rather than the line speed itself. Can we run a couple of tests?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Sure, but I want to understand why this is happening. I'm paying for the 100 Mbps package, so it should be 100 everywhere in the apartment."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand what you mean. The package determines the speed available to the service, but Wi-Fi speed can be affected by distance, walls, interference, and the device itself. To tell them apart, let's run a speed test next to the router and then in the room where you're having the problem."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I ran the test next to the router and got 94 Mbps."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's great. And in the room?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Only 18 Mbps."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's a big difference. Roughly how many walls are there between the router and that room?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Three walls, and the router is inside a small cabinet."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That could be a major factor. When the router is inside a cabinet, the signal weakens, especially if there are other devices or obstacles around it. If possible, put it somewhere open and a bit higher up, ideally closer to the center of the apartment."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I'm not sure where to put it because the cable is short."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Okay, let's try something else first. If it's a dual-band router, do you have both a 2.4 GHz and a 5 GHz network?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, both show up."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Try the 2.4 GHz network in the far room and check the speed and stability. 5 GHz is usually faster close to the router, but 2.4 GHz can work better over longer distances. If 2.4 GHz improves things, coverage is the main factor."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I tried it and it's now getting around 35."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Excellent — that gives us evidence the issue is Wi-Fi coverage. If the apartment is large, we could consider a mesh system or an approved access point instead of upgrading the package."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So if I subscribed to the 200 package, it wouldn't fix it?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "Not necessarily. If the same Wi-Fi device is only getting 18 Mbps in that spot, increasing the package won't strengthen the signal. We need to fix the coverage first."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay, this is the first time anyone has explained it to me this way."
+      },
+      {
+        "speaker": "Agent",
+        "text": "The important thing is identifying the cause before suggesting a package change. I'll record the test results next to the router and inside the room, along with the router's current location, so the diagnosis is clear if we need to follow up."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_023",
+    "title": "عميل غاضب يعترض على رسوم غير متوقعة في الفاتورة",
+    "category": "Customer_Calls_Dataset",
+    "language": "Arabic_Standard",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بيك، معاك كريم من قسم الفوترة. إزاي أقدر أساعدك؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا مش فاهم حاجة. الفاتورة الجديدة فيها 250 جنيه زيادة، ومعنديش أي فكرة ليه. كل مرة بتطلعلي رسوم جديدة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "متفهم إن ده مزعج، وخلينا نراجع الفاتورة بندًا ببند عشان نعرف مصدر المبلغ."
+      },
+      {
+        "speaker": "Customer",
+        "text": "معلش بس أنا بدفع بانتظام كل شهر، ومش منطقي كل مرة ألاقي مبلغ زيادة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. ممكن تقولي رقم الفاتورة، أو أقدر أراجعها من الحساب لو البيانات متاحة عندي."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أهو رقمها KB98431."
+      },
+      {
+        "speaker": "Agent",
+        "text": "شكرًا. أنا شايف إن فيه رسوم اشتراك شهري متكررة، وفيه بند إضافي بقيمة 250 جنيه. محتاج أتأكد من وصفه قبل ما أقولك إنه صحيح أو غلط."
+      },
+      {
+        "speaker": "Customer",
+        "text": "مكتوب 'رسوم معدات'. وأنا أصلاً واخد الراوتر من الشركة من زمان."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهمك. خليني أراجع هل الجهاز إيجار ولا اتشرى، وهل فيه سجل طلب مرتبط بالرسوم دي."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بس محدش قالي إن الراوتر عليه فلوس إضافية."
+      },
+      {
+        "speaker": "Agent",
+        "text": "معاك حق إنك تحتاج تفسير واضح قبل ما تدفع. أنا مش هعتبرها رسوم صحيحة أو غلط قبل ما أراجع سجل الجهاز والعقد."
+      },
+      {
+        "speaker": "Customer",
+        "text": "طيب هتعمل إيه دلوقتي؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "راجعت إن الجهاز مسجل عندنا، لكن محتاج أتأكد من نوع الاتفاق اللي اتعمل وقت التركيب. لو الرسوم مش موجودة في شروط الباقة أو مفيش سجل يبررها، هفتح تحقيق في الفوترة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "يعني أدفع الفاتورة كلها ولا لأ؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "ماقدرش أقولك توقف الدفع بالكامل لأن ده ممكن يأثر على حالة الحساب. لكن أقدر أسجل إن فيه مبلغ محل نزاع ونرفع الحالة للفوترة. الفريق المختص هيحدد هل المبلغ مستحق، هيتم تعديله، أو يحتاج استرداد أو رصيد حسب النتيجة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أهم حاجة عندي إن الخدمة ما تتقطعش بسبب الـ250 جنيه دول."
+      },
+      {
+        "speaker": "Agent",
+        "text": "مفهوم. هسجل صراحة إن العميل بيعترض على الرسوم وعايز توضيح قبل اعتبارها مستحقة. وهديك رقم متابعة للحالة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "تمام. أنا كنت متعصب عشان محدش كان بيفهمني."
+      },
+      {
+        "speaker": "Agent",
+        "text": "من حقك تسأل عن أي مبلغ في الفاتورة. هدفي إننا نوصل لسبب واضح ومثبت، مش مجرد إجابة عامة."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_024",
+    "title": "Anxious customer waiting for Internet installation",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hi, this is Mona from installation support. How can I help you?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Honestly, I'm really worried. I requested an internet installation three days ago and no one has called me yet. I work from home and I really need the service."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand this matters a lot, especially since your work depends on the internet. Let me first check the status of the installation request."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I'm afraid the request got cancelled or the information was lost."
+      },
+      {
+        "speaker": "Agent",
+        "text": "No, let me check the system before we assume anything. Could I get the request number?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "It's 784562."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Thank you. The request shows as 'Installation Pending' on my end, which means it's still active and hasn't been cancelled. That's reassuring — your information is there."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay, but when will the technician come?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "The status doesn't show a confirmed time right now, so I can't give you an appointment myself. What I can tell you is that the current step is scheduling the visit."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So I might have to wait a lot longer?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "I can't give you a timeframe beyond what's officially in the system. But I can escalate the scheduling since you've explained there's a business impact from the delay."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So will they call me?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "Per company procedure, the scheduling team reaches out once the appointment is set. I'll note on the request that the customer needs the service for working from home and that the delay is affecting that."
+      },
+      {
+        "speaker": "Customer",
+        "text": "And what if the technician comes and I'm not there?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "Once the appointment is set, make sure your contact details are correct, and if rescheduling is needed, use the official channels. I'd advise against cancelling this request and creating a new one, since that could unnecessarily restart the installation cycle."
+      },
+      {
+        "speaker": "Customer",
+        "text": "That's an important point — I was about to file a new request."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Good thing you called first. The current request already exists, so it's better to follow up on it rather than start from scratch."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay, I feel a bit more at ease now."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's the most important thing. I'll log all the details in the notes, especially that the service is needed for work, so the scheduling team can see the reason for follow-up."
+      }
+    ],
+    "sentiment": "Anxious"
+  },
+  {
+    "doc_id": "KB_025",
+    "title": "عميل في حيرة بخصوص رسوم الترقية",
+    "category": "Customer_Calls_Dataset",
+    "language": "Arabic_Standard",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بيك، معاك عمر من قسم الفوترة. إيه المشكلة؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا عايز أفهم الفاتورة بس. أنا عملت ترقية من 100 لـ200 في نص الشهر، ودلوقتي الفاتورة طلعت أعلى من 200. مش فاهم ليه."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام، خلينا نشرحها خطوة خطوة. أولًا، إمتى عملت الترقية؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "يوم 15."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ودورة الفاتورة عندك بتبدأ يوم 1؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. في بعض أنظمة الفوترة بيتم حساب الجزء المستخدم من الباقة القديمة والجزء من الباقة الجديدة بشكل تناسبي. فأول فاتورة بعد الترقية ممكن تكون مختلفة عن السعر الشهري العادي."
+      },
+      {
+        "speaker": "Customer",
+        "text": "يعني أنا دفعت 100 وبعدين 200؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "مش بالضرورة. لازم نشوف الحساب الفعلي. لو الباقة القديمة كانت فعالة من يوم 1 لحد يوم 15، والجديدة من يوم 15 لنهاية الدورة، ممكن النظام يحسب كل فترة حسب عدد الأيام."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بس أنا شايف 200 كاملة في الفاتورة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام، ده محتاج نراجع هل الـ200 دي رسوم للشهر الجديد كامل ولا جزء منها متعلق بالدورة السابقة. كمان هنشوف هل فيه رصيد على الباقة القديمة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا خايف أدفع وأكتشف الشهر الجاي إن فيه نفس المشكلة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "مفهوم. خليني أوضحلك كمان إن أول فاتورة بعد تغيير الباقة ممكن تختلف، لكن الفواتير التالية المفروض تعكس السعر الشهري الجديد وفق النظام والعروض المطبقة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "طب لو لقيت إن الحساب غلط؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "ساعتها نفتح تحقيق في الفوترة ونرفق تاريخ التغيير والفاتورة عشان الفريق يراجع الحساب. ماينفعش أديك رقم نهائي من مجرد وصف الفاتورة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "تمام، كده فهمت إن أول فاتورة ممكن تكون مختلفة بسبب تاريخ الترقية."
+      },
+      {
+        "speaker": "Agent",
+        "text": "بالضبط. وهثبت في الحالة إنك محتاج توضيح للرسوم التناسبية، مش مجرد اعتراض على السعر."
+      }
+    ],
+    "sentiment": "Confused"
+  },
+  {
+    "doc_id": "KB_026",
+    "title": "Customer calls about repeated DNS problems",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hi, this is Youssef from technical support. What's the issue?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "The internet works, but certain sites won't open. Google works, YouTube works, but a few other websites won't load at all."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Got it. Is this happening on all your devices or just one?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "All the devices — phone, laptop, TV too."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Okay, that could be a DNS issue or a problem with the sites themselves. Can we try another site name to confirm it's not just one domain?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, there are three sites that don't work."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Do the apps for those sites work over mobile data?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, when I turn off Wi-Fi and use mobile data, they open."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's great — it tells us the issue could be related to the network path or DNS through your home connection."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I don't have any experience with DNS, what should I do?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "Don't worry, you won't need to make any complicated settings right now. First, we'll check the service status on our end and see if there's an outage or a problem with the DNS infrastructure."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Before we change any settings, has the router been restarted recently?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, two hours ago."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Alright. Since the restart didn't fix it and all devices are affected, it's best to do a network-side check instead of changing settings on each device individually."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I was actually about to do a factory reset."
+      },
+      {
+        "speaker": "Agent",
+        "text": "No, please don't do a factory reset right now. It could wipe the configuration and make the problem worse, especially if the settings are managed by the company."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay, good thing I asked."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Exactly. I'll log the affected site names, the fact that they open over mobile data but not over the home internet, and that the issue affects multiple devices. If the DNS check comes back normal, we'll continue looking into routing or a website-side issue."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Thanks, so now I understand it's not necessarily the router itself."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Exactly. The main thing is not to change settings randomly before we identify the source of the problem."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_027",
+    "title": "عميل غاضب بعد انقطاعات متكررة أثناء العمل",
+    "category": "Customer_Calls_Dataset",
+    "language": "Arabic_Standard",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بيك، معاكِ ندى من الدعم الفني. إزاي أقدر أساعدك؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا مش عايزة أسمع خطوات إعادة التشغيل تاني. أنا عملت ريستارت يمكن عشر مرات، والنت بيفصل كل عشر دقايق وأنا شغالة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهمة إن تكرار نفس الخطوة من غير حل نهائي شيء محبط. خلينا ما نكررش إعادة التشغيل كحل وحيد ونحدد السبب."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا ضيّعت شغلي بسبب الموضوع ده."
+      },
+      {
+        "speaker": "Agent",
+        "text": "آسفة إن ده حصل. هسألك كام سؤال محدد. لما النت بيفصل، هل كل الأجهزة بتفصل ولا اللابتوب بس؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "كل حاجة بتفصل، حتى التلفزيون."
+      },
+      {
+        "speaker": "Agent",
+        "text": "والباور بتفضل شغالة؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة، الباور ثابتة، بس الإنترنت بتفصل وترجع بعد شوية."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. ده يخلينا نركز على اتصال الـWAN أو الخط أكتر من الواي فاي. عندك إمكانية تجربي الإيثرنت على اللابتوب؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة، جربته، وبرضه بيفصل."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز، كده عندنا دليل إن المشكلة مش واي فاي بس. هل بتلاحظي إن مؤشر DSL/PON بيغير حالته وقت الفصل؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة، اللمبة بتفصل وبعدين ترجع."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. ده مهم جدًا. هسجل إن الاتصال السلكي متأثر وإن مؤشر الوصول بيعمل إعادة مزامنة. الحالة محتاجة فحص للخط."
+      },
+      {
+        "speaker": "Customer",
+        "text": "يعني هتفتحوا بلاغ وخلاص؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "هفتح بلاغ بتفاصيل الاختبارات بدل ما أسجل 'الإنترنت بيفصل' بس. هضيف عدد مرات الفصل، اختبار الإيثرنت، حالة اللمبة، ووقت حدوث المشكلة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا محتاجة حد يحلها، مش بس يسجلها."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهمة. أنا مش هقدر أصلح الخط الفعلي من المكالمة، لكن أقدر أتأكد إن التصعيد رايح للفريق الصح وبالمعلومات اللي تساعدهم يحددوا السبب من أول مرة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "طيب، كده أحسن من اللي حصل قبل كده."
+      },
+      {
+        "speaker": "Agent",
+        "text": "وهتابع إن البلاغ موصوف كمشكلة خط متقطعة، مش شكوى واي فاي، لأن نتائج الاختبار بتدعم ده."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_028",
+    "title": "Satisfied customer receives clear explanation about billing refund",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hi, this is Mariam from billing support. How can I help you?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "I just want to know where my refund is. I cancelled the service and then found out an amount was deducted."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Okay. Could I get the cancellation request number or the refund number?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "It's RFD55218."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Thank you. I can see the refund request has already been logged, and the reason listed is a charge that occurred after the termination date."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, exactly. I expected the amount to come back immediately."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand. Based on the status, the request has entered the processing stage, which means the refund has been approved in principle, but the actual transfer hasn't been completed yet."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So there's nothing I need to do?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "Based on the information I have, there's no additional action required from you right now. If the finance team needs proof or additional information, they'll reach out through official channels."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay. I was worried the request had been rejected."
+      },
+      {
+        "speaker": "Agent",
+        "text": "No, the case isn't showing as rejected on my end — it's showing as processing."
+      },
+      {
+        "speaker": "Customer",
+        "text": "That's great. Will the amount go back to the same card?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "That depends on the payment method and the refund process, and I don't want to promise you an uncertain method. But the request data is linked to the original transaction."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay, thanks for explaining the difference between approved and processed."
+      },
+      {
+        "speaker": "Agent",
+        "text": "You're welcome. That's an important reason why the amount sometimes doesn't appear right away, even after approval."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Honestly, this call really put my mind at ease."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I'm glad things are clearer now. Please hold on to the reference number RFD55218 for any future follow-up."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_029",
+    "title": "أب قلق بشأن انقطاع الإنترنت قبل امتحان أونلاين لابنته",
+    "category": "Customer_Calls_Dataset",
+    "language": "Arabic_Standard",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بيك، معاك هاني من الدعم الفني. إيه المشكلة؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "النت فاصل وبنتي عندها امتحان أونلاين النهاردة. أنا متوتر جدًا ومحتاج أعرف هيرجع إمتى."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهم أهمية الوقت. خلينا نحدد نوع العطل بسرعة. هل كل الأجهزة مفيهاش إنترنت؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة، الموبايلات واللابتوب والتلفزيون كلهم مفيهمش نت."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. إيه حالة لمبة الباور ولمبة الإنترنت/PON؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "الباور شغالة، والـLOS أحمر."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. وجود LOS أحمر معناه إن جهاز الألياف مش مستقبل الإشارة الضوئية بشكل طبيعي. ده مختلف عن مشكلة الواي فاي."
+      },
+      {
+        "speaker": "Customer",
+        "text": "يعني المشكلة من عندي؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "مش بالضرورة. ممكن تكون من وصلة الألياف داخل البيت، أو نقطة التوزيع، أو الشبكة الخارجية. لازم نفحص من النظام الأول."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا مش هقدر أصلح كابل دلوقتي، الامتحان بعد ساعة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ولا مطلوب منك تفك أي كابل. بس تأكد إن الكابل مش مفصول أو متني بشكل حاد. وبعدها نعمل فحص لحالة الخدمة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "تمام، الكابل شكله ثابت."
+      },
+      {
+        "speaker": "Agent",
+        "text": "راجعت الحالة، ومفيش تأكيد عندي إن فيه انقطاع عام في اللحظة دي، فهسجل بلاغ فني بسبب الـLOS."
+      },
+      {
+        "speaker": "Customer",
+        "text": "طب هل ممكن يرجع لوحده؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممكن لو كانت المشكلة مؤقتة، لكن ماقدرش أضمن ده. الأفضل نعتبر البلاغ مفتوح ونتابع الحالة بدل ما نعتمد على رجوع الخدمة تلقائيًا."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا قلقان جدًا بخصوص الامتحان."
+      },
+      {
+        "speaker": "Agent",
+        "text": "مفهوم. هضيف في الملاحظات إن فيه تأثير على التعليم بسبب امتحان قريب، لكن أولوية المعالجة نفسها بتتحدد حسب نظام الشركة وشدة العطل."
+      },
+      {
+        "speaker": "Customer",
+        "text": "تمام، على الأقل دلوقتي عرفت إن المشكلة مش واي فاي."
+      },
+      {
+        "speaker": "Agent",
+        "text": "بالضبط. ودي معلومة مهمة لأن تغيير كلمة السر أو إعدادات الواي فاي مش هيحل مشكلة اللمبة الحمراء."
+      }
+    ],
+    "sentiment": "Anxious"
+  },
+  {
+    "doc_id": "KB_030",
+    "title": "Confused customer asks about cancellation fees and final invoice",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hi, this is Lina from customer care. How can I help you?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "I want to cancel the service, but I'm not sure whether I'll have to pay anything or not. Everyone tells me something different."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Okay, let's break this down. First, do you have a contract with a specific commitment period, or a regular month-to-month subscription?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Honestly, I'm not sure."
+      },
+      {
+        "speaker": "Agent",
+        "text": "No problem. I can check the plan type registered on the account and see if there's a commitment."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay."
+      },
+      {
+        "speaker": "Agent",
+        "text": "It looks like your plan has a minimum commitment period. Because of that, we need to check the subscription start date before determining whether there's an early termination charge."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So I have to pay a penalty?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "I can't say yes definitively before calculating the contract status. Having a commitment doesn't automatically mean every cancellation carries the same fee — we need to check the plan terms and the cancellation date."
+      },
+      {
+        "speaker": "Customer",
+        "text": "What about the invoice that was issued today?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's a separate point. We need to check whether the invoice was issued before the cancellation request, and whether the service stays active until the end of the billing cycle or the termination date is different."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I don't understand the difference."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Simply put, the date you request cancellation isn't necessarily the same as the date the service actually stops. And an invoice might be generated before the cancellation takes effect. That's why we review three dates: the billing date, the cancellation request date, and the service termination date."
+      },
+      {
+        "speaker": "Customer",
+        "text": "What if I paid in advance?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "You may have credit or be due a refund depending on company policy and the plan terms. There could also be an outstanding balance at the same time. The account needs to be reviewed in full."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So you can't give me a number right now?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "I can tell you the information I have, but I won't guess at a cancellation fee without reviewing the contract and the account. It's best to open a cancellation/billing review if you need an official calculation."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay, now I understand why the last agent told me something different."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's because the fees depend on the account details and the dates, not on a single rule for every customer. I'll log your request clearly so the team reviews the same information without you having to explain everything from scratch."
+      }
+    ],
+    "sentiment": "Confused"
+  },
+  {
+    "doc_id": "KB_031",
+    "title": "Angry customer after repeated Internet outages",
+    "category": "Customer_Calls_Dataset",
+    "language": "Egyptian_Colloquial",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بحضرتك، معاك أحمد من خدمة العملاء. أقدر أساعد حضرتك إزاي؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "تساعدني إزاي؟ أنا بقالي أسبوع النت عندي بيفصل كل شوية، وكل مرة أكلمكم تقولولي اعمل Restart للراوتر! هو أنا هفضل أقوم من مكاني كل عشر دقايق أعمل Restart؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "أنا متفهم إن تكرار نفس المشكلة بدون حل نهائي شيء مزعج جدًا. خلينا المرة دي نركز على تحديد سبب الفصل بدل ما نكرر نفس الخطوة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا اتصلت قبل كده مرتين ومحدش حل حاجة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام، هراجع البلاغات السابقة الأول عشان ما نخليش حضرتك تعيد نفس المعلومات. ممكن رقم الخدمة؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "010XXXXXXX."
+      },
+      {
+        "speaker": "Agent",
+        "text": "شكرًا. شايف إن فيه بلاغ سابق عن intermittent disconnection. خلينا نعمل اختبار مختلف. وقت ما النت بيفصل، هل كل الأجهزة بتفصل ولا جهاز واحد؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "كل الأجهزة. الموبايلات واللاب والـTV، كلهم بيفصلوا."
+      },
+      {
+        "speaker": "Agent",
+        "text": "وهل لمبة الـPower بتفضل ثابتة؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "آه، الـPower ثابتة، بس لمبة الإنترنت بتفصل وترجع."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. ده بيخلينا نركز على اتصال الـWAN أو الخط نفسه، مش مجرد Wi-Fi."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أهو ده اللي بقوله من أول أسبوع! المشكلة مش Wi-Fi."
+      },
+      {
+        "speaker": "Agent",
+        "text": "معاك حق، وعلشان كده مش هسجلها كـWi-Fi complaint. هل جربت توصل لابتوب بكابل Ethernet مباشر بالراوتر؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "آه، وبرضه النت بيفصل."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز، ده بيدعم إن المشكلة مش من الـWi-Fi. هسجل نتيجة الاختبار وحالة اللمبات، وهطلب فحص للخط."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بس بالله عليك ما تفتحليش بلاغ وتقولولي استنى وخلاص."
+      },
+      {
+        "speaker": "Agent",
+        "text": "مش هقدر أوعدك بمدة غير الموجودة في النظام، لكن هضمن إن البلاغ يحتوي على تفاصيل الاختبارات السابقة بدل وصف عام للمشكلة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا عايز حل، مش رقم بلاغ جديد."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهم ده. دوري دلوقتي إني أوصل الحالة للفريق المختص بالتفاصيل الصحيحة، خصوصًا إن المشكلة متكررة ومؤثرة على كل الأجهزة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "ماشي، بس أنا مش راضي عن الخدمة خالص."
+      },
+      {
+        "speaker": "Agent",
+        "text": "حقك تكون غير راضي بعد تكرار الانقطاع. هثبت ده في ملاحظات الحالة مع نتائج الفحص عشان يتم التعامل معها بشكل مناسب."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_032",
+    "title": "عميل غاضب يعترض على رسوم إضافية غير مفسرة",
+    "category": "Customer_Calls_Dataset",
+    "language": "Arabic_Standard",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بيك، معاكِ سلمى من قسم الفوترة. إزاي أقدر أساعدك؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا مش فاهم إنتوا بتعملوا إيه في الفواتير! كل شهر بدفع نفس المبلغ، الشهر ده لقيت 400 جنيه زيادة فجأة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهمة إن ده أكيد مزعج. خلينا نراجع الفاتورة بالتفصيل عشان نعرف مصدر الـ400 جنيه."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا مش هادفع المبلغ ده، ومش منطقي كل شوية تحطوا رسوم من نفسكم."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. أنا مش هافترض إن المبلغ صحيح أو غلط قبل ما أراجع تفاصيله. ممكن رقم الفاتورة؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "KB77219."
+      },
+      {
+        "speaker": "Agent",
+        "text": "شكرًا. شايفة إن فيه رسوم اشتراك شهري، وفيه رسوم خدمة إضافية بقيمة 400 جنيه."
+      },
+      {
+        "speaker": "Customer",
+        "text": "خدمة إضافية إيه؟ أنا ما طلبتش أي حاجة!"
+      },
+      {
+        "speaker": "Agent",
+        "text": "عشان كده لازم أراجع سجل الطلبات وسجل الخدمات الإضافية على الحساب."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا متأكد إني ما طلبتش حاجة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "لو مفيش تصريح أو سجل طلب يثبت إن الخدمة اتطلبت، هنفتح تحقيق في الفوترة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "طيب إزاي أحافظ على الخدمة؟ أنا مش عايز النت يتقطع بسبب الغلطة دي."
+      },
+      {
+        "speaker": "Agent",
+        "text": "هسجل إن الـ400 جنيه رسوم محل نزاع، لكن لازم أوضح إن التعامل مع الرصيد وأي إيقاف بيتم حسب سياسة الحساب. مش هطلب منك تدفع مبلغ إضافي قبل التحقق من المعاملة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا عايز أشيل الـ400 جنيه دلوقتي."
+      },
+      {
+        "speaker": "Agent",
+        "text": "لو النظام بيسمح بتعديل مباشر من مستوى الدعم بتاعي، هعمله. لو محتاج مراجعة مالية، هرفع الحالة للفريق المختص بدل ما أعمل تعديل غير مصرح به."
+      },
+      {
+        "speaker": "Customer",
+        "text": "يعني هفضل مستني؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "هديك رقم متابعة، وهسجل وصف الرسوم والمبلغ ورقم الفاتورة، عشان الفريق يراجع الحالة من غير ما تبدأ من الصفر."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا بصراحة متعصب جدًا من الموضوع ده."
+      },
+      {
+        "speaker": "Agent",
+        "text": "وأنا متفهمة سبب غضبك. المهم دلوقتي إننا ما نعتبرش الرسوم صحيحة من غير دليل، وفي نفس الوقت ما نعملش تعديل غير صحيح. هنمشي بالإجراء الرسمي."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_033",
+    "title": "Customer angry because technician missed installation appointment",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Good morning, thank you for calling customer support. My name is Daniel. How can I help you today?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "I want to complain about my installation appointment. I took the entire day off work because your technician was supposed to come between 10 and 2, and nobody showed up."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I’m sorry that you lost your working day waiting for the appointment. Let me check the installation order and the appointment status before I give you any information."
+      },
+      {
+        "speaker": "Customer",
+        "text": "This is the second time this has happened. The first appointment was also missed."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand why you’re upset, especially since this has happened more than once. May I have the installation order number?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "It’s 584921."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Thank you. I can see the order, and the appointment was scheduled. I’ll need to check whether the technician marked the visit as attempted or whether the appointment was missed in the scheduling system."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Nobody called me. Nobody came to my building. I waited for four hours."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand. I’m documenting that no technician arrived and that you were available during the entire appointment window."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I don’t want another appointment just to have someone not show up again."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That’s reasonable. Before requesting another appointment, I’ll document the missed visit and ask for the case to be reviewed by the installation scheduling team."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Can you guarantee that the next technician will actually come?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "I can’t guarantee an appointment outcome that I don’t control, but I can make sure the missed appointment is recorded and that the next scheduling action includes the previous failure."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I’m paying for a service I still don’t have."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand. I’ll also note the installation delay so the appropriate team can review whether any billing adjustment or service-related compensation applies under the company policy."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Fine. I just want someone to take responsibility for this."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I’ll make sure the complaint includes the missed appointment, the previous failed appointment, your availability during the scheduled window, and the impact this caused you. That gives the responsible team the full context."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_034",
+    "title": "Angry customer demands immediate refund after duplicate payment",
+    "category": "Customer_Calls_Dataset",
+    "language": "Egyptian_Colloquial",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بحضرتك، معاك منى من قسم الفوترة. أقدر أساعدك إزاي؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا دفعت الفاتورة مرتين! مرة من التطبيق ومرة من الفرع، والفلوس اتخصمت مرتين. عايز الفلوس ترجع حالًا."
+      },
+      {
+        "speaker": "Agent",
+        "text": "حاضر، خلينا نراجع العمليتين الأول عشان نتأكد إن الدفع اتسجل مرتين فعلًا."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا شايف الخصمين في حسابي، يعني إيه نتأكد؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "معاك حق إن ظهور الخصمين مقلق، لكن لازم نطابق رقم كل معاملة بالحساب والفاتورة عشان ما نعملش Refund لعملية مختلفة بالخطأ."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا مش مهتم بالتفاصيل دي، أنا عايز الـ400 جنيه يرجعوا."
+      },
+      {
+        "speaker": "Agent",
+        "text": "مفهوم. ممكن رقم المعاملة الأولى أو تاريخ الدفعين؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "واحدة كانت امبارح الساعة 11، والتانية النهارده الصبح."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. شايف إن فيه معاملتين بنفس قيمة الفاتورة، لكن واحدة منهم لسه حالتها pending في النظام."
+      },
+      {
+        "speaker": "Customer",
+        "text": "يعني إيه pending؟ البنك خصم الفلوس خلاص!"
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممكن البنك يظهر الخصم أو الحجز على المبلغ قبل ما المعاملة النهائية توصل للنظام. عشان كده لازم نميز بين authorization وsuccessful payment."
+      },
+      {
+        "speaker": "Customer",
+        "text": "طيب وأنا أعمل إيه دلوقتي؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "ما تدفعش أي مبلغ إضافي. هنراجع حالة المعاملة الثانية، ولو ثبت إنها عملية دفع مكتملة ومكررة، يتم تطبيق إجراء الـrefund أو reversal حسب قناة الدفع."
+      },
+      {
+        "speaker": "Customer",
+        "text": "وأنا هستنى قد إيه؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "المدة بتختلف حسب وسيلة الدفع والبنك، ومش عايز أديك رقم غير مؤكد. هسجل المعاملة وأديك رقم متابعة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا متضايق جدًا لأن الفلوس دي اتسحبت مني بالغلط."
+      },
+      {
+        "speaker": "Agent",
+        "text": "أتفهم ده. والأهم إننا ما نطلبش منك تدفع مرة تالتة، ونحدد الأول هل العملية الثانية مكتملة ولا مجرد pending transaction."
+      },
+      {
+        "speaker": "Customer",
+        "text": "ماشي، بس أنا عايز الموضوع يخلص."
+      },
+      {
+        "speaker": "Agent",
+        "text": "هسجل الحالة كـpossible duplicate payment وأوضح المبلغ والمعاملتين عشان فريق الفوترة يتعامل معها بشكل صحيح."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_035",
+    "title": "Customer angry about slow Internet despite paying for high-speed plan",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hi, this is Tarek from technical support. What's the problem?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "The problem is I'm paying for a 200 Mbps package and only getting 15 and 20! Why am I even paying for this?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand that's a big difference — let's figure out whether the issue is the line speed or the Wi-Fi."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I don't want to hear the word Wi-Fi, I paid for 200."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Okay. To pinpoint the cause, could you connect a laptop directly to the router with an Ethernet cable and run a speed test?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "I've done that before and got about 190."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's great. If Ethernet gives you around 190, then the service itself is close to the expected speed, and the problem is most likely with the Wi-Fi."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So you're telling me the problem is on my end?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "Not necessarily 'your fault,' but the wireless environment can reduce speed even when the line itself is fine. Distance, walls, interference, and the device type are all factors."
+      },
+      {
+        "speaker": "Customer",
+        "text": "But the router is in the living room and I'm in the bedroom, so what am I supposed to do?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "We could try 5 GHz if you're relatively close, or 2.4 GHz if the distance is greater. And if coverage is weak, a mesh system or access point might be a better solution than upgrading the package."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I'm not paying extra money for a mesh system."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I'm not saying you have to buy anything. First, let's confirm whether coverage is the issue. If the speed is 190 next to the router and 20 a room away, that's strong evidence the problem is wireless."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So why didn't anyone tell me this before?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "The service speed and the Wi-Fi speed should be distinguished during diagnosis. I'll log the results of both tests on the case."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I'm still not happy, but at least now I understand the problem."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's the first goal — after that, we can figure out the best solution without pushing you to change your package for no reason."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_036",
+    "title": "Angry customer after service suspension despite claimed payment",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hello, thank you for contacting billing support. How may I assist you?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "My Internet was suspended even though I paid my bill. This is ridiculous. I paid three days ago."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand why you’re upset. Let me verify the payment before asking you to make another payment."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I already paid. I’m not paying twice because your system is broken."
+      },
+      {
+        "speaker": "Agent",
+        "text": "You should not make a second payment until we confirm the status of the first transaction. May I have the payment reference or payment date?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "I paid through the mobile app on August 8th."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Thank you. I can see a payment record, but it appears to be pending reconciliation rather than fully posted to the billing account."
+      },
+      {
+        "speaker": "Customer",
+        "text": "What does that even mean? The money is already gone from my bank account."
+      },
+      {
+        "speaker": "Agent",
+        "text": "It means the payment may have been authorized or processed by the payment channel but has not yet been matched to your telecom account in our billing system."
+      },
+      {
+        "speaker": "Customer",
+        "text": "And because of that, you cut my Internet?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "The account currently shows a service restriction due to the outstanding balance. I’m documenting that you have a payment reference so the billing team can verify the transaction."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I need the Internet now. I work from home."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand the urgency. I can submit the payment reconciliation request and document the work impact. If the payment is confirmed, service restoration will follow the applicable restoration process."
+      },
+      {
+        "speaker": "Customer",
+        "text": "How long will that take?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "I don’t want to promise a time that I cannot verify from the system. I can provide the case reference and explain the next step clearly."
+      },
+      {
+        "speaker": "Customer",
+        "text": "This should never happen to customers who actually pay."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand your frustration. I’ll make sure the case notes clearly state that payment was made, the reference is available, and the account was restricted while the payment was pending reconciliation."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_037",
+    "title": "عميلة غاضبة من انقطاع الواي فاي المتكرر أثناء اجتماعات العمل",
+    "category": "Customer_Calls_Dataset",
+    "language": "Arabic_Standard",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً، معاكِ رانيا من الدعم الفني. إزاي أقدر أساعدك؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا مش عارفة أشتغل. كل ما أدخل اجتماع الواي فاي بيفصل، وبعدين يرجع بعد دقيقتين. الموضوع بقى مستفز جدًا."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهمة إن ده مؤثر على شغلك. خلينا نحدد هل الإنترنت نفسها بتفصل ولا الواي فاي بس."
+      },
+      {
+        "speaker": "Customer",
+        "text": "لما الواي فاي يفصل، التلفزيون كمان بيقطع، بس الراوتر نفسه منور."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. هل عندك جهاز متوصل بالإيثرنت؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة، لابتوب تاني في البيت متوصل بكابل."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز. لما الواي فاي فصل النهاردة، هل الجهاز اللي بالكابل فقد الإنترنت؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "لأ، الجهاز بالكابل فضل شغال."
+      },
+      {
+        "speaker": "Agent",
+        "text": "كده عندنا مؤشر قوي إن خدمة الإنترنت نفسها مستقرة وإن المشكلة في الاتصال اللاسلكي."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بس أنا مش عايزة أسمع إن أغير مكان الراوتر وخلاص."
+      },
+      {
+        "speaker": "Agent",
+        "text": "مش هقول كده كحل نهائي. هنراجع القناة والتردد ومكان الراوتر وحالة الجهاز. هل الراوتر يدعم النطاقين؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "جربي وقت الاجتماع شبكة 5 جيجا لو الجهاز قريب من الراوتر، ولو بعيدة جربي 2.4 جيجا وشوفي أي واحدة أكتر استقرارًا."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا جربت 5 جيجا وبتفصل أكتر."
+      },
+      {
+        "speaker": "Agent",
+        "text": "طيب ده ممكن يكون طبيعي لو المسافة كبيرة أو فيه حوائط. خلينا نجرب 2.4 جيجا مع وضع الراوتر في مكان مفتوح لو متاح."
+      },
+      {
+        "speaker": "Customer",
+        "text": "يعني أنا لازم أغير ترتيب البيت عشان أعرف أشتغل؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "مش بالضرورة. لو المشكلة مستمرة رغم إن الإشارة جيدة وقرب الجهاز من الراوتر، ممكن يكون فيه مشكلة في البرنامج الثابت أو في الجهاز نفسه ونحتاج فحص له."
+      },
+      {
+        "speaker": "Customer",
+        "text": "كده كلام منطقي أكتر."
+      },
+      {
+        "speaker": "Agent",
+        "text": "هسجل إن الإيثرنت مستقر بينما الواي فاي بيفصل، ودي معلومة مهمة جدًا لأنها بتحدد اتجاه التشخيص بدل ما نفتح بلاغ انقطاع عام."
+      },
+      {
+        "speaker": "Customer",
+        "text": "تمام، بس أنا فعلًا اتضايقت جدًا من الموضوع ده."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهمة، وهنتعامل معاه كمشكلة واي فاي متكررة مع تأثير مباشر على العمل."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_038",
+    "title": "Angry customer challenges an installation fee",
+    "category": "Customer_Calls_Dataset",
+    "language": "Egyptian_Colloquial",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بحضرتك، معاك يوسف من خدمة العملاء. أقدر أساعدك إزاي؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا عايز أشتكي في فاتورة التركيب. الفني خلص الشغل وبعدها لقيت 600 جنيه زيادة. محدش قاللي الكلام ده."
+      },
+      {
+        "speaker": "Agent",
+        "text": "حاضر، خلينا نراجع أمر التركيب والتفاصيل المالية."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا لو كنت عارف كان ممكن أرفض من الأول."
+      },
+      {
+        "speaker": "Agent",
+        "text": "مفهوم. ممكن رقم طلب التركيب؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "991274."
+      },
+      {
+        "speaker": "Agent",
+        "text": "شكرًا. ظاهر عندي إن فيه installation charge منفصلة عن الاشتراك الشهري. محتاج أراجع هل كانت ضمن العرض اللي اشتركت فيه أو مرتبطة بخدمة إضافية."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا اخترت العرض اللي الموظف قاللي عليه، وقاللي التركيب شامل."
+      },
+      {
+        "speaker": "Agent",
+        "text": "لو العرض كان بيشمل التركيب، لازم نتحقق من الـorder record والعرض المسجل وقت الاشتراك."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بالظبط. وأنا مش هدفع الـ600 جنيه دي قبل ما أعرف سببها."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام، هسجل المبلغ كرسوم محل اعتراض، وهراجع المستندات المرتبطة بالطلب."
+      },
+      {
+        "speaker": "Customer",
+        "text": "وهل ممكن تشيلوها من الفاتورة دلوقتي؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "لو تبين إنها اتضافت بالخطأ، يتم تطبيق adjustment حسب صلاحيات النظام. لو محتاجة مراجعة من billing team، هفتح investigation بدل ما أغير المبلغ بدون تحقق."
+      },
+      {
+        "speaker": "Customer",
+        "text": "يعني ممكن آخد حقي؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "لو المراجعة أثبتت إن الرسوم غير صحيحة أو غير مطبقة وفق العرض، يتم تصحيح الحساب حسب السياسة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا بس مش عايز الموضوع يضيع."
+      },
+      {
+        "speaker": "Agent",
+        "text": "مش هيضيع. هسجل رقم الطلب، قيمة الرسوم، وصف الاعتراض، والعرض اللي حضرتك بتقول إنه كان شامل للتركيب."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا متضايق لأن المفروض الكلام ده يكون واضح من البداية."
+      },
+      {
+        "speaker": "Agent",
+        "text": "أتفهم اعتراضك، ووضوح الرسوم قبل تنفيذ الخدمة جزء مهم من تجربة العميل. هنخلي التحقيق مبني على السجل الرسمي للطلب."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_039",
+    "title": "Customer angry about slow response to a LOS fault",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hi, this is Mohamed from technical support. What's the problem?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "The LOS light has been red for two days! I reported it yesterday and there's still no fix. What does it take to get this resolved?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand a two-day outage is frustrating. Let me review the previous report and the network status."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I paid my full subscription and I can't even use the service."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand. Could I get the report number?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "458732."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Thank you. The report is logged as 'fiber signal loss,' which means it was already classified correctly and it's not a Wi-Fi issue."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So why hasn't anyone fixed it?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "The case needs inspection at the optical path level or the distribution point, depending on the network test results. I won't tell you the cause is known before I check the latest update."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So you're still going to run tests?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "There are test results already logged, but I don't have confirmation the service is back. I'll add a new follow-up because the LOS issue is continuing."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Every time I call, someone tells me to unplug the router and plug it back in."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Since the report already confirms a red LOS light, I won't repeat that same step as the only solution. A restart can be a diagnostic step, but it won't fix a fiber cut or optical signal loss."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Finally, someone who understands the problem."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I'll log that the customer confirmed the LOS is continuing after the restart and that the issue has persisted for two days."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Is there any compensation?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "Any compensation or credit is determined by company policy and the outage record, and I can't promise you one before checking eligibility."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay, I just want the service back."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Understood. The priority on this report will be the ongoing outage, and I'll log all the details that help the technical team pick up from where things left off instead of re-diagnosing from scratch."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_040",
+    "title": "عميل غاضب جدًا يهدد بإلغاء الخدمة بعد مشاكل متكررة",
+    "category": "Customer_Calls_Dataset",
+    "language": "Arabic_Standard",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بيك، معاكِ داليا من خدمة العملاء. إزاي أقدر أساعدك؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا عايز ألغي الخدمة. خلاص، كفاية. النت بيفصل، الفواتير فيها مشاكل، وكل مرة أكلمكم أحكي نفس القصة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "أنا آسفة إن التجربة وصلت للمرحلة دي. قبل ما نبدأ إجراءات الإلغاء، ممكن أراجع المشاكل السابقة وأفهم إيه اللي حصل؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "ليه؟ عشان حد يقولي اعمل ريستارت تاني؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "لأ. شايفة إن عندك بلاغين فني وبلاغ فوترة، فهراجعهم كحالة واحدة بدل التعامل مع كل مشكلة منفصلة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بالظبط! أنا كل مرة بكلم حد جديد وأبدأ من الصفر."
+      },
+      {
+        "speaker": "Agent",
+        "text": "فاهمة. آخر بلاغ فني كان عن انقطاع متقطع، والبلاغ المالي كان عن رسوم إضافية. هل المشكلتان ما زالتا موجودتين؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "النت اتحسن شوية، بس الفاتورة لسه مش واضحة، وأنا فقدت الثقة في الخدمة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "مفهوم. بالنسبة للفوترة، أقدر أراجع الرسوم المتنازع عليها. وبالنسبة للخدمة، أقدر أوضحلك وضع البلاغ الفني. لكن لو قرارك النهائي هو الإلغاء، هساعدك في الإجراءات الرسمية بدل ما أعطلك."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا فعلًا بفكر أروح لشركة تانية."
+      },
+      {
+        "speaker": "Agent",
+        "text": "من حقك تختار الخدمة المناسبة لك. لو حابب نكمل الإلغاء، لازم أراجع أولًا هل فيه حد أدنى للالتزام أو رصيد مستحق أو أي شروط مرتبطة بالحساب، عشان ما يحصلش رسوم مفاجئة بعد الإلغاء."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أهو ده اللي أنا خايف منه. مش عايز ألغي وبعدها ألاقي فاتورة كبيرة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "عشان كده هنراجع تاريخ الإلغاء، تاريخ إنهاء الخدمة، الرصيد الحالي، وأي شروط تعاقدية قبل تأكيد الإلغاء."
+      },
+      {
+        "speaker": "Customer",
+        "text": "طيب اعمل كده."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. هبدأ بمراجعة الحساب، وهشرحلك أي مبلغ مستحق وأي شرط تعاقدي قبل تنفيذ الإلغاء. مش هقولك إن فيه رسوم أو مفيش رسوم قبل ما أتأكد من البيانات."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا لسه متضايق، بس على الأقل مش هتدخلني في حاجة وأنا مش فاهمها."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ده حقك. هدفي إن القرار يكون مبني على معلومات واضحة، سواء قررت تكمل الخدمة أو تنهيها."
+      },
+      {
+        "speaker": "Customer",
+        "text": "ماشي، راجع الحساب الأول."
+      },
+      {
+        "speaker": "Agent",
+        "text": "حاضر. هسجل إن العميل طلب مراجعة شاملة قبل الإلغاء بسبب تكرار المشاكل الفنية والفوترة، وإنه يحتاج توضيحًا كاملًا للرصيد وشروط الإلغاء قبل اتخاذ القرار النهائي."
+      }
+    ],
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_041",
+    "title": "Customer satisfied after resolving a slow Internet issue",
+    "category": "Customer_Calls_Dataset",
+    "language": "Egyptian_Colloquial",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بحضرتك، معاك أحمد من الدعم الفني. أقدر أساعدك إزاي؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا كنت بتصل عشان النت بقاله يومين بطيء جدًا، بس الحقيقة أنا جربت كام خطوة من الموقع والموضوع اتحسن."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز، خلينا نتأكد إن المشكلة اتحلت بشكل كامل. السرعة دلوقتي عاملة إيه؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "قبل كده كنت بجيب حوالي 20 ميجا، ودلوقتي بقيت بجيب حوالي 85 على كابل Ethernet."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز. والباقة بتاعت حضرتك سرعتها كام؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "100 ميجا."
+      },
+      {
+        "speaker": "Agent",
+        "text": "كده النتيجة أقرب جدًا للسرعة المتوقعة، خصوصًا إن الاختبار تم باستخدام Ethernet. هل جربت Wi-Fi كمان؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "آه، جنب الراوتر جابت حوالي 80، وفي الأوضة البعيدة حوالي 45."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ده طبيعي إن السرعة تختلف حسب المكان وطريقة الاتصال. المهم إن الاتصال بالكابل مستقر والسرعة الأساسية رجعت."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بصراحة أنا كنت متوقع إنكم تقولولي غير الراوتر، لكن الخطوات كانت بسيطة وحلت المشكلة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "الحمد لله. هل فيه أي فصل أو تقطيع حاليًا؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "لأ، من امبارح مفيش أي فصل."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز. كده مش محتاجين نفتح بلاغ فني جديد طالما الخدمة مستقرة. هسجل نتائج الاختبار والمشكلة السابقة كمرجع فقط."
+      },
+      {
+        "speaker": "Customer",
+        "text": "شكرًا جدًا. أكتر حاجة عجبتني إن الموظف اللي كلمته قبل كده شرحلي الفرق بين Wi-Fi وسرعة الخط."
+      },
+      {
+        "speaker": "Agent",
+        "text": "سعيد إن الشرح كان مفيد. لو المشكلة رجعت، يفضل تعمل اختبار Ethernet مرة تانية وتحتفظ بالنتيجة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "تمام، هعمل كده. بصراحة الخدمة دلوقتي ممتازة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "سعيد إن المشكلة اتحلت وإن الخدمة رجعت للمستوى المتوقع."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_042",
+    "title": "Satisfied customer after successful fiber installation",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hi, this is Mariam from installation support. How can I help you?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "I'm calling to say the installation happened today, and honestly the experience was really good."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's wonderful to hear. Can you tell me how the installation process went?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "The technician arrived on time, explained what he was going to do, and installed the fiber cable without making a mess."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Excellent. Is the ONT device working normally?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, the Power and PON lights are on, and there's no LOS."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Great. Did you also test the internet speed?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, the package is 200 Mbps and the test showed about 190 over Ethernet."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's a very good result. Did you test Wi-Fi as well?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, about 170 next to the router."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Excellent. Did the technician explain the Wi-Fi details and how to reach support if there's an issue?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, and he also explained where to place the router for better coverage."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Great. Is there anything else you'd like to ask before we close this out?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "No, I just wanted to say the experience was better than I expected."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That really makes us happy. I'll log that the installation was successful and that the service was tested after activation."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Okay, thank you."
+      },
+      {
+        "speaker": "Agent",
+        "text": "You're welcome, and welcome to the service."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_043",
+    "title": "Customer satisfied after billing clarification",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Good afternoon, thank you for calling billing support. How can I help you?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "I called because my latest bill looked higher than usual, but I checked the explanation online and I still wanted to confirm it."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Of course. Let me review the invoice with you. The additional amount appears to be a prorated charge following your plan upgrade."
+      },
+      {
+        "speaker": "Customer",
+        "text": "That makes sense. I upgraded halfway through the billing cycle."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Exactly. The previous plan was active for part of the cycle, and the upgraded plan became effective on the change date. The system calculated the applicable charges for each period."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So this isn't a recurring extra fee?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "Correct. Based on the billing record, it is a partial-period adjustment related to the upgrade. Your future invoices should follow the regular monthly price of the new plan, subject to any applicable taxes or promotions."
+      },
+      {
+        "speaker": "Customer",
+        "text": "That's what I wanted to know. I was worried I had somehow subscribed to an add-on."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I checked the account, and I don't see an unauthorized add-on associated with this amount."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Great. Can you tell me whether the new speed is already active?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "The plan change is showing as active. You can verify the speed with a wired test if you want to confirm the service performance."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I already did. I'm getting around 480 Mbps on a 500 Mbps plan."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That is within the expected range for the test conditions."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Perfect. Thanks for actually explaining the bill instead of just telling me to pay it."
+      },
+      {
+        "speaker": "Agent",
+        "text": "You're very welcome. Is there anything else I can clarify?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "No, that's all. You've been very helpful."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I'm glad I could help. Have a great day."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_044",
+    "title": "Customer satisfied after replacing a faulty router",
+    "category": "Customer_Calls_Dataset",
+    "language": "Egyptian_Colloquial",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بحضرتك، معاك سارة من الدعم الفني. أقدر أساعدك إزاي؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا كنت فاتح بلاغ على الراوتر لأنه كان بيفصل لوحده، وعايز أبلغكم إن الجهاز الجديد اشتغل كويس جدًا."
+      },
+      {
+        "speaker": "Agent",
+        "text": "الحمد لله. هل المشكلة القديمة اختفت تمامًا؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "آه. الراوتر القديم كان بيعمل restart كذا مرة في اليوم، الجديد بقاله تلات أيام شغال من غير أي فصل."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز. هل جربت الأجهزة كلها؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "آه، الموبايلات واللابتوب والـTV كلهم شغالين."
+      },
+      {
+        "speaker": "Agent",
+        "text": "وهل جربت Ethernet كمان؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "آه، اللابتوب متوصل بكابل والاتصال ثابت جدًا."
+      },
+      {
+        "speaker": "Agent",
+        "text": "رائع. هل فيه أي مشكلة في تغطية الـWi-Fi؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "لأ، أنا حطيت الراوتر في مكان مفتوح زي ما الفني نصحني، والإشارة أحسن من الأول."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز. كده واضح إن تغيير الجهاز مع تحسين مكانه حل المشكلة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بصراحة الفني اللي جه كان محترم جدًا وشرحلي المشكلة بدل ما يغير الجهاز وخلاص."
+      },
+      {
+        "speaker": "Agent",
+        "text": "سعيد إن تجربة الدعم والتركيب كانت كويسة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا كنت متضايق جدًا في الأول، بس دلوقتي مفيش أي مشكلة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. هقفل البلاغ باعتبار إن المشكلة اتحلت، مع تسجيل إن الجهاز الجديد مستقر."
+      },
+      {
+        "speaker": "Customer",
+        "text": "شكرًا جدًا."
+      },
+      {
+        "speaker": "Agent",
+        "text": "العفو، وأي مشكلة تظهر تقدر تتواصل معانا من القنوات الرسمية."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_045",
+    "title": "عميل راضٍ بعد حل مشكلة DNS",
+    "category": "Customer_Calls_Dataset",
+    "language": "Arabic_Standard",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بيك، معاك كريم من الدعم الفني. المشكلة اتحلت ولا لسه؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة اتحلت الحمد لله. كنت عايز بس أقول إن المشكلة كانت فعلًا DNS زي ما شرحتولي."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز. إيه اللي حصل في الآخر؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "الدعم خلاني أجرب إعدادات DNS بطريقة صحيحة، وبعدها المواقع اللي كانت مش بتفتح بدأت تفتح."
+      },
+      {
+        "speaker": "Agent",
+        "text": "كويس. هل المشكلة كانت على كل الأجهزة؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة، كانت على الموبايل واللابتوب والتلفزيون، وده اللي خلاني فاكر إن الإنترنت كلها واقعة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "طبيعي. لما مواقع معينة تكون مش بتفتح بينما خدمات تانية شغالة، DNS بيكون احتمال وارد."
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا كنت هعمل إعادة ضبط المصنع للراوتر."
+      },
+      {
+        "speaker": "Agent",
+        "text": "كويس إنك ما عملتش كده، لأن إعادة ضبط المصنع ممكن تمسح إعدادات الخدمة من غير ما تحل السبب."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بالظبط. وأنا بصراحة مبسوط إن الموظف شرحلي قبل ما يخليني أغير أي حاجة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "سعيد إن ده ساعدك. هل كل المواقع بتفتح دلوقتي؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "جربت المواقع اللي كانت فيها المشكلة وكلها شغالة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز. هل الاتصال نفسه مستقر؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "آه، مفيش تقطيع أو مشاكل تانية."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. هنقفل الحالة باعتبار إن المشكلة اتحلت، مع الاحتفاظ بالتفاصيل لو تكررت."
+      },
+      {
+        "speaker": "Customer",
+        "text": "تمام، شكرًا جدًا."
+      },
+      {
+        "speaker": "Agent",
+        "text": "العفو، يومك سعيد."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_046",
+    "title": "Satisfied customer after successful service upgrade",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hi, this is Nour from customer care. How can I help you?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "I requested an upgrade from 100 to 300, and I wanted to make sure everything's okay."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Sure. Our system shows the upgrade was successfully activated. Have you tested the speed?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, I ran a test over an Ethernet cable and got about 285 Mbps."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Excellent — that's a great result for the new package."
+      },
+      {
+        "speaker": "Customer",
+        "text": "And the Wi-Fi is also better than before."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Great. Do you have a lot of devices connected at the same time?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, around 8 devices, and video and downloads are still working well."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Excellent. Did any unexpected charges appear because of the upgrade?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "No, the invoice is clear, and the agent explained from the start that the first bill might include a prorated amount."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Great. Is there anything unclear on the invoice?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "No, everything is clear."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Excellent. Has the service been stable since the upgrade?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes, it's been two days with no issues at all."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I'm glad the upgrade went smoothly."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Honestly, I was hesitant to upgrade because I was worried the billing would get confusing, but the experience was good."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's great to hear. I'll log that the service was activated, the test was successful, and the customer confirmed the connection is stable."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Thank you very much."
+      },
+      {
+        "speaker": "Agent",
+        "text": "You're welcome, and I hope you enjoy the new speed."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_047",
+    "title": "Customer satisfied after quick resolution of Wi-Fi interference",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Hello, this is Emma from technical support. How can I help?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "My Wi-Fi has been unstable, especially in the evening. I followed the troubleshooting steps from your support page before calling."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Great. What changed after you followed the steps?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "I moved the router away from the television and microwave, and I switched the device from a congested channel. The connection has been much more stable."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That's good to hear. Did you also test both Wi-Fi bands?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes. The 5 GHz connection is faster near the router, while 2.4 GHz works better in the bedroom."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That is consistent with the normal characteristics of the two bands. Is the wired connection stable as well?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "Yes. Ethernet was stable throughout the problem."
+      },
+      {
+        "speaker": "Agent",
+        "text": "That helps confirm that the Internet service itself was not experiencing a complete outage."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Exactly. I originally thought the company was having a network problem."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Wireless interference can sometimes look like an Internet outage from the customer's perspective."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Your previous agent explained that really well. I appreciated that they didn't immediately try to sell me a new router."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I'm glad the troubleshooting focused on identifying the cause first."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Same here. The connection has been stable for two days now."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Excellent. We can document the issue as resolved and retain the troubleshooting details in case the symptoms return."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Perfect. Thanks for the help."
+      },
+      {
+        "speaker": "Agent",
+        "text": "You're welcome. I'm glad we could get the connection stable."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_048",
+    "title": "Satisfied customer after payment reconciliation",
+    "category": "Customer_Calls_Dataset",
+    "language": "Egyptian_Colloquial",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بحضرتك، معاك محمد من قسم الفوترة. أقدر أساعدك إزاي؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أنا كنت دفعت الفاتورة بس الحساب كان لسه ظاهر عليه إن فيه مبلغ مستحق، لكن الموضوع اتحل النهارده."
+      },
+      {
+        "speaker": "Agent",
+        "text": "الحمد لله. حابب تتأكد من إن الدفع اتسجل بشكل نهائي؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "آه، عشان كنت خايف الخدمة تتوقف رغم إني دافع."
+      },
+      {
+        "speaker": "Agent",
+        "text": "خليني أراجع الحالة. أيوه، الدفع دلوقتي ظاهر كـsuccessful والرصيد المستحق اتحدث."
+      },
+      {
+        "speaker": "Customer",
+        "text": "ممتاز. يعني مش محتاج أدفع تاني؟"
+      },
+      {
+        "speaker": "Agent",
+        "text": "لا، مفيش داعي لدفع إضافي لنفس الفاتورة طالما الرصيد اتسدد بالكامل."
+      },
+      {
+        "speaker": "Customer",
+        "text": "كويس جدًا. بصراحة الموظف اللي اتكلمت معاه قبل كده قاللي ما أدفعش مرة تانية قبل ما يتأكدوا من المعاملة، وده وفر عليا مشكلة كبيرة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "دي كانت الخطوة الصحيحة، خصوصًا لما يكون فيه احتمال إن الدفع اتعمل لكنه لسه ما ظهرش في النظام."
+      },
+      {
+        "speaker": "Customer",
+        "text": "دلوقتي كل حاجة تمام، والخدمة شغالة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز. هسجل إن payment reconciliation اكتمل وإن الحساب رجع لحالة current."
+      },
+      {
+        "speaker": "Customer",
+        "text": "شكرًا على المتابعة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "العفو. احتفظ برقم المعاملة لو احتجت ترجع لها مستقبلًا."
+      },
+      {
+        "speaker": "Customer",
+        "text": "تمام، أنا مبسوط إن الموضوع اتحل من غير ما أدفع مرتين."
+      },
+      {
+        "speaker": "Agent",
+        "text": "الحمد لله، وده الهدف من مراجعة المعاملة قبل طلب أي دفعة إضافية."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_049",
+    "title": "عميل راضٍ بعد حل مشكلة انقطاع متقطع في الألياف",
+    "category": "Customer_Calls_Dataset",
+    "language": "Arabic_Standard",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "أهلاً بيك، معاك عمر من الدعم الفني. إزاي الخدمة دلوقتي؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "الحمد لله، مستقرة جدًا. كنت فاتح بلاغ عشان الـLOS كان بيظهر ويختفي."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز. هل الفني قدر يحدد السبب؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة، اكتشف إن فيه مشكلة في وصلة الألياف واتعمل استبدال للجزء المتأثر."
+      },
+      {
+        "speaker": "Agent",
+        "text": "كويس. هل الـLOS اختفى تمامًا؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة، بقاله يومين مش ظهر خالص."
+      },
+      {
+        "speaker": "Agent",
+        "text": "وهل مؤشر الـPON ثابت؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "ثابت جدًا."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ممتاز. جربت الخدمة أثناء تحميل أو مكالمة فيديو؟"
+      },
+      {
+        "speaker": "Customer",
+        "text": "أيوة، عملت مكالمات فيديو وتحميل كبير ومفيش أي فصل."
+      },
+      {
+        "speaker": "Agent",
+        "text": "ده مؤشر ممتاز إن الاتصال رجع مستقر."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بصراحة أنا كنت متضايق في البداية، بس الفني جه بسرعة وشرحلي المشكلة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "سعيد إن التجربة النهائية كانت كويسة."
+      },
+      {
+        "speaker": "Customer",
+        "text": "وكمان الموظف اللي فتح البلاغ أول مرة ما خلانيش أعمل إعادة ضبط المصنع، وده طلع قرار صح."
+      },
+      {
+        "speaker": "Agent",
+        "text": "أكيد، لأن مشكلة الـLOS مرتبطة بالإشارة الضوئية، وإعادة ضبط المصنع مش هتصلح مشكلة في مسار الألياف الفعلي."
+      },
+      {
+        "speaker": "Customer",
+        "text": "بالظبط. دلوقتي فهمت الفرق."
+      },
+      {
+        "speaker": "Agent",
+        "text": "تمام. هقفل البلاغ باعتبار إن الخدمة رجعت، مع تسجيل إن المشكلة كانت في وصلة الألياف وتم إصلاحها."
+      },
+      {
+        "speaker": "Customer",
+        "text": "شكرًا جدًا على المتابعة."
+      },
+      {
+        "speaker": "Agent",
+        "text": "العفو، سعيد إن الخدمة مستقرة دلوقتي."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_050",
+    "title": "Highly satisfied customer after clear cancellation and final billing process",
+    "category": "Customer_Calls_Dataset",
+    "language": "English",
+    "content": [
+      {
+        "speaker": "Agent",
+        "text": "Good afternoon. My name is Olivia from customer care. How may I assist you?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "I called because I completed my service cancellation and wanted to make sure there won't be any unexpected charges afterward."
+      },
+      {
+        "speaker": "Agent",
+        "text": "Certainly. Let me review the cancellation date, service termination date, final invoice, and current account balance."
+      },
+      {
+        "speaker": "Customer",
+        "text": "That's exactly what I wanted someone to check."
+      },
+      {
+        "speaker": "Agent",
+        "text": "The service termination date is recorded correctly. Your final invoice covers the period before termination, and I don't see any additional recurring services after that date."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Great. What about the equipment deposit?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "The equipment return has also been recorded. The account shows a credit related to the refundable deposit, subject to the normal refund processing procedure."
+      },
+      {
+        "speaker": "Customer",
+        "text": "So I don't need to call again?"
+      },
+      {
+        "speaker": "Agent",
+        "text": "Based on the current account status, there is no additional action required from you unless the billing team requests further information."
+      },
+      {
+        "speaker": "Customer",
+        "text": "That's a relief. I was worried I would cancel and then receive another monthly bill."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I understand. The recurring service is marked as terminated, so future recurring charges should not be generated for that service. Any final adjustment will be handled according to the billing policy."
+      },
+      {
+        "speaker": "Customer",
+        "text": "Perfect. You explained everything clearly."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I'm glad I could clarify it. Would you like me to review anything else on the final invoice?"
+      },
+      {
+        "speaker": "Customer",
+        "text": "No, everything makes sense now. This was much easier than I expected."
+      },
+      {
+        "speaker": "Agent",
+        "text": "I'm happy to hear that. Please keep the cancellation and refund reference numbers for your records."
+      },
+      {
+        "speaker": "Customer",
+        "text": "I will. Thank you for the excellent support."
+      },
+      {
+        "speaker": "Agent",
+        "text": "You're very welcome. I wish you all the best."
+      }
+    ],
+    "sentiment": "Satisfied"
+  },
+  {
+    "doc_id": "KB_051",
+    "title": "تشخيص بطء الإنترنت باستخدام اختبار Ethernet وWi-Fi",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "عند إبلاغ العميل بأن سرعة الإنترنت أقل بكثير من السرعة المتعاقد عليها، يجب أولًا تحديد ما إذا كانت المشكلة في خط الإنترنت نفسه أم في شبكة Wi-Fi. الخطوة الأولى هي التحقق من حالة الراوتر والتأكد من عدم وجود لمبات تحذيرية مثل LOS أو Internet باللون الأحمر. بعد ذلك يُطلب من العميل توصيل جهاز كمبيوتر أو حاسوب محمول مباشرة بالراوتر باستخدام كابل Ethernet، مع إيقاف أي عمليات تحميل أو بث على الأجهزة الأخرى. يتم إجراء اختبار سرعة من مصدر موثوق وتسجيل سرعة Download وUpload وLatency. إذا كانت السرعة عبر Ethernet قريبة من السرعة المتعاقد عليها، ولكنها منخفضة عبر Wi-Fi، فغالبًا تكون المشكلة مرتبطة بالتغطية اللاسلكية أو التداخل أو بقدرات الجهاز المستخدم. في هذه الحالة يُنصح باختبار 5 GHz بالقرب من الراوتر، واختبار 2.4 GHz في المناطق البعيدة، ووضع الراوتر في مكان مرتفع ومفتوح بعيدًا عن الأجهزة الإلكترونية والمعدنية. أما إذا كانت السرعة منخفضة حتى عبر Ethernet، فيجب فحص حالة الخط ومستويات الإشارة وسجلات الانقطاع، ثم تصعيد الحالة إلى الفريق الفني إذا استمرت المشكلة بعد إعادة تشغيل الراوتر والتحقق من الكابلات. يجب عدم افتراض أن تغيير الباقة أو شراء راوتر جديد هو الحل قبل تحديد مصدر انخفاض السرعة.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_052",
+    "title": "حل مشكلة انقطاع Wi-Fi بشكل متكرر",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "لو العميل بيقول إن الـWi-Fi بيفصل كل شوية، أول حاجة لازم نحدد هل الإنترنت نفسها بتفصل ولا الـWi-Fi بس. خلي العميل يبص على لمبات الراوتر وقت المشكلة. لو لمبة الـInternet أو PON ثابتة، لكن الموبايل أو اللابتوب هو اللي بيفقد الـWi-Fi، فغالبًا المشكلة Wireless مش في الخط. بعد كده نسأل العميل هل كل الأجهزة بتفصل في نفس الوقت ولا جهاز واحد بس. لو جهاز واحد فقط، نجرب ننسى شبكة الـWi-Fi ونعمل Reconnect، ونتأكد إن تعريف الـWi-Fi على الجهاز محدث. لو كل الأجهزة بتفصل، نجرب الاتصال بشبكة 2.4 GHz و5 GHz كل واحدة لوحدها. الـ5 GHz أسرع عادةً لكنه مداه أقصر ويتأثر بالحوائط، بينما الـ2.4 GHz مداه أطول لكنه أكثر عرضة للتداخل. لازم كمان نبعد الراوتر عن الميكروويف والتليفزيون والأجهزة اللاسلكية، ومايتحطش جوه دولاب أو ورا جسم معدني. لو الجهاز بيفصل حتى وهو قريب جدًا من الراوتر، وفي نفس الوقت Ethernet شغال طبيعي، نراجع إعدادات الـWi-Fi والـfirmware ونفكر في فحص الراوتر. ممنوع نعمل Factory Reset كأول خطوة، لأن ده ممكن يمسح إعدادات الخدمة من غير ما يحل سبب المشكلة.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_053",
+    "title": "Red LOS light on fiber router",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "When a fiber customer reports a red LOS light, the issue should be treated as a possible loss of optical signal rather than a normal Wi-Fi problem. First, ask the customer to check whether the PON or Optical indicator is also affected. Confirm that the fiber cable is firmly connected and has not been sharply bent, crushed, or disconnected. The customer should not unplug or repeatedly manipulate the fiber connector because optical connectors are sensitive and should be handled carefully. The router or ONT may be restarted once as a diagnostic step, but a restart should not be presented as the expected solution to a physical fiber fault. After the restart, allow the optical device several minutes to reconnect and check whether the LOS indicator disappears and the PON indicator becomes stable. If the LOS light remains red, the customer should provide the service number and the approximate time the problem started. The support system should be checked for area outages, optical signal alarms, and previous incidents. If no area outage explains the problem, the case should be escalated for line or fiber inspection. Possible causes include a damaged fiber cable, disconnected fiber at a distribution point, optical power loss, or an issue with the ONT. The customer should not perform a factory reset because it does not repair a physical optical signal problem and may remove required configuration.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_054",
+    "title": "مشكلة بعض المواقع لا تفتح بسبب DNS",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "إذا كان العميل يستطيع الوصول إلى بعض المواقع أو التطبيقات بينما تفشل مواقع أخرى، فيجب التفكير في مشكلة DNS قبل اعتبار الحالة انقطاعًا كاملًا للإنترنت. يبدأ التشخيص بالتأكد من أن الاتصال الأساسي يعمل، وذلك من خلال تجربة أكثر من موقع وخدمة، ثم تجربة الوصول إلى عنوان IP مباشر إذا كان ذلك مناسبًا للاختبار. يمكن أيضًا تجربة جهاز آخر متصل بالشبكة نفسها. إذا كانت المشكلة تظهر على جميع الأجهزة، فقد يكون الخلل في DNS المستخدم من الراوتر أو من مزود الخدمة. يجب إعادة تشغيل الراوتر كخطوة أولية، ثم التحقق من إعدادات DNS. في بيئة اختبار مناسبة يمكن تجربة خادم DNS بديل موثوق لمعرفة ما إذا كانت المشكلة مرتبطة بعملية حل أسماء النطاقات. كما يمكن تنظيف DNS cache على جهاز العميل باستخدام الأوامر المناسبة لنظام التشغيل. إذا اختفت المشكلة بعد تغيير DNS بينما بقي الاتصال الأساسي مستقرًا، فهذا يدعم فرضية وجود مشكلة DNS. يجب توثيق المواقع المتأثرة، الأجهزة التي تأثرت، وقت بداية المشكلة، ونتيجة اختبار DNS. لا ينبغي إجراء Factory Reset للراوتر لمجرد أن بعض المواقع لا تفتح؛ فإعادة ضبط المصنع قد تمسح إعدادات الخدمة ولا تعالج بالضرورة مشكلة DNS.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_055",
+    "title": "Slow Wi-Fi in rooms far from the router",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "If Internet performance is good near the router but becomes significantly weaker in distant rooms, the most likely issue is Wi-Fi coverage rather than the ISP access line. Start by testing the connection within one or two meters of the router. Perform a second test from the location where the customer normally experiences poor performance. Compare signal strength, speed, latency, and stability. If the wired connection and nearby Wi-Fi are healthy while the distant location performs poorly, inspect the physical environment. Thick concrete walls, multiple floors, metal objects, mirrors, large appliances, and neighboring wireless networks can reduce signal quality. For 5 GHz networks, shorter range and higher attenuation through walls should be expected. A 2.4 GHz network may provide better coverage at the cost of lower potential throughput and more interference. The router should be positioned centrally, elevated, and in an open area rather than inside furniture. If coverage remains inadequate, the customer may consider a properly configured mesh system or additional access point. Increasing the Internet subscription speed alone does not solve a weak Wi-Fi signal. The support agent should clearly distinguish between Internet bandwidth and wireless coverage so that the customer is not encouraged to upgrade the subscription when the actual limitation is the home network.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_056",
+    "title": "انقطاع الإنترنت بعد ارتفاع حرارة الراوتر",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "لو العميل بيشتكي إن النت بيقطع بعد ما الراوتر يشتغل فترة طويلة، وخصوصًا لو المشكلة بتزيد مع سخونة الجهاز، لازم نتحقق من موضوع الحرارة. نسأل العميل هل الراوتر موجود في مكان مقفول، فوق جهاز إلكتروني، أو معرض للشمس، وهل جسم الراوتر نفسه سخن بشكل غير طبيعي. لازم يكون الجهاز في مكان مفتوح وفيه تهوية كويسة، ومايتحطش فوق الراوتر أجهزة تانية أو يتغطى بقطعة قماش. بعد تحسين التهوية، ممكن نعمل Restart ونراقب هل الانقطاع بيرجع بعد فترة تشغيل. مهم كمان التأكد من إن Power Adapter هو الأصلي أو المتوافق مع مواصفات الراوتر، لأن استخدام Adapter غير مناسب ممكن يسبب عدم استقرار. لو الراوتر بيعمل restart لوحده بشكل متكرر حتى بعد تحسين التهوية، لازم نسجل أوقات المشكلة ونشوف هل فيه Logs أو مؤشرات Hardware failure. لو الأجهزة كلها بتفصل والراوتر نفسه بيعيد التشغيل، فده مختلف عن مشكلة Wi-Fi عادية. في الحالة دي ممكن نحتاج فحص أو استبدال الراوتر حسب سياسة الشركة والضمان. ماينفعش نعتبر المشكلة عيب في الخط مباشرةً قبل التفريق بين reboot للراوتر وبين فقدان الاتصال مع الشبكة.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_057",
+    "title": "Diagnosing high latency and online gaming problems",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "When a customer reports high ping, lag, or unstable performance during online gaming or video calls, the investigation should focus on latency and packet loss rather than download speed alone. Begin by asking whether the problem occurs on Wi-Fi, Ethernet, or both. A wired test is preferred because it removes many wireless variables. Run a continuous ping test to a reliable destination and record average latency, packet loss, and significant spikes. If latency is stable over Ethernet but unstable over Wi-Fi, investigate wireless interference, signal strength, channel congestion, and distance from the router. If latency is high and packet loss occurs on Ethernet as well, the issue may involve the ISP access network, routing, congestion, or the destination service. It is important to distinguish between ISP-wide latency and latency to a specific gaming server. A customer may have normal Internet performance but high latency to a server located geographically far away or experiencing congestion. The agent should collect the game or application name, server or region if available, time of day, connection method, and test results. Upgrading bandwidth does not automatically reduce latency. If packet loss is observed consistently on a wired connection, the case should be escalated with the diagnostic evidence rather than being classified as a Wi-Fi complaint.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_058",
+    "title": "مشكلة الراوتر لا يتصل بالإنترنت رغم أن لمبات الطاقة تعمل",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "عندما تكون لمبة الطاقة مضاءة ولكن لا يستطيع العميل الوصول إلى الإنترنت، يجب تحديد حالة اتصال WAN أو Internet أولًا. يتم التأكد من توصيل كابل الشبكة أو كابل DSL أو الألياف وفق نوع الخدمة، ثم فحص مؤشرات الراوتر. إذا كانت لمبة Power ثابتة بينما Internet أو WAN غير مستقرة أو مطفأة، يتم إعادة تشغيل الجهاز مرة واحدة وانتظار اكتمال عملية المزامنة. يجب سؤال العميل عما إذا كانت المشكلة تؤثر على جميع الأجهزة. إذا كانت جميع الأجهزة غير قادرة على الوصول إلى الإنترنت، فالمشكلة ليست مرتبطة بجهاز عميل واحد. بعد ذلك يجب التحقق من وجود انقطاع عام في المنطقة أو مشكلة في الحساب أو حالة الخدمة من أنظمة الدعم. إذا كانت الخدمة تحتاج إلى تسجيل دخول أو إعداد WAN محدد، يتم التحقق من الإعدادات دون تغييرها عشوائيًا. بالنسبة لاتصالات DSL، يمكن فحص حالة DSL synchronization، بينما في خدمات الألياف يتم فحص PON وLOS. إذا كانت مؤشرات الخط طبيعية ولكن الإنترنت غير متاحة، يمكن أن تكون المشكلة في جلسة الاتصال أو DNS أو نظام المصادقة. يجب توثيق حالة جميع المؤشرات ونتائج إعادة التشغيل والأجهزة المتأثرة قبل التصعيد. لا ينبغي تنفيذ Factory Reset إلا إذا كان مطلوبًا ضمن إجراء رسمي وبعد التأكد من توفر بيانات الإعداد اللازمة.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_059",
+    "title": "Internet disconnects when all devices are connected",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "When the customer says that the Internet keeps disconnecting, we should not immediately assume that the problem is related to Wi-Fi. The first step is to ask whether all devices disconnect at the same time and whether the router indicators change when the disconnection occurs. If the mobile phone, laptop, and smart TV all disconnect simultaneously, this indicates that the problem may be related to the Internet connection itself. The customer should test a laptop using Ethernet if available. If Ethernet also disconnects, the line or WAN connection should be investigated instead of focusing on wireless connectivity. We should also ask whether the Power light remains stable or whether the router restarts. If the router itself restarts, the possible causes may include the power adapter, overheating, or hardware failure. If the router remains powered on but the Internet light disappears, there may be a loss of synchronization or a WAN issue. The time of each disconnection should be recorded, including whether the problem occurs more frequently at night or follows a specific pattern. If the issue occurs at specific times, network congestion or available system logs should be reviewed. If only Wi-Fi disconnects while Ethernet remains stable, we should investigate the 2.4 GHz and 5 GHz bands, channel interference, and router placement. The customer should not simply be told to restart the router and consider the issue resolved. A restart is only a diagnostic step, and recurring problems must be investigated and escalated with supporting evidence.",
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_060",
+    "title": "Router configuration recovery without unnecessary factory reset",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "A factory reset should not be the default response to every router problem because it removes the device configuration and may create a second problem if the customer does not have the required service credentials or configuration parameters. When troubleshooting configuration-related symptoms, first determine exactly what has changed. Ask whether the customer recently modified Wi-Fi settings, WAN settings, DNS settings, parental controls, firewall rules, or firmware. If the router interface is accessible, review the relevant configuration before resetting the device. For Wi-Fi problems, verify SSID visibility, authentication mode, password configuration, radio status, channel selection, and band settings. For Internet connectivity, verify WAN status and whether the router has obtained the expected connection parameters. If a configuration backup exists, it should be considered before making major changes. If the official ISP troubleshooting procedure requires a reset, the customer should be warned that customized settings may be lost and that service credentials may be required afterward. After the reset, configuration should be restored using the approved ISP procedure rather than arbitrary settings from online sources. If the device repeatedly loses configuration or reverts settings without user action, this may indicate firmware or hardware instability and should be escalated. Every configuration change should be documented so future agents can understand what was modified and avoid repeating ineffective troubleshooting.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_061",
+    "title": "Angry customer reporting repeated Internet disconnections",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "لو العميل بيتصل وهو غاضب وبيقول إن النت بيفصل كل شوية، لازم نتعامل مع الحالة بهدوء ونبدأ بتحديد مصدر المشكلة بدل تكرار خطوات عامة. أولًا نسأل هل كل الأجهزة بتفصل في نفس الوقت، وهل لمبات الراوتر بتتغير أثناء الانقطاع. لو الموبايلات واللابتوب والـSmart TV كلهم بيفقدوا الاتصال معًا، فده مؤشر إن المشكلة قد تكون في اتصال الإنترنت نفسه وليس جهازًا واحدًا. يتم طلب اختبار باستخدام Ethernet إذا كان متاحًا. إذا استمر الانقطاع عبر Ethernet، يجب فحص حالة الـWAN أو الخط وسجلات الانقطاع، والتأكد من عدم وجود outage في المنطقة. إذا كان الراوتر نفسه يعيد التشغيل، يجب فحص مصدر الكهرباء والـPower Adapter ودرجة حرارة الجهاز. أما إذا كان Ethernet مستقرًا بينما Wi-Fi يفصل، فيجب فحص الترددات 2.4 GHz و5 GHz والتداخل ومكان الراوتر. يجب عدم إخبار العميل بتكرار Restart فقط، خصوصًا إذا سبق أن نفذ هذه الخطوة عدة مرات. يتم تسجيل أن العميل جرب إعادة التشغيل وأن المشكلة مستمرة، مع توثيق أوقات الانقطاع ونتائج اختبارات Ethernet وWi-Fi قبل تصعيد الحالة. الهدف هو تحويل شكوى العميل الغاضب إلى بيانات فنية واضحة تساعد الفريق المختص على الوصول للسبب الحقيقي.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_062",
+    "title": "Angry customer experiencing extremely slow speed",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "عند تعامل الدعم الفني مع عميل غاضب بسبب انخفاض سرعة الإنترنت، يجب أولًا الاعتراف بأن الفرق الكبير بين السرعة المتوقعة والسرعة الفعلية يمثل مشكلة حقيقية، ثم البدء بتشخيص فني واضح. يتم التأكد من السرعة المتعاقد عليها، ثم مطالبة العميل بإيقاف التحميل والبث مؤقتًا وتوصيل جهاز واحد بالراوتر عبر Ethernet. يجب إجراء اختبار سرعة وتسجيل Download وUpload وLatency. إذا كانت النتيجة عبر Ethernet قريبة من السرعة المتعاقد عليها، بينما السرعة عبر Wi-Fi منخفضة، فالمشكلة غالبًا لاسلكية، ويجب فحص المسافة والحوائط والتداخل وعدد الأجهزة المتصلة. إذا كانت السرعة منخفضة أيضًا عبر Ethernet، يتم فحص حالة الخط وجودة الإشارة وسجلات الانقطاع والاستهلاك غير الطبيعي إن كانت هذه البيانات متاحة. لا ينبغي مطالبة العميل بترقية الباقة قبل التأكد من أن البنية الأساسية قادرة على تقديم السرعة الحالية. كذلك لا ينبغي افتراض أن الراوتر هو سبب المشكلة قبل مقارنة Ethernet مع Wi-Fi. إذا استمرت السرعة المنخفضة عبر اتصال سلكي مباشر، يتم فتح بلاغ فني يتضمن السرعة المتعاقد عليها، السرعة المقاسة، طريقة الاختبار، وقت الاختبار، وحالة الخط. هذه المعلومات تمنع تكرار نفس خطوات التشخيص مع العميل وتساعد على تصعيد المشكلة بشكل فعال.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_063",
+    "title": "Angry customer with red LOS light",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "When an angry fiber customer reports a persistent red LOS light, the agent should avoid treating the problem as a normal Wi-Fi complaint. First, acknowledge the service interruption and confirm whether the PON indicator is stable, off, or flashing. Ask the customer to verify that the fiber cable is connected correctly and has not been sharply bent, crushed, or accidentally disconnected. The customer should not repeatedly remove or manipulate the optical connector. A single controlled restart may be performed as a diagnostic step, followed by several minutes of waiting for optical synchronization. If the LOS indicator remains red, the issue should be treated as a possible loss of optical signal. The support system should be checked for an area outage, network alarms, previous fiber incidents, and recent maintenance. If no area outage is identified, the case should be escalated for optical signal testing and physical fiber inspection. Possible causes include damaged fiber, a disconnected distribution cable, low optical power, a faulty ONT, or a problem at the optical distribution point. The agent should clearly explain that repeatedly restarting the router will not repair a damaged fiber path. The ticket should include the red LOS status, PON status, time of failure, whether the issue affects all devices, and whether the customer already performed a restart. Because the customer is angry, unnecessary repeated troubleshooting should be avoided and the case should be transferred with complete diagnostic information.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_064",
+    "title": "Customer angry because Wi-Fi disconnects during work meetings",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "If the customer is upset because their Wi-Fi keeps disconnecting during online meetings, we first need to determine whether the issue is with the Wi-Fi or with the Internet service itself. Ask the customer whether the device they're using for the meeting is connected via Wi-Fi or Ethernet, and whether other devices disconnect at the same moment. If a laptop on Wi-Fi disconnects while another device on Ethernet stays connected, that's a strong indication the problem is wireless. Test the device close to the router, then try both 5 GHz and 2.4 GHz. If 5 GHz is good next to the router but weak in the room, distance and walls could be the cause. If 2.4 GHz is more stable, it can be used in the far location while keeping interference in mind. We should also review the router's placement — it shouldn't be inside a cabinet or next to a microwave or other electronics that cause interference. If all devices disconnect, including the one on Ethernet, we shouldn't focus on Wi-Fi and should instead check the WAN and the line. If the problem is recurring, log the times and duration of the disconnections and whether they happen at specific times. With an angry customer, we shouldn't just say 'move the router' as the only solution — we need to explain that we're running tests to pin down the cause. And if Ethernet is stable while Wi-Fi keeps dropping even though the device is close to the router, we may need to check the router's firmware or hardware.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_065",
+    "title": "Angry customer unable to open specific websites",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "لو العميل غاضب وبيقول إن الإنترنت شغال بس مواقع معينة مش بتفتح، ماينفعش نسجلها مباشرة كـInternet outage. أول حاجة نسأله هل كل المواقع مش بتفتح ولا مواقع معينة بس، وهل المشكلة بتحصل على كل الأجهزة المتصلة بنفس الراوتر. لو Google أو YouTube مثلًا شغالين لكن مواقع معينة مش بتفتح، فده ممكن يشير إلى DNS أو مشكلة في الموقع نفسه أو routing. نجرب موقع مختلف ونقارن النتائج. لو المشكلة موجودة على كل الأجهزة، نراجع إعدادات DNS في الراوتر أو الشبكة. يمكن تجربة DNS موثوق بديل كاختبار، بالإضافة إلى تنظيف DNS cache على الجهاز. لو المواقع بدأت تفتح بعد تغيير DNS، يتم تسجيل ذلك كدليل على وجود مشكلة في name resolution. أما إذا كانت المشكلة مستمرة حتى مع DNS مختلف، فيجب فحص الاتصال والمسارات الشبكية أو التأكد من أن الموقع نفسه متاح. لا ينبغي إقناع العميل بعمل Factory Reset لمجرد أن بعض المواقع لا تعمل، لأن ذلك قد يؤدي إلى فقدان إعدادات الراوتر. يجب تسجيل أسماء المواقع المتأثرة، وقت ظهور المشكلة، الأجهزة المتأثرة، نتيجة تجربة DNS البديل، وهل تطبيقات أخرى تعمل أم لا. مع العميل الغاضب، يجب تجنب الخطوات العشوائية والتركيز على اختبار يثبت أو يستبعد كل سبب.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_066",
+    "title": "Angry customer reporting router restarts by itself",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "إذا كان العميل غاضبًا لأن جهاز الراوتر يعيد التشغيل تلقائيًا عدة مرات يوميًا، فيجب التفريق بين إعادة تشغيل الجهاز وفقدان الاتصال فقط. تبدأ عملية التشخيص بسؤال العميل عما إذا كانت جميع لمبات الراوتر تنطفئ ثم تعود للعمل، أو أن لمبات الاتصال فقط تتغير. إذا انطفأت جميع المؤشرات ثم عاد الجهاز للعمل، فهذا يشير إلى reboot فعلي. يجب التحقق من مصدر الطاقة، ومحول الكهرباء، وثبات المقبس، ودرجة حرارة الراوتر، ومكان وضع الجهاز. يجب التأكد من أن الجهاز ليس داخل مساحة مغلقة أو معرضًا لحرارة مرتفعة. إذا كان محول الطاقة غير أصلي أو غير متوافق مع مواصفات الجهاز، يجب استبداله بالمحول المعتمد وفق إجراءات الشركة. بعد ذلك يمكن مراقبة الجهاز لمعرفة ما إذا استمرت عمليات إعادة التشغيل. إذا استمرت المشكلة رغم استقرار مصدر الطاقة ودرجة الحرارة، يتم فحص firmware وسجلات النظام إن كانت متاحة، وقد يكون الجهاز بحاجة إلى استبدال بسبب خلل في العتاد. يجب عدم اعتبار المشكلة مشكلة Wi-Fi تلقائيًا، لأن إعادة تشغيل الراوتر تؤثر على جميع أنواع الاتصال. كما يجب عدم إجراء Factory Reset قبل تحديد السبب، لأن إعادة ضبط المصنع قد تمسح الإعدادات دون معالجة مشكلة الطاقة أو العتاد. يتم تصعيد الحالة مع تسجيل عدد مرات إعادة التشغيل، أوقاتها، حالة مؤشرات الراوتر، ومصدر الطاقة المستخدم.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_067",
+    "title": "Angry customer reporting high ping and gaming lag",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "When an angry customer reports that online games are constantly lagging, the agent should avoid assuming that the problem is caused by insufficient bandwidth. Gaming quality depends heavily on latency, jitter, packet loss, and the path to the game server. The first diagnostic step is to determine whether the customer is using Wi-Fi or Ethernet. A wired connection should be tested whenever possible. If the game performs normally on Ethernet but poorly on Wi-Fi, wireless interference and signal quality should be investigated. If high latency and packet loss continue over Ethernet, continuous ping tests can be used to identify whether the connection is unstable. The customer should provide the game name, server region, approximate time of day when the issue occurs, and whether other Internet applications experience similar problems. A high ping to one specific game server does not automatically mean that the ISP connection is defective; the destination server or an intermediate routing path may be responsible. If packet loss is consistently observed toward multiple reliable destinations through Ethernet, the issue should be escalated to the network team with the test results. Increasing the customer's download speed may not solve a latency problem. For an angry customer, the agent should explain the difference between bandwidth and latency and avoid promising that a plan upgrade will eliminate gaming lag without diagnostic evidence.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_068",
+    "title": "عميل غاضب لأن الإنترنت توقف بعد تغيير إعدادات الراوتر",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "لو العميل بيقول إن النت فصل بعد ما غيّر إعدادات في الراوتر، لازم نعرف إيه اللي اتغير قبل ما نعمل إعادة ضبط المصنع. نسأله هل غيّر كلمة سر الواي فاي، أو اسم الشبكة SSID، أو DNS، أو إعدادات WAN، أو الجدار الناري، ولا عمل تحديث للبرنامج الثابت. لو الواي فاي شغال لكن مفيش إنترنت، نراجع حالة الـWAN وهل الراوتر واخد إعدادات الاتصال بشكل صحيح. لو المشكلة بدأت مباشرة بعد تغيير إعداد معين، نقدر نرجع التغيير لو معروف. مهم جدًا ما نعملش إعادة ضبط المصنع بشكل تلقائي، خصوصًا لو العميل مش معاه بيانات الخدمة أو إعدادات الـWAN المطلوبة. لو الشركة عندها نسخة احتياطية من الإعدادات أو إجراء رسمي لاستعادتها، نستخدمه بدل التعديل العشوائي. بعد استرجاع الاتصال، لازم نختبر أكتر من جهاز ويفضل اختبار الإيثرنت. لو الراوتر بيرجع الإعدادات لوحده أو بيفقدها بعد كل إعادة تشغيل، فده ممكن يشير إلى مشكلة في البرنامج الثابت أو في الجهاز نفسه ويحتاج تصعيد. لازم نسجل بالضبط إيه الإعداد اللي اتغير، إمتى المشكلة بدأت، حالة لمبات الراوتر، وهل شبكة الواي فاي ظاهرة ولا لأ. لو العميل متعصب، ما ينفعش نقوله إن الخطأ منه؛ نشرحله إننا هنرجع الإعدادات خطوة بخطوة ونحدد التغيير اللي تسبب في فقدان الاتصال.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_069",
+    "title": "Angry customer with poor Wi-Fi coverage in multiple rooms",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "عندما يشتكي العميل بغضب من ضعف تغطية Wi-Fi في عدة غرف، يجب أولًا إثبات ما إذا كانت المشكلة في التغطية اللاسلكية أم في سرعة خدمة الإنترنت. يتم إجراء اختبار سرعة عبر Ethernet بالقرب من الراوتر للتأكد من جودة الخدمة الأساسية، ثم إجراء اختبار Wi-Fi بالقرب من الراوتر وفي المناطق التي تعاني من ضعف الإشارة. إذا كانت السرعة جيدة بالقرب من الراوتر وتنخفض كلما زادت المسافة، فالمشكلة على الأرجح مرتبطة بالتغطية. يتم فحص عدد الجدران، سمكها، وجود طوابق متعددة، الأثاث المعدني، والأجهزة الإلكترونية التي قد تسبب تداخلًا. يوصى بوضع الراوتر في موقع مركزي ومرتفع ومفتوح. يمكن تجربة 2.4 GHz في المناطق البعيدة لأنها غالبًا توفر مدى أكبر، بينما يمكن استخدام 5 GHz بالقرب من الراوتر للحصول على سرعات أعلى. إذا كانت المساحة كبيرة أو تحتوي على عدة طوابق، فقد يكون نظام Mesh أو Access Point مناسبًا. يجب توضيح أن شراء باقة أسرع لن يزيد قوة إشارة Wi-Fi، وبالتالي لا ينبغي اقتراح ترقية الباقة باعتبارها الحل الأساسي. إذا كانت الإشارة ضعيفة حتى على مسافة قصيرة جدًا من الراوتر أو يستمر انقطاع Wi-Fi رغم قوة الإشارة، فيجب فحص إعدادات الجهاز أو احتمالية وجود عطل في الراوتر.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_070",
+    "title": "Angry customer reporting Internet outage after maintenance",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "لو العميل بيتصل وهو متعصب لأن النت فصل بعد maintenance أو شغل في المنطقة، أول خطوة هي التأكد هل المشكلة فردية ولا outage عام. نسأل العميل عن وقت بداية المشكلة، ونراجع system alerts وmaintenance windows والبلاغات المفتوحة في نفس المنطقة. لو فيه outage معروف، مانضيعش وقت العميل في خطوات زي Factory Reset أو تغيير DNS لأن المشكلة الأساسية في الشبكة الخارجية. نوضح له إننا شايفين incident قائم، ونحدد الخطوة المناسبة حسب سياسة الشركة، مع تجنب إعطاء وقت عودة غير مؤكد. لو مفيش outage مسجل، نبدأ التشخيص المعتاد: حالة لمبات الراوتر، إعادة تشغيل واحدة، فحص الكابلات، ثم اختبار Ethernet لو متاح. لو الـLOS أحمر في خدمة fiber، يتم التعامل معها كفقدان optical signal وتصعيدها للفريق المختص. لو الراوتر طبيعي لكن الأجهزة كلها بدون Internet، نفحص WAN status والحساب وحالة المصادقة. لازم نسجل إن المشكلة بدأت بعد أعمال الصيانة مباشرة إذا كان العميل أكد ذلك، لأن التوقيت ممكن يكون مهم جدًا للفريق الفني. مع العميل الغاضب، أهم حاجة إننا مانكررّش خطوات اتعملت قبل كده من غير فائدة، ونوضح له إيه اللي عرفناه وإيه الخطوة التالية بناءً على البيانات الموجودة.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_071",
+    "title": "Successful resolution of intermittent Wi-Fi drops",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "A customer reported intermittent Wi-Fi disconnections affecting multiple devices, but the Internet connection remained stable through Ethernet. The issue was diagnosed as a wireless connectivity problem rather than an ISP line failure. The troubleshooting process started by comparing 2.4 GHz and 5 GHz performance, checking signal strength in different rooms, and identifying nearby sources of interference. The router was moved from inside a cabinet to an elevated and open location away from the television, microwave, and other wireless equipment. The customer then restarted the router and reconnected the affected devices. A speed and stability test was performed close to the router and in the previously affected room. The 5 GHz network provided better performance near the router, while the 2.4 GHz network provided better coverage in the distant room. The customer confirmed that video calls, browsing, and streaming remained stable for several hours after the changes. The case can be considered resolved when multiple devices remain connected, Ethernet remains stable, and the wireless connection no longer shows repeated drops. The customer should be advised that Wi-Fi performance depends on distance, walls, interference, and device capabilities, and that upgrading the Internet package would not necessarily resolve a wireless coverage issue.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_072",
+    "title": "حل مشكلة بطء السرعة بعد اختبار Ethernet",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "العميل اشتكى إن سرعة الإنترنت بقت بطيئة جدًا، وبعد الفحص اتضح إن المشكلة كانت واضحة على الـWi-Fi أكتر من الاتصال السلكي. بدأنا إننا نتأكد من سرعة الباقة، وبعدها طلبنا من العميل يوصل اللابتوب بالراوتر باستخدام Ethernet ويوقف أي downloads أو streaming على باقي الأجهزة. الاختبار السلكي طلع قريب جدًا من السرعة المتعاقد عليها، وده معناه إن خط الإنترنت نفسه شغال كويس. بعد كده عملنا اختبار Wi-Fi جنب الراوتر، وكانت السرعة كويسة، لكن في الأوضة البعيدة كانت أقل بشكل واضح. تم نقل الراوتر لمكان مفتوح وأقرب لمنتصف الشقة، وبعدها اتعمل اختبار على 2.4 GHz و5 GHz. الـ5 GHz كانت أسرع جنب الراوتر، بينما الـ2.4 GHz كانت أنسب للأوضة البعيدة. العميل كمان فصل أجهزة قديمة مش مستخدمة من الشبكة، وبعد التعديلات السرعة والاستقرار اتحسنوا بشكل واضح. تم شرح إن سرعة الباقة حاجة، وتغطية الـWi-Fi حاجة تانية، وإن تغيير الباقة مش هو الحل طالما اختبار Ethernet أثبت إن الخط نفسه سليم. بعد المراقبة، العميل أكد إن التصفح والفيديو والتحميل بقوا شغالين بشكل طبيعي.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_073",
+    "title": "Successful restoration of fiber service after LOS alarm",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "أبلغ العميل عن ظهور ضوء LOS باللون الأحمر في جهاز الألياف الضوئية وانقطاع الخدمة بالكامل. بدأت عملية التشخيص بالتأكد من حالة مؤشري PON وLOS، ثم تم التحقق من عدم وجود انقطاع عام مسجل في المنطقة. طُلب من العميل التأكد بصريًا من أن كابل الألياف متصل دون محاولة فكه أو ثنيه بقوة. تم تنفيذ إعادة تشغيل واحدة للجهاز والانتظار حتى اكتمال عملية المزامنة، إلا أن مؤشر LOS ظل مضاءً باللون الأحمر. بناءً على ذلك، تم تصعيد الحالة إلى الفريق الفني لفحص الإشارة الضوئية والمسار الخارجي. أظهرت نتيجة الفحص وجود ضعف في الإشارة عند نقطة التوزيع، وتمت معالجة الوصلة المتأثرة. بعد إصلاح المسار، اختفى مؤشر LOS وأصبح مؤشر PON ثابتًا. تم إجراء اختبار اتصال عبر Ethernet واختبار Wi-Fi من أكثر من جهاز، وكانت الخدمة مستقرة. تم أيضًا اختبار التصفح والبث وتنزيل ملف للتأكد من عدم وجود فقد متكرر للاتصال. تعتبر الحالة محلولة بعد تأكيد استقرار الإشارة وعدم عودة إنذار LOS خلال فترة المراقبة. يجب توثيق سبب العطل والإجراء التصحيحي حتى يمكن الرجوع إليه إذا ظهرت مشكلة مشابهة مستقبلًا.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_074",
+    "title": "DNS Issue Identified and Resolved",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "The customer said the internet was working, but some websites weren't loading on any of the devices. Instead of doing a factory reset, we started by determining whether the issue was general or tied to specific sites. It turned out Google, YouTube, and a few apps were working normally, but certain sites were showing DNS resolution errors. We tried another device on the same network and saw the same behavior, which ruled out a single-device issue. After reviewing the network settings, we ran a DNS test using a trusted alternative resolver. The sites started opening normally after the change. We then tested several more domains and confirmed browsing and streaming were working without issues. We also flushed the DNS cache on the customer's device to make sure old DNS records weren't cached. The customer confirmed the previously affected sites were working again. We logged that the issue was related to name resolution rather than a full internet outage, and explained to the customer that a factory reset would not have been the right step for this case, and that changing the DNS setting was the diagnostic action that solved it. After monitoring, the service remained stable and all sites became accessible.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_075",
+    "title": "Successful resolution of router overheating and random restarts",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "The customer reported that the router restarted several times during the day, causing all connected devices to lose Internet access temporarily. The first diagnostic step was to determine whether the problem was a network disconnect or a complete router reboot. The customer confirmed that all indicator lights turned off and then returned, confirming an actual device restart. The router was found inside a closed cabinet with limited ventilation. The power adapter was also checked to confirm that it matched the router specifications. The router was moved to an open, elevated location with sufficient airflow and away from other heat-producing electronics. After restarting the device, the customer monitored the service for several hours. No additional reboots occurred. The customer then tested multiple devices over Wi-Fi and Ethernet, and all connections remained stable. The case was considered resolved because the symptoms disappeared after improving the router's operating environment and no evidence indicated an ISP line failure. The customer was advised not to cover the router, place it inside enclosed furniture, or expose it to direct sunlight. If the random restarts return despite proper ventilation and a verified power supply, the next step should be firmware inspection, log analysis, and potentially hardware replacement.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_076",
+    "title": "تحسين تغطية Wi-Fi باستخدام Mesh",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "كانت المشكلة الأساسية لدى العميل ضعف تغطية Wi-Fi في الغرف البعيدة رغم أن سرعة الإنترنت كانت سليمة عند توصيل جهاز مباشرة بالراوتر. تم إجراء اختبار Ethernet بالقرب من الراوتر وأظهر سرعة مناسبة للخدمة. بعد ذلك تم قياس جودة Wi-Fi في عدة أماكن، وتبين أن الإشارة تنخفض بصورة كبيرة خلف عدة جدران وفي الطابق العلوي. تم أولًا تحسين مكان الراوتر ووضعه في موقع أكثر مركزية وارتفاعًا، لكن التغطية لم تكن كافية للمساحة الكاملة. بناءً على طبيعة المكان، تم استخدام نظام Mesh متوافق بدلًا من الاعتماد على راوتر واحد. تم وضع الوحدة الأساسية بالقرب من مصدر الاتصال والوحدة الإضافية في منطقة تقع بين الراوتر والمنطقة ضعيفة التغطية، مع تجنب وضعها داخل المنطقة التي تكون فيها الإشارة الأصلية شبه معدومة. بعد الإعداد، تم اختبار التنقل بين الغرف، وسرعة الاتصال، واستقرار مكالمات الفيديو، والبث على أكثر من جهاز. تحسنت التغطية وأصبحت الأجهزة قادرة على الحفاظ على اتصال مستقر. تم توضيح أن Mesh يحسن توزيع الشبكة اللاسلكية داخل المنزل لكنه لا يزيد سرعة خط الإنترنت الأساسية، وأن أداء الشبكة يعتمد أيضًا على مكان الوحدات وعدد الأجهزة والتداخل اللاسلكي.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_077",
+    "title": "Successful diagnosis of high latency over Wi-Fi",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "العميل كان بيشتكي من lag في الألعاب ومكالمات الفيديو، وكان متأكد إن المشكلة بسبب سرعة الباقة. بدأنا نقارن بين Wi-Fi وEthernet بدل ما نفترض إن محتاج سرعة أعلى. على Wi-Fi ظهر ping متذبذب وpacket loss بسيط، لكن لما اللابتوب اتوصل بالراوتر عن طريق Ethernet، الـlatency بقت مستقرة والـpacket loss اختفى. بعد كده تم فحص مكان الراوتر والتداخل من الشبكات المحيطة، واتضح إن قناة الـWi-Fi المستخدمة كانت مزدحمة جدًا. تم تغيير القناة وإعادة ضبط إعدادات الشبكة اللاسلكية، مع تجربة 5 GHz بالقرب من الراوتر. بعد التغيير، العميل عمل اختبار أثناء استخدام مكالمة فيديو ولعب online game، والـping أصبح أكثر استقرارًا. تم شرح إن الـbandwidth والـlatency مش نفس الحاجة، وإن زيادة سرعة الباقة مش بالضرورة تحل مشكلة ping. كمان تم توضيح إن Ethernet هو الاختبار الأفضل عند تشخيص مشاكل الألعاب لأنه بيقلل تأثير الـWi-Fi. بعد فترة مراقبة، العميل أكد إن الـlag اختفى تقريبًا وإن مكالمات الفيديو أصبحت أكثر استقرارًا. تم إغلاق الحالة مع توثيق نتائج اختبارات Wi-Fi وEthernet والإعداد الذي تم تغييره.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_078",
+    "title": "Stable connection restored after correcting router configuration",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "The customer lost Internet access shortly after changing several router settings. Instead of immediately performing a factory reset, the support process first identified which settings had been modified. The customer had changed DNS settings and accidentally altered a WAN-related configuration. The router's Wi-Fi network was still visible, but none of the connected devices could reach the Internet. The original WAN configuration was restored using the approved ISP configuration procedure. The router was then restarted and allowed to establish a new connection. The Internet indicator became stable, and a wired device successfully obtained Internet access. Additional tests were performed from two Wi-Fi devices to confirm that the issue was not limited to Ethernet. Browsing, video streaming, and DNS resolution were tested successfully. The customer was advised to avoid changing WAN parameters without guidance and to keep a backup of important customized settings. Because the service was restored without deleting the entire router configuration, unnecessary reconfiguration was avoided. The case was documented with the original configuration change, corrective action, and final test results. If similar configuration changes repeatedly cause service loss, the customer should be directed to the official configuration procedure or assisted by technical support rather than using arbitrary settings from third-party sources.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_079",
+    "title": "حل مشكلة انقطاع الإنترنت بسبب Power Adapter",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "العميل كان بيشتكي إن الراوتر بيفصل ويشتغل تاني بشكل عشوائي، وبعد الفحص اتضح إن المشكلة مش في الخط نفسه. أول حاجة اتأكدنا هل الراوتر بيعمل reboot كامل ولا الـInternet بس اللي بتفصل. العميل أكد إن كل اللمبات بتطفي وبعد ثواني ترجع، فبدأنا نفحص مصدر الكهرباء. اتضح إن الـPower Adapter المستخدم مش هو الـoriginal adapter الخاص بالراوتر، وكان فيه اختلاف في المواصفات. تم استبداله بمحول متوافق ومعتمد، وبعدها تم تشغيل الراوتر ومراقبته. خلال فترة الاختبار ماحصلش أي restart. بعد كده اتعمل اختبار Ethernet وWi-Fi على أكتر من جهاز، وكل الاتصالات فضلت مستقرة. تم كمان التأكد إن الراوتر موجود في مكان جيد التهوية ومش بيتعرض لحرارة عالية. العميل أكد إن المشكلة اختفت وإن الأجهزة بقت شغالة من غير فصل. تم شرح إن مشاكل الطاقة ممكن تظهر على شكل انقطاع Internet، لكنها مختلفة عن مشكلة الخط أو الـWi-Fi. الحالة تم تسجيلها مع سبب المشكلة والإجراء اللي حلها، مع نصيحة للعميل باستخدام الـpower adapter المعتمد وعدم استخدام Adapter عشوائي حتى لو كان نفس الشكل الخارجي.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_080",
+    "title": "Successful resolution of intermittent fiber signal loss",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "أبلغ العميل عن انقطاع متقطع في خدمة الألياف، حيث يظهر ضوء LOS لفترات قصيرة ثم تعود الخدمة تلقائيًا. تم التعامل مع الحالة باعتبارها مشكلة في استقرار الإشارة الضوئية وليس مشكلة Wi-Fi. بدأ التشخيص بتسجيل أوقات الانقطاع وتحديد ما إذا كانت جميع الأجهزة تفقد الاتصال في الوقت نفسه. تم التأكد من أن أجهزة العميل تتأثر جميعها بالتزامن مع تغير مؤشر LOS. تمت مراجعة سجلات الشبكة ولم يظهر انقطاع عام في المنطقة، لذلك تم تصعيد الحالة لإجراء فحص لمستويات الإشارة الضوئية. أظهر الفحص أن مستوى الإشارة يتغير بشكل غير مستقر بسبب مشكلة في وصلة الألياف الخارجية. تم إصلاح الوصلة وإعادة اختبار مستوى الإشارة. بعد الإصلاح، أصبح مؤشر PON ثابتًا ولم يعد مؤشر LOS يظهر. تمت مراقبة الخدمة خلال فترة كافية، مع إجراء اختبارات تحميل وتصفح ومكالمات فيديو من أكثر من جهاز. لم يظهر أي انقطاع إضافي. تم إغلاق الحالة باعتبارها محلولة بعد تأكيد استقرار الإشارة. يجب توثيق نتائج القياس قبل الإصلاح وبعده، ووقت اكتشاف المشكلة، والإجراء التصحيحي، حتى تكون هذه البيانات متاحة إذا ظهرت أعراض مشابهة في المستقبل.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_081",
+    "title": "Angry customer disputes unexpected additional charge",
+    "category": "Billing_Policies",
+    "language": "Egyptian_Colloquial",
+    "content": "العميل اتصل وهو غاضب جدًا لأنه لقى إن الفاتورة الأخيرة أعلى من المبلغ المعتاد وبيقول إنه ماوافقش على أي خدمة إضافية. في الحالة دي لازم موظف خدمة العملاء يراجع تفاصيل الفاتورة بندًا بندًا بدل ما يطلب من العميل الدفع مباشرة. يتم أولًا التحقق من قيمة الباقة الأساسية، والضرائب أو الرسوم النظامية المطبقة، وأي إضافات أو خدمات تم تفعيلها خلال دورة الفوترة. لو فيه Add-on ظاهر في الفاتورة، لازم نراجع تاريخ تفعيله وطريقة طلبه وما إذا كان التفعيل تم من خلال قناة معتمدة. لو العميل بينكر الاشتراك، يتم فتح Billing Dispute وتسجيل اعتراضه بوضوح، مع عدم تأكيد أن الرسوم صحيحة أو خاطئة قبل انتهاء المراجعة. لو كانت الزيادة ناتجة عن ترقية تمت في منتصف دورة الفوترة، يجب شرح الـprorated charge وأنها قد تظهر في أول فاتورة بعد الترقية. أما لو ثبت وجود رسم غير صحيح، يتم تطبيق سياسة التصحيح أو الـcredit/refund حسب قواعد الشركة. يجب إبلاغ العميل بمرجع الشكوى والخطوة التالية، وتجنب تحميله رسومًا إضافية أثناء التحقيق إذا كانت سياسة الشركة تسمح بتعليق الجزء المتنازع عليه. لا ينبغي لموظف الدعم أن يخترع تفسيرًا للرسوم أو يعد برد كامل المبلغ قبل مراجعة الحساب.",
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_082",
+    "title": "Angry customer complains about service suspension after late payment",
+    "category": "Billing_Policies",
+    "language": "Arabic_Standard",
+    "content": "إذا اتصل العميل غاضبًا بسبب إيقاف الخدمة نتيجة التأخر في سداد الفاتورة، يجب أولًا التحقق من تاريخ استحقاق الفاتورة وحالة الحساب وتاريخ تعليق الخدمة وفق سياسة الشركة. يتم التأكد من عدم وجود دفعة ناجحة لم تتم تسويتها بعد، لأن مطالبة العميل بالدفع مرة أخرى قد تؤدي إلى تكرار المعاملة. إذا لم يتم استلام المبلغ، يتم توضيح المبلغ المستحق وأي رسوم تأخير مسموح بها بموجب شروط الخدمة، مع تجنب إضافة رسوم غير منصوص عليها. إذا كانت الشركة توفر فترة سماح، يجب توضيح ما إذا كان العميل لا يزال داخلها أو تجاوزها. بعد استلام دفعة ناجحة، تتم متابعة عملية إعادة تفعيل الخدمة وفق آلية الشركة، ولا ينبغي إعطاء وقت محدد لإعادة الخدمة إلا إذا كان النظام أو السياسة يضمن ذلك. إذا كان العميل يعتقد أنه دفع قبل التعليق، يجب فتح طلب للتحقق من معاملة الدفع وتزويده برقم مرجعي. يجب الحفاظ على نبرة هادئة لأن العميل قد يرى تعليق الخدمة كإجراء مفاجئ، مع شرح التسلسل الزمني للفاتورة والدفع والتعليق بصورة واضحة. لا يجوز لموظف الدعم إلغاء رسوم التأخير أو إعادة الخدمة خارج الصلاحيات المحددة له.",
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_083",
+    "title": "Customer angry about refund delay after cancellation",
+    "category": "Billing_Policies",
+    "language": "English",
+    "content": "An angry customer contacts support because a refund has not appeared after canceling the Internet service. The agent should first verify the cancellation date, the applicable refund type, the amount approved for refund, the payment method used, and the refund status in the billing system. The customer should be informed whether the refund is pending approval, processed by the company, or already submitted to the payment provider. The agent must distinguish between the company's refund processing time and the financial institution's posting time. If the refund has already been processed, the agent should provide the appropriate transaction or refund reference rather than promising that the money will appear immediately. If the refund is still pending internally, the case should be escalated according to the billing procedure. If the customer disputes the calculated amount, the agent should review the cancellation policy, unused-service eligibility, equipment charges, deposits, and any prorated adjustments. The agent should not promise a full refund simply because the customer is upset. Any exception must follow the company's authorization policy. The case record should include the cancellation date, refund amount, status, payment method, reference number, and customer dispute. Clear documentation is especially important because repeated contacts about the same refund should not require the customer to explain the entire situation again.",
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_084",
+    "title": "عميل غاضب يعترض على رسوم الترقية",
+    "category": "Billing_Policies",
+    "language": "Arabic_Standard",
+    "content": "العميل اتصل وهو متعصب لأنه لقى إن أول فاتورة بعد الترقية أعلى من السعر اللي كان متوقعه. أول خطوة هي مراجعة تاريخ تغيير الباقة، وسعر الباقة القديمة، وسعر الباقة الجديدة، وأي رسوم تناسبية ظهرت في نفس دورة الفوترة. لازم نسأل العميل إمتى طلب الترقية وإمتى ظهرت في الحساب، ونراجع هل فيه رسوم تفعيل أو إضافة اتفعلت مع الطلب. لو الزيادة بسبب إن العميل استخدم الباقة القديمة جزء من الشهر والباقة الجديدة الجزء الباقي، لازم نشرحله إن أول فاتورة ممكن تجمع الجزئين حسب عدد الأيام الفعلية. لو فيه رسوم إضافية مش واضحة، ما نقولش للعميل إنها صحيحة وخلاص؛ لازم نراجع السياسة وسجل التصريح. لو العميل بيقول إنه ما طلبش الترقية أصلًا، يتم فتح نزاع في الفوترة والتحقق من قناة الطلب، سواء كانت التطبيق أو الموقع أو مركز الاتصال. لو ثبت إن التغيير تم بالخطأ، يتم تصحيح الخطة أو إصدار رصيد أو استرداد حسب السياسة. لازم الموظف يدي العميل رقم متابعة ويشرحله إيه اللي هيحصل بعد كده، وممنوع يوعده بمبلغ استرداد محدد قبل اكتمال المراجعة.",
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_085",
+    "title": "Angry customer disputes equipment return fee",
+    "category": "Billing_Policies",
+    "language": "Egyptian_Colloquial",
+    "content": "العميل غاضب لأنه رجّع الراوتر بعد إلغاء الخدمة ومع ذلك لقى Equipment Fee في الفاتورة النهائية. لازم نراجع أولًا هل الجهاز المطلوب إرجاعه هو فعلًا نفس الجهاز المسجل على الحساب، وهل تم تسجيل الاستلام في النظام، وهل اترد في الموعد المحدد حسب سياسة الشركة. لو العميل عنده إيصال أو رقم تسليم، يتم استخدامه لمطابقة عملية الإرجاع. لو الجهاز تم استلامه بالفعل لكن النظام لسه ماحدثش، يتم فتح طلب reconciliation بدل ما نطلب من العميل يدفع مرة تانية. لو الرسوم ناتجة عن تأخر في الإرجاع، يجب شرح عدد الأيام والتاريخ النهائي المسموح به وفق العقد أو سياسة الشركة. لو العميل يؤكد إنه سلّم الجهاز في الوقت المحدد، يتم فتح dispute ومراجعة إثبات التسليم. لا يجوز للموظف إلغاء الرسوم من نفسه إذا كان خارج صلاحياته، ولا يجوز أيضًا تأكيد أن العميل مسؤول عن الرسوم قبل التحقق من سجل الاستلام. يجب إعطاء العميل رقم مرجعي ومتابعة الحالة حتى يتم تحديد ما إذا كانت الرسوم مستحقة أو يجب إصدار credit.",
+    "sentiment": "Angry"
+  },
+  {
+    "doc_id": "KB_086",
+    "title": "Angry customer reports repeated Internet drops",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "العميل بيقول إن النت بيفصل كل شوية وخصوصًا أثناء الشغل والاجتماعات، وهو غاضب لأن المشكلة حصلت أكتر من مرة. بدل ما نطلب منه يعمل Restart تاني وخلاص، لازم نحدد نوع الانقطاع. نسأله هل كل الأجهزة بتفصل في نفس اللحظة، وهل لمبات الـrouter بتتغير وقت المشكلة. لو كل الأجهزة بتفصل، نطلب اختبار Ethernet لو متاح. لو Ethernet كمان بيفصل، نراجع WAN status وline statistics وoutage information. لو الراوتر نفسه بيعمل reboot، نفحص power adapter والحرارة ومكان الجهاز. لو Ethernet ثابت والـWi-Fi فقط هو اللي بيفصل، نركز على wireless interference، signal strength، channels، والفرق بين 2.4 GHz و5 GHz. لازم نسجل أوقات الانقطاع وهل فيه نمط معين، خصوصًا لو المشكلة بتحصل في ساعات محددة. لو العميل سبق وجرب Restart، لازم نوثق ده وما نكررش نفس الخطوة بدون سبب. لو المشكلة مستمرة على Ethernet، يتم تصعيد البلاغ للفريق المختص مع نتائج الاختبارات بدل تحويل العميل بين الأقسام بدون معلومات فنية.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_087",
+    "title": "Angry customer reports very low download speed",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "عند شكوى العميل الغاضب من انخفاض سرعة التنزيل، يجب عدم افتراض أن المشكلة في الباقة أو الراوتر قبل إجراء اختبار مناسب. يتم التحقق من السرعة المتعاقد عليها، ثم مطالبة العميل بإيقاف التطبيقات التي تستخدم الإنترنت وتوصيل جهاز واحد بالراوتر عبر Ethernet. يتم إجراء اختبار سرعة وتسجيل النتائج. إذا كانت السرعة السلكية قريبة من السرعة المتوقعة، يتم الانتقال إلى فحص Wi-Fi، بما في ذلك قوة الإشارة، المسافة، التداخل، وعدد الأجهزة المتصلة. إذا كانت السرعة منخفضة عبر Ethernet أيضًا، يتم فحص حالة الخط، وجود انقطاعات، جودة الإشارة، واستهلاك الشبكة إن كانت بياناته متاحة. يجب تكرار الاختبار من مصدر موثوق وفي ظروف مستقرة، لأن نتائج اختبارات السرعة قد تتأثر بالخادم المستخدم أو ازدحام الشبكة المحلية. لا ينبغي وعد العميل بزيادة السرعة لمجرد أنه غاضب، ولا ينبغي توجيهه إلى ترقية الباقة قبل تحديد سبب المشكلة. إذا أثبتت الاختبارات وجود انخفاض حقيقي في السرعة الأساسية، يتم إنشاء بلاغ فني يتضمن السرعة المتعاقد عليها، السرعة المقاسة، طريقة الاتصال، وقت الاختبار، والجهاز المستخدم.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_088",
+    "title": "Angry customer has persistent red LOS light",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "A customer is angry because the fiber Internet has been unavailable for hours and the router displays a persistent red LOS light. The agent should acknowledge the outage and immediately determine whether there is an area-wide incident. The PON and LOS indicators should be checked, and the customer should confirm whether the fiber cable appears connected and undamaged. The customer should not be instructed to repeatedly remove, bend, or reconnect the optical connector. One controlled restart may be performed if it is part of the approved troubleshooting procedure. If the LOS indicator remains red after synchronization time, the case should be treated as a potential optical signal failure. The network system should be checked for alarms, maintenance activity, and known outages. If no area incident explains the problem, the case should be escalated for optical power testing and physical fiber inspection. The ticket should include the exact indicator status, time the failure started, whether all devices are affected, and whether the customer already attempted troubleshooting. A factory reset should not be recommended because it cannot repair a physical fiber signal problem and may remove required configuration. For an angry customer, the agent should avoid unnecessary repeated troubleshooting and clearly explain the technical reason for escalation.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_089",
+    "title": "Customer angry because Wi-Fi is extremely weak in bedrooms",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "The customer said the internet is excellent next to the router but very weak in the bedrooms, and they're frustrated because they're paying for a high-speed package and not feeling that speed throughout the house. We need to explain that the package speed doesn't mean the Wi-Fi signal will reach every spot with the same strength. We start by testing Ethernet next to the router to confirm the base service is fine, then run a Wi-Fi test next to the router and in the affected area. If the speed is good next to the router and drops with distance, we look at the walls, doors, floors, and the router's location. We should try both 2.4 GHz and 5 GHz, since 5 GHz is faster but has shorter range, while 2.4 GHz is usually better for far areas. Move the router to an open, central spot instead of inside a cabinet or next to devices that cause interference. If coverage is still weak because of the size of the home, we can suggest a mesh system or access point depending on the customer's needs. It's important not to tell them to just upgrade the package, since that won't strengthen the signal. If even the device next to the router gets a weak signal or the connection drops, start checking the router configuration or hardware. Document the test results to prove whether the issue is coverage or service speed.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_090",
+    "title": "Angry customer reports DNS and website access problems",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "The customer is angry because several websites have stopped opening while other applications continue to work. The agent should first determine whether the Internet connection is completely unavailable or whether the problem affects specific domains. The customer should test several unrelated websites and, if possible, repeat the test from another device connected to the same network. If the same domains fail on multiple devices while other services work normally, DNS resolution should be considered as one possible cause. The agent can check DNS behavior and, where permitted by the troubleshooting procedure, test an alternative trusted DNS resolver. Clearing the local DNS cache may also be appropriate. If the websites become accessible after the DNS test, the result should be documented as evidence rather than treated as proof of a permanent ISP-side fault. If changing DNS has no effect, the investigation should continue toward routing, destination-server availability, browser configuration, or other network causes. The agent should record the affected domains, error messages, affected devices, timestamps, and test results. A factory reset should not be recommended simply because some websites fail. If the issue affects multiple customers in the same area, network operations should be alerted for further investigation.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_091",
+    "title": "Angry customer reports router overheating and restarting",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "أبلغ العميل الغاضب عن إعادة تشغيل الراوتر تلقائيًا عدة مرات يوميًا، مما يؤدي إلى فقدان الخدمة لجميع الأجهزة. يجب أولًا تحديد ما إذا كان الجهاز يعيد التشغيل بالكامل أم أن الاتصال الخارجي فقط ينقطع. إذا انطفأت جميع مؤشرات الجهاز ثم عادت، فهذا يشير إلى إعادة تشغيل فعلية. يتم فحص مكان الراوتر والتأكد من وجود تهوية مناسبة وعدم تعرضه لحرارة مرتفعة أو أشعة الشمس المباشرة. كما يجب التحقق من أن محول الطاقة مطابق لمواصفات الجهاز وأنه غير تالف أو مرتخٍ. بعد تحسين ظروف التشغيل، يمكن إعادة تشغيل الجهاز مرة واحدة ومراقبته. إذا استمرت إعادة التشغيل، يجب فحص سجلات الجهاز والـfirmware إذا كانت متاحة، مع تقييم احتمالية وجود خلل في العتاد. لا ينبغي اعتبار المشكلة ضعفًا في شبكة Wi-Fi، لأن إعادة تشغيل الراوتر تؤثر على جميع أنواع الاتصال. كذلك لا ينبغي إجراء Factory Reset كإجراء أولي، لأنه قد يمسح إعدادات الخدمة دون معالجة السبب. يتم تصعيد الحالة إذا استمرت عمليات إعادة التشغيل مع مصدر طاقة وبيئة تشغيل سليمة، مع توثيق عدد مرات إعادة التشغيل وأوقاتها وحالة المؤشرات ودرجة حرارة الجهاز إن أمكن.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_092",
+    "title": "Angry customer experiences gaming latency despite high speed",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "العميل غاضب لأنه مش قادر يلعب online رغم إن speed test بيجيب سرعة عالية. لازم نشرح له إن السرعة العالية مش معناها إن الـping هيكون منخفض. أول خطوة نحدد هل اللعب على Wi-Fi ولا Ethernet. لو Wi-Fi، نخليه يجرب Ethernet لو متاح. لو الـping والـpacket loss اتحسنوا على Ethernet، يبقى نركز على wireless interference أو signal quality. لو المشكلة موجودة على Ethernet كمان، نعمل ping tests على destinations مختلفة ونقارن النتائج. لو الـlatency عالية مع game server واحد بس، ممكن المشكلة تكون في server أو routing path، ومش شرط تكون من الـISP. لو فيه packet loss مستمر مع أكتر من destination موثوق، يتم تصعيد الحالة للفريق الفني مع نتائج الاختبارات. لازم نسجل اسم اللعبة، server region، وقت المشكلة، نوع الاتصال، average ping، وأي packet loss ظاهر. ماينفعش نقول للعميل اشترك في باقة أسرع وخلاص، لأن زيادة bandwidth مش بالضرورة تقلل latency. التشخيص لازم يفرق بين bandwidth وlatency وpacket loss عشان العميل ياخد حل فعلي بدل تغيير الباقة بدون سبب.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_093",
+    "title": "Angry customer reports Internet failure after router configuration change",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "إذا فقد العميل الاتصال بالإنترنت مباشرة بعد تعديل إعدادات الراوتر، فيجب تحديد الإعداد الذي تم تغييره قبل اللجوء إلى إعادة ضبط المصنع. يتم سؤال العميل عما إذا كان قد عدّل إعدادات DNS أو WAN أو Wi-Fi أو Firewall أو قام بتحديث البرنامج الثابت. إذا كانت شبكة Wi-Fi تظهر ولكن لا يوجد وصول إلى الإنترنت، يتم فحص حالة WAN ومعلومات الاتصال. إذا كان التغيير معروفًا، يمكن التراجع عنه وفق الإجراءات المعتمدة. لا ينبغي إجراء Factory Reset إذا لم تتوفر بيانات إعداد الخدمة أو طريقة رسمية لاستعادتها. بعد استعادة الإعدادات، يجب اختبار الاتصال باستخدام Ethernet ثم Wi-Fi على أكثر من جهاز. إذا عادت المشكلة بعد كل إعادة تشغيل أو فقد الراوتر إعداداته تلقائيًا، فقد يشير ذلك إلى خلل في البرنامج الثابت أو العتاد. يتم تصعيد الحالة مع تسجيل التغيير الذي سبق المشكلة، وقت حدوثها، حالة المؤشرات، ونتائج الاختبارات. مع العميل الغاضب يجب توضيح أن الهدف هو تحديد التغيير المسبب للمشكلة بدل إجراء عملية قد تمسح جميع الإعدادات دون داعٍ.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_094",
+    "title": "Angry customer reports connection dropping after maintenance",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "العميل اتصل غاضب لأن النت فصل بعد أعمال صيانة في المنطقة، وبيقول إن المشكلة بدأت مباشرة بعد انتهاء الصيانة. أول خطوة لازم نراجع هل فيه outage أو maintenance incident مسجل على نفس المنطقة. لو فيه incident مفتوح، مانخليش العميل يعمل Factory Reset أو يغير إعدادات DNS، لأن المشكلة ممكن تكون خارجية ومش هتتحل من عنده. نسجل وقت بداية الانقطاع ونقارن التوقيت مع وقت الصيانة. لو مفيش outage معروف، نبدأ الفحص المعتاد: حالة لمبات الراوتر، الكابلات، WAN أو PON حسب نوع الخدمة، وإمكانية اختبار Ethernet. لو الـLOS أحمر في fiber، يتم تصعيد الحالة كاحتمال loss of optical signal. لو كل مؤشرات الخط طبيعية لكن الإنترنت مش شغال، يتم فحص WAN status والمصادقة وحالة الحساب. لازم نوضح للعميل إيه اللي تم التأكد منه بدل ما نكرر نفس التعليمات. ولو فيه incident فعلي، ماينفعش ندي موعد رجوع محدد من غير مصدر رسمي. يتم تسجيل البلاغ وربطه بالـmaintenance incident إذا كان النظام بيسمح، عشان الفريق الفني يقدر يربط الحالات المتشابهة.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_095",
+    "title": "Angry customer reports unstable connection during video calls",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "The customer is angry because video meetings repeatedly freeze and disconnect, affecting work. The agent should first identify whether the problem is caused by Internet instability, Wi-Fi conditions, or the customer's device. The preferred first test is a wired Ethernet connection from the work laptop to the router. If the video call becomes stable over Ethernet, the investigation should focus on Wi-Fi signal strength, interference, channel congestion, and the distance between the device and router. If the problem remains over Ethernet, continuous latency and packet-loss tests should be performed. The customer should provide the approximate times of the failures and whether browsing or other applications fail simultaneously. If packet loss is present toward multiple reliable destinations, the case may require network escalation. If only the video conferencing platform is affected while other services remain stable, the destination platform, application configuration, or routing path should also be considered. The agent should not promise that increasing the Internet speed will solve the problem without evidence. The troubleshooting record should include the connection type, device, application, test results, timestamps, and whether the issue affects other devices. Once stability is confirmed through multiple calls or sustained testing, the case can be closed as resolved.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_096",
+    "title": "حل مشكلة ضعف إشارة Wi-Fi بسبب قناة مزدحمة",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "أبلغ العميل عن بطء متقطع في شبكة Wi-Fi رغم أن سرعة الاتصال عبر Ethernet كانت طبيعية. بدأ التشخيص بقياس السرعة بالقرب من الراوتر ثم مقارنة الأداء في المكان الذي تظهر فيه المشكلة. أظهرت الاختبارات أن قوة الإشارة كانت مقبولة، ولكن الشبكة اللاسلكية كانت تعاني من تداخل مرتفع بسبب وجود عدد كبير من الشبكات المجاورة على القناة نفسها. تم الدخول إلى إعدادات Wi-Fi وتغيير القناة إلى قناة أقل ازدحامًا وفقًا لنتائج فحص الشبكات المحيطة. بعد تطبيق التغيير، تم فصل الجهاز المتأثر وإعادة الاتصال بالشبكة. أُجريت عدة اختبارات للتصفح والبث ومكالمات الفيديو، وأصبح الاتصال أكثر استقرارًا. تم أيضًا توضيح للعميل أن ازدحام القنوات قد يتغير مع الوقت، ولذلك يجب مراقبة الأداء إذا عادت المشكلة. لم تكن هناك حاجة إلى تغيير الباقة أو استبدال الراوتر لأن اختبار Ethernet أثبت أن اتصال الإنترنت الأساسي كان يعمل بصورة سليمة. أكد العميل بعد الاختبار أن الاتصال أصبح مستقرًا وأن التطبيقات التي كانت تتأخر أصبحت تعمل بصورة طبيعية.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_097",
+    "title": "Successful resolution of DHCP address conflict",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "The customer reported that some devices could connect to Wi-Fi but could not access the Internet, while other devices worked normally. The investigation showed that the problem was limited to a small number of devices and was related to local IP address assignment rather than an ISP outage. The router's DHCP status was reviewed, and the affected devices were found to have inconsistent or duplicate local network information. The support process restarted the affected devices and renewed their network configuration. The router was then checked to confirm that its DHCP service was enabled and that the configured address pool had sufficient available addresses. After the devices received valid IP addresses, connectivity was tested using web browsing, DNS resolution, and a ping to the local gateway. All affected devices successfully regained Internet access. The customer was advised not to manually assign random static IP addresses unless required by a specific configuration and documented appropriately. The issue was considered resolved because the Internet service itself remained operational throughout the incident and the affected devices recovered after correcting their local network configuration. No router replacement or subscription upgrade was required.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_098",
+    "title": "استعادة الاتصال بعد امتلاء قائمة الأجهزة المتصلة",
+    "category": "Technical_Solutions",
+    "language": "Egyptian_Colloquial",
+    "content": "العميل كان بيشتكي إن بعض الأجهزة الجديدة مش قادرة تتصل بالـWi-Fi، رغم إن الأجهزة القديمة شغالة عادي. بدأنا نتأكد إن المشكلة مش من الباقة أو من خط الإنترنت، واتضح إن الأجهزة اللي كانت متصلة بالراوتر كتير جدًا، وفيه أجهزة قديمة مش مستخدمة لسه connected. تم الدخول على قائمة الأجهزة المتصلة ومراجعة الـDHCP leases، وبعد التأكد من الأجهزة الفعلية الموجودة في البيت تم فصل الأجهزة القديمة وغير المستخدمة. بعد كده تم تجربة توصيل الموبايل واللابتوب اللي كانوا بيرفضوا الاتصال. الأجهزة الجديدة اتصلت بالشبكة بشكل طبيعي وحصلت على IP addresses سليمة. تم اختبار التصفح والفيديو على الأجهزة الجديدة، وكانت الخدمة مستقرة. كمان اتشرح للعميل أهمية تغيير كلمة مرور الـWi-Fi لو كان شاكك إن أجهزة غير معروفة بتستخدم الشبكة، ومراجعة قائمة الأجهزة المتصلة بشكل دوري. المشكلة لم تكن في سرعة الباقة ولا في جودة الخط، وبالتالي لم يكن هناك احتياج لترقية الخدمة. العميل أكد إن الأجهزة الجديدة اشتغلت وإن كل أفراد البيت قدروا يستخدموا الإنترنت بشكل طبيعي.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_099",
+    "title": "Successful resolution of incorrect MTU configuration",
+    "category": "Technical_Solutions",
+    "language": "English",
+    "content": "The customer reported that the Internet connection was generally available, but certain websites, applications, and large downloads would fail or load inconsistently. Basic connectivity tests showed that the router had an active Internet connection and that standard browsing worked for many destinations. The issue became more apparent when larger packets or specific application traffic were used. After reviewing the customer's recent configuration changes, the support team identified an incorrect MTU value on the WAN connection. The value was restored according to the ISP's approved configuration requirements. The router was restarted, and the connection was tested again using normal browsing, HTTPS websites, file downloads, and multiple application services. The previously affected destinations became accessible without interruption. The customer was advised not to change WAN parameters without guidance because incorrect values can create symptoms that appear to be random application failures rather than a complete Internet outage. The resolution was documented with the original MTU configuration, the corrected value according to the approved service configuration, and the final connectivity test results. The customer confirmed that all previously affected services were functioning normally.",
+    "sentiment": "Neutral"
+  },
+  {
+    "doc_id": "KB_100",
+    "title": "حل مشكلة ضعف الاتصال بسبب كابل Ethernet تالف",
+    "category": "Technical_Solutions",
+    "language": "Arabic_Standard",
+    "content": "أبلغ العميل عن انخفاض شديد في سرعة الإنترنت على جهاز الكمبيوتر، بينما كانت الهواتف والأجهزة الأخرى تعمل بصورة طبيعية عبر Wi-Fi. تم البدء باختبار السرعة على الجهاز المتأثر باستخدام Ethernet، وكانت النتائج أقل بكثير من السرعة المتوقعة. للتأكد من أن المشكلة ليست في خدمة الإنترنت، تم اختبار جهاز آخر باستخدام منفذ Ethernet مختلف وكابل آخر، فظهرت السرعة بصورة طبيعية. بعد ذلك تم فحص الكابل الأصلي المستخدم مع الجهاز الأول، وتبين وجود تلف ظاهر في أحد أطرافه وعدم ثبات الاتصال بصورة سليمة. تم استبدال الكابل بآخر سليم ومتوافق مع منفذ الشبكة، ثم إعادة تشغيل اتصال Ethernet وإجراء اختبار سرعة جديد. ارتفعت السرعة إلى المستوى المتوقع وأصبح الاتصال مستقرًا. تم أيضًا اختبار تنزيل ملف وإجراء اختبار Ping للتأكد من عدم وجود فقد للحزم أو تقطع في الاتصال. أكد العميل أن المشكلة اختفت وأن سرعة الجهاز أصبحت مماثلة للأجهزة الأخرى. توضح هذه الحالة أهمية اختبار أكثر من كابل ومنفذ قبل تصعيد مشكلة بطء السرعة إلى مزود الخدمة، لأن بعض مشكلات الأداء تكون ناتجة عن مكونات الشبكة المحلية وليس عن خط الإنترنت نفسه.",
+    "sentiment": "Neutral"
+  }
+]
