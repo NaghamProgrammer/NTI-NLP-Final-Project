@@ -1,1 +1,16 @@
+fastapi
+uvicorn[standard]
 pydantic
+
+streamlit
+pandas
+plotly
+
+python-dotenv
+
+langchain-core
+langchain-cohere
+langchain-text-splitters
+langchain-chroma
+chromadb
+cohere
