@@ -2,8 +2,12 @@ import streamlit as st
 import json
 import re
 from langchain_core.messages import HumanMessage, AIMessage
-from src.rag import ask_question, get_sources
-
+from src.rag import (
+    ask_question,
+    get_sources,
+    get_technician_by_category,
+    send_escalation_email,
+)
 
 def is_arabic(text):
     if re.search("[\u0600-\u06FF]", text):
@@ -34,11 +38,15 @@ st.caption(
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
+if "pending_escalation" not in st.session_state:
+    st.session_state.pending_escalation = None
+
 
 with st.sidebar:
     st.header("Options")
     if st.button("Clear conversation"):
         st.session_state.messages = []
+        st.session_state.pending_escalation = None
         st.rerun()
     st.divider()
     st.markdown("### About")
@@ -74,9 +82,56 @@ for i, message in enumerate(st.session_state.messages):
                     toast_message = "Thank you for your feedback! It helps us improve."
                 st.toast(toast_message, icon="✅")
 
-question = st.chat_input(
-    "Describe your problem..."
-)
+
+if st.session_state.pending_escalation:
+    esc = st.session_state.pending_escalation
+    with st.chat_message("assistant"):
+        st.markdown(
+            "I need an email or phone number before I can forward this "
+            "to a technician, so they have a way to reach you."
+        )
+        with st.form(key="escalation_contact_form", clear_on_submit=False):
+            contact = st.text_input("Email or phone number", key="escalation_contact_input")
+            submitted = st.form_submit_button("Send")
+
+        if submitted:
+            contact_value = contact.strip() if contact else ""
+            if not contact_value:
+                st.warning("Please enter an email or phone number to continue — this is required to escalate.")
+            else:
+                technician = get_technician_by_category(esc["category"])
+                sent, error = send_escalation_email(
+                    technician, esc["question"], esc["category"], esc["history"],
+                    contact=contact_value,
+                )
+                if sent:
+                    confirmation = (
+                        f"Thanks! I've forwarded your issue to {technician['name']} "
+                        f"along with your contact info."
+                    )
+                    st.session_state.messages.append({
+                        "role": "assistant",
+                        "content": confirmation,
+                        "escalated": True,
+                        "technician_name": technician["name"],
+                    })
+                else:
+                    st.session_state.messages.append({
+                        "role": "assistant",
+                        "content": (
+                            f"I couldn't reach a technician automatically "
+                            f"({error}). Please contact support directly."
+                        ),
+                        "escalated": False,
+                    })
+                st.session_state.pending_escalation = None
+                st.rerun()
+
+question = None
+if not st.session_state.pending_escalation:
+    question = st.chat_input(
+        "Describe your problem..."
+    )
 
 if question:
     lc_history = []
@@ -94,8 +149,13 @@ if question:
         st.markdown(question)
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            answer = ask_question(question,lc_history)
+            result = ask_question(question, lc_history)
             sources = get_sources(question)
+
+        answer = result["answer"]
+        status = result["status"]
+        category = result["category"]
+
         st.markdown(answer)
         with st.expander("📚 Retrieved Sources"):
             for i, doc in enumerate(sources):
@@ -114,4 +174,13 @@ if question:
         "sources": sources,
         "feedback_value": None
     })
+
+    if status == "no_solution":
+        st.session_state.pending_escalation = {
+            "question": question,
+            "category": category,
+            "history": lc_history + [HumanMessage(content=question)],
+        }
+
+
     st.rerun()

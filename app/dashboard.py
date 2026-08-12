@@ -28,7 +28,6 @@ df = df.drop_duplicates(subset=['question', 'answer'], keep='last')
 total_feedback = len(df)
 positive_feedback = len(df[df['sentiment'] == 'Positive'])
 negative_feedback = len(df[df['sentiment'] == 'Negative'])
-
 if total_feedback > 0:
     satisfaction_rate = (positive_feedback / total_feedback) * 100
 else:

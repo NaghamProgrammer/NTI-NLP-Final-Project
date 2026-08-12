@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telecom Support AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <p class="telecomTitle">Telecom AI</p>
+            </div>
+
+            <button class="new-chat-btn" onclick="clearChat()">
+                <span>⊕</span> New Chat
+            </button>
+
+            <div class="nav-section">
+                <h4>Workspaces</h4>
+                <ul>
+                    <li onclick="window.location.href='/dashboard.html'">📊 Analytics Dashboard</li>
+                    <li>📄 Billing Queries</li>
+                    <li>🛠️ Tech Support</li>
+                    <li>📈 Network Status</li>
+                </ul>
+            </div>
+            <div class="sideBarSpaceBetweenNav-about">
+                <div class="nav-section">
+                    <div class="separateLine"></div>
+                    <h4 style="margin-top: 15px; color: #8a8593; font-size: 0.8rem; text-transform: uppercase;">Recent
+                        Chats</h4>
+                    <ul id="recent-chats-list">
+                        <li style="cursor: default; background: transparent; color: #8a8593;">There are no chats yet
+                        </li>
+                    </ul>
+                </div>
+                <div class="upgrade-card">
+                    <h4>About</h4>
+                    <p>Telecom AI is an intelligent support assistant built for the telecommunications industry.
+                        Powered by AI and RAG, it provides accurate, context-aware solutions using trusted technical
+                        knowledge.
+                        Our goal is to make telecom troubleshooting faster, smarter, and easier for everyone.
+                    </p>
+                </div>
+            </div>
+        </aside>
+        <main class="main-content">
+            <header>
+                <div class="header-right">
+                    <button id="tts-toggle" class="off" onclick="toggleTTS()" title="Toggle Voice Output">
+                        <img src="el_speaker.png" alt="Speaker" class="btn-icon">
+                    </button>
+                </div>
+            </header>
+
+            <div class="chat-wrapper">
+                <div id="welcome-screen">
+                    <div class="orb"></div>
+                    <h2>Hello, how can I help you today!</h2>
+                </div>
+                <div class="chat-box hidden" id="chat-box">
+                </div>
+                <div id="escalation-ui" class="hidden">
+                    <p>I need an email or phone number to forward this to a technician.</p>
+                    <div class="escalation-input-group">
+                        <input type="text" id="contact-input" placeholder="Email or Phone">
+                        <button onclick="submitEscalation()">Send</button>
+                    </div>
+                </div>
+            </div>
+            <div class="input-container" id="input-area">
+                <div class="floating-input">
+                    <input type="text" id="user-input" placeholder="Ask Anything..." onkeypress="handleKeyPress(event)">
+                    <button class="send-btn" onclick="sendMessage()">
+                        <img src="Vector@2x.png" alt="Send" class="btn-icon">
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
