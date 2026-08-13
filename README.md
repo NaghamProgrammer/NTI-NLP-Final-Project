@@ -8,6 +8,10 @@ KhedmaBot supports **English and Arabic**, provides retrieved sources, collects 
 
 ---
 
+## [Demo](https://drive.google.com/file/d/199RNXPFSYqtGpsVjLI6JY5EQpthnAWqq/view?usp=sharing)
+
+---
+
 ## Features
 
 * **AI Customer Support** : Conversational assistant for telecom customers
