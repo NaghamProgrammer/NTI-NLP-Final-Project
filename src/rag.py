@@ -25,7 +25,6 @@ VALID_CATEGORIES = {"Technical_Solutions", "Billing_Policies", "Customer_Calls_D
 
 
 def load_json_documents(json_file_path):
-
     with open(json_file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     if isinstance(data, dict):
@@ -51,7 +50,7 @@ def load_json_documents(json_file_path):
         )
     return documents
 
-documents = load_json_documents(r"data\processed\processed_knowledge_base.json")
+documents = load_json_documents(r"E:\VS Code stuff\NTI NLP Final Project\NTI-NLP-Final-Project\data\processed\processed_knowledge_base.json")
 print("Number of documents:", len(documents))
 
 text_splitter = RecursiveCharacterTextSplitter(
@@ -216,8 +215,42 @@ def get_sources(question):
     docs = retriever.invoke(question)
     return docs
 
+resolution_prompt = ChatPromptTemplate.from_messages([
+    ("system", """Classify the customer's message into exactly one of these
+three intents, regardless of language:
 
+- "resolved": the customer confirms their issue is now fixed/solved
+  (e.g. "yes it works now", "that fixed it", "problem solved", a bare
+  "y" or "yes" in reply to a yes/no resolution check, "تم الحل").
+- "unresolved": the customer confirms their issue is still NOT fixed
+  (e.g. "no still broken", "didn't work", a bare "n" or "no" in reply
+  to a yes/no resolution check, "لم يتم الحل").
+- "neither": anything else — a new question, more details about the
+  problem, small talk, or anything that isn't a clear confirmation
+  either way.
 
+Respond ONLY with a valid JSON object (no markdown, no code fences, no
+extra text) with exactly this field:
+- "intent": one of "resolved", "unresolved", "neither" """),
+    ("user", "{text}")
+])
+
+resolution_chain = resolution_prompt | llm
+
+def classify_resolution_intent(text):
+    """Classify whether a customer's message confirms their issue is
+    resolved, still unresolved, or neither."""
+    response = resolution_chain.invoke({"text": text})
+    raw = _strip_code_fence(response.content)
+    try:
+        parsed = json.loads(raw)
+        intent = parsed.get("intent")
+    except (json.JSONDecodeError, TypeError):
+        intent = "neither"
+
+    if intent not in ("resolved", "unresolved", "neither"):
+        intent = "neither"
+    return intent
 
 def load_technicians(json_file_path="technicians.json"):
     with open(json_file_path, "r", encoding="utf-8") as f:
@@ -256,7 +289,6 @@ def send_escalation_email(technician, question, category, chat_history=None, con
     conversation_summary = _format_conversation(chat_history or [], question)
     category_label = (category or "General").replace("_", " ")
     contact_line = f"Contact the customer at: {contact}" if contact else "Customer contact info: not provided."
-
     subject = f"[Support Escalation] {category_label} — Unresolved Customer Issue"
     body = (
         f"Hello {technician.get('name', '')},\n\n"

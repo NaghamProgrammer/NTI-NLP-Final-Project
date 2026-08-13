@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytics Dashboard | Telecom AI</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Import Chart.js for the graphs -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="app-container">
-        <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="brand">
                 <p class="telecomTitle">Telecom AI</p>
@@ -30,18 +28,14 @@
             <div class="sideBarSpaceBetween nav-about">
                 <div class="upgrade-card" style="margin-top: auto;">
                     <h4>Data Controls</h4>
-                    <p>Permanently delete all collected feedback logs from the server.</p>
+                    <p>Permanently delete all collected feedback and evaluation logs from the server.</p>
                     <button onclick="clearData()" style="width: 100%; background: #ff4b4b; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; margin-top: 10px;">Clear Data</button>
                 </div>
             </div>
         </aside>
-
-        <!-- Main Dashboard Area -->
         <main class="main-content" style="padding: 40px; overflow-y: auto;">
             <h2 style="margin-bottom: 5px; font-weight: 500;">Customer Sentiment & Feedback</h2>
             <p style="color: #8a8593; margin-bottom: 30px;">Evaluate RAG performance and customer satisfaction.</p>
-
-            <!-- 4 Metric Cards -->
             <div class="metrics-grid">
                 <div class="metric-card">
                     <h3>Total Feedback</h3>
@@ -60,8 +54,6 @@
                     <p id="metric-rate">0%</p>
                 </div>
             </div>
-
-            <!-- Charts Row -->
             <div class="charts-grid">
                 <div class="chart-card">
                     <h3>Overall Satisfaction</h3>
@@ -73,7 +65,6 @@
                 </div>
             </div>
 
-            <!-- Negative Feedback Table -->
             <div class="table-card">
                 <h3>Negative Feedback (Needs Review)</h3>
                 <div style="overflow-x: auto;">
@@ -85,38 +76,77 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Filled by JS -->
                         </tbody>
                     </table>
                 </div>
                 <p id="no-negative-msg" style="color: #4ade80; display: none; margin-top: 15px;">Great news! No negative feedback yet.</p>
             </div>
+            <div class="eval-section" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.08);">
+                <h2 style="margin-bottom: 5px; font-weight: 500;">Issue Handling Performance</h2>
+                <p style="color: #8a8593; margin-bottom: 25px;">Tracks how long conversations take to resolve and whether the customer confirmed the issue was fixed.</p>
+
+                <div class="metrics-grid" style="margin-bottom: 25px;">
+                    <div class="metric-card">
+                        <h3>Avg Handling Time</h3>
+                        <p id="metric-avg-handling-time" style="color: #a259ff;">0m</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Successfully Solved</h3>
+                        <p id="metric-solved" style="color: #4ade80;">0</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Unsuccessfully Solved</h3>
+                        <p id="metric-unsolved" style="color: #f87171;">0</p>
+                    </div>
+                </div>
+
+                <div class="chart-card" style="height: 300px;">
+                    <h3>Resolution Outcomes</h3>
+                    <canvas id="handlingChart"></canvas>
+                </div>
+            </div>
+            <div class="eval-section" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.08);">
+                <h2 style="margin-bottom: 5px; font-weight: 500;">RAG Quality & Knowledge Base Groundedness</h2>
+                <p style="color: #8a8593; margin-bottom: 25px;">Automated real-time evaluation comparing generated AI answers against retrieved technical context.</p>
+
+                <div class="metrics-grid" style="margin-bottom: 25px;">
+                    <div class="metric-card">
+                        <h3>Evaluated Chats</h3>
+                        <p id="metric-eval-total">0</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Avg Groundedness Score</h3>
+                        <p id="metric-eval-score" style="color: #a259ff;">0%</p>
+                    </div>
+                </div>
+
+                <div class="chart-card" style="height: 320px;">
+                    <h3>Knowledge Base Alignment Distribution</h3>
+                    <canvas id="groundednessChart"></canvas>
+                </div>
+            </div>
         </main>
     </div>
 
-    <!-- Dashboard Logic -->
     <script>
         async function loadDashboard() {
             try {
                 const response = await fetch('/api/analytics');
                 const data = await response.json();
+                document.getElementById('metric-total').innerText = data.total || 0;
+                document.getElementById('metric-pos').innerText = data.positive || 0;
+                document.getElementById('metric-neg').innerText = data.negative || 0;
+                document.getElementById('metric-rate').innerText = (data.rate || 0) + '%';
+                const posCount = data.positive || 0;
+                const negCount = data.negative || 0;
+                const colors = { positive: '#4ade80', negative: '#f87171', purple: '#a259ff', orange: '#f59e0b' };
 
-                // 1. Update Metric Cards
-                document.getElementById('metric-total').innerText = data.total;
-                document.getElementById('metric-pos').innerText = data.positive;
-                document.getElementById('metric-neg').innerText = data.negative;
-                document.getElementById('metric-rate').innerText = data.rate + '%';
-
-                // Chart Colors
-                const colors = { positive: '#4ade80', negative: '#f87171', bg: 'rgba(255,255,255,0.1)' };
-
-                // 2. Render Pie Chart
                 new Chart(document.getElementById('pieChart'), {
                     type: 'doughnut',
                     data: {
                         labels: ['Positive', 'Negative'],
                         datasets: [{
-                            data: [data.positive, data.negative],
+                            data: [posCount, negCount],
                             backgroundColor: [colors.positive, colors.negative],
                             borderWidth: 0
                         }]
@@ -124,14 +154,84 @@
                     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#fff' } } } }
                 });
 
-                // 3. Render Bar Chart
                 new Chart(document.getElementById('barChart'), {
                     type: 'bar',
                     data: {
                         labels: ['Positive', 'Negative'],
                         datasets: [{
                             label: 'Count',
-                            data: [data.positive, data.negative],
+                            data: [posCount, negCount],
+                            backgroundColor: [colors.positive, colors.negative],
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { ticks: { color: '#8a8593', stepSize: 1 }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                            x: { ticks: { color: '#fff' }, grid: { display: false } }
+                        }
+                    }
+                });
+                const tbody = document.querySelector('#negative-table tbody');
+                tbody.innerHTML = '';
+
+                if (!data.negative_logs || data.negative_logs.length === 0) {
+                    document.getElementById('negative-table').style.display = 'none';
+                    document.getElementById('no-negative-msg').style.display = 'block';
+                } else {
+                    document.getElementById('negative-table').style.display = 'table';
+                    document.getElementById('no-negative-msg').style.display = 'none';
+                    data.negative_logs.forEach(log => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `<td>${log.question}</td><td>${log.answer}</td>`;
+                        tbody.appendChild(tr);
+                    });
+                }
+                document.getElementById('metric-eval-total').innerText = data.total_chats || 0;
+                document.getElementById('metric-eval-score').innerText = (data.avg_groundedness || 0) + '%';
+
+                const highCount = data.high_alignment || 0;
+                const lowCount = data.low_alignment || 0;
+
+                new Chart(document.getElementById('groundednessChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['High Alignment (≥75%)', 'Low / Medium Alignment (<75%)'],
+                        datasets: [{
+                            label: 'Queries Count',
+                            data: [highCount, lowCount],
+                            backgroundColor: [colors.purple, colors.orange],
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { ticks: { color: '#8a8593', stepSize: 1 }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                            x: { ticks: { color: '#fff' }, grid: { display: false } }
+                        }
+                    }
+                });
+                const solvedCount = data.successful_issues || 0;
+                const unsolvedCount = data.failed_issues || 0;
+                const avgMinutes = data.avg_handling_time_minutes || 0;
+
+                document.getElementById('metric-avg-handling-time').innerText = avgMinutes + 'm';
+                document.getElementById('metric-solved').innerText = solvedCount;
+                document.getElementById('metric-unsolved').innerText = unsolvedCount;
+
+                new Chart(document.getElementById('handlingChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Successfully Solved', 'Unsuccessfully Solved'],
+                        datasets: [{
+                            label: 'Conversations',
+                            data: [solvedCount, unsolvedCount],
                             backgroundColor: [colors.positive, colors.negative],
                             borderRadius: 6
                         }]
@@ -146,31 +246,17 @@
                     }
                 });
 
-                // 4. Populate Table
-                const tbody = document.querySelector('#negative-table tbody');
-                if (data.negative_logs.length === 0) {
-                    document.getElementById('negative-table').style.display = 'none';
-                    document.getElementById('no-negative-msg').style.display = 'block';
-                } else {
-                    data.negative_logs.forEach(log => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `<td>${log.question}</td><td>${log.answer}</td>`;
-                        tbody.appendChild(tr);
-                    });
-                }
             } catch (err) {
                 console.error("Failed to load dashboard:", err);
             }
         }
 
         async function clearData() {
-            if(confirm("Are you sure you want to permanently delete all feedback data?")) {
+            if(confirm("Are you sure you want to permanently delete all feedback and evaluation data?")) {
                 await fetch('/api/analytics/clear', { method: 'DELETE' });
                 location.reload();
             }
         }
-
-        // Run on load
         loadDashboard();
     </script>
 </body>

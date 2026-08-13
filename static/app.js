@@ -4,6 +4,10 @@ let lastQuestion = "";
 let ttsEnabled = false;
 let savedChats = [];
 let currentChatId = Date.now();
+let lastMessageDateStr = null;
+let inactivityTimer = null;
+let conversationClosed = false;
+const INACTIVITY_TIMEOUT_MS = 10 * 1000;;
 
 window.onload = () => {
     const storedChats = localStorage.getItem('telecom_saved_chats');
@@ -34,25 +38,58 @@ function toggleTTS() {
         window.speechSynthesis.cancel();
     }
 }
+function formatTime(date) {
+    return date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+}
+
+function formatDateLabel(date) {
+    const today = new Date();
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+    if (date.toDateString() === today.toDateString()) return 'Today';
+    if (date.toDateString() === yesterday.toDateString()) return 'Yesterday';
+    return date.toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function insertDateSeparatorIfNeeded(date) {
+    const dateStr = date.toDateString();
+    if (dateStr !== lastMessageDateStr) {
+        lastMessageDateStr = dateStr;
+        const chatBox = document.getElementById('chat-box');
+        const sep = document.createElement('div');
+        sep.className = 'date-separator';
+        sep.innerHTML = `<span>${formatDateLabel(date)}</span>`;
+        chatBox.appendChild(sep);
+    }
+}
+
 function appendMessage(role, content, sources = null) {
     const chatBox = document.getElementById('chat-box');
+    const timestamp = new Date();
+    insertDateSeparatorIfNeeded(timestamp);
     const msgDiv = document.createElement('div');
     msgDiv.className = `message ${role}`;
+
     let safeContent = String(content || "");
     let html = `<div>${safeContent.replace(/\n/g, '<br>')}</div>`;
-
     if (role === 'bot' && sources && sources.length > 0) {
         const sourceId = 'src-' + Date.now();
         let sourcesHtml = sources.map((s, i) => `<b>${i+1}. ${s.title}</b><br><small>${s.category}</small><br>${s.content}`).join('<hr>');
         html += `<button class="sources-btn" onclick="toggleSources('${sourceId}')">📚 Retrieved Sources</button><div id="${sourceId}" class="sources-content">${sourcesHtml}</div>`;
     }
-    if (role === 'bot' && content !== 'Thinking...') {
-        const encQuestion = encodeURIComponent(lastQuestion).replace(/'/g, "%27");
-        const encAnswer = encodeURIComponent(safeContent).replace(/'/g, "%27");
-
-        html += `<div class="feedback-actions"><span onclick="sendFeedback('${encQuestion}', '${encAnswer}', 1)">👍</span><span onclick="sendFeedback('${encQuestion}', '${encAnswer}', 0)">👎</span></div>`;
+    if (role === 'bot' && content !== 'Thinking...' && !content.includes('⚠️')) {
+        try {
+            const base64Question = btoa(encodeURIComponent(lastQuestion || ""));
+            const base64Answer = btoa(encodeURIComponent(safeContent));
+            html += `<div class="feedback-actions">
+                        <span onclick="sendFeedback('${base64Question}', '${base64Answer}', 1)">👍</span>
+                        <span onclick="sendFeedback('${base64Question}', '${base64Answer}', 0)">👎</span>
+                     </div>`;
+        } catch(e) {
+            console.error("Failed to render feedback buttons:", e);
+        }
     }
-
+    html += `<span class="msg-time">${formatTime(timestamp)}</span>`;
     msgDiv.innerHTML = html;
     chatBox.appendChild(msgDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
@@ -63,6 +100,27 @@ function toggleSources(id) {
     const el = document.getElementById(id);
     el.style.display = el.style.display === 'block' ? 'none' : 'block';
 }
+
+function resetInactivityTimer() {
+    if (inactivityTimer) {
+        clearTimeout(inactivityTimer);
+        inactivityTimer = null;
+    }
+    if (conversationClosed) return;
+    inactivityTimer = setTimeout(() => {
+        appendMessage('bot', 'Was the issue solved? (y/n)');
+        speakText('Was the issue solved?');
+    }, INACTIVITY_TIMEOUT_MS);
+}
+
+function stopInactivityTimer() {
+    if (inactivityTimer) {
+        clearTimeout(inactivityTimer);
+        inactivityTimer = null;
+    }
+}
+
+
 async function sendMessage() {
     const input = document.getElementById('user-input');
     const text = input.value.trim();
@@ -74,35 +132,54 @@ async function sendMessage() {
     lastQuestion = text;
     input.value = '';
     appendMessage('user', text);
+
     const loadingMsg = appendMessage('bot', 'Thinking...');
 
     try {
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question: text, history: chatHistory })
+            body: JSON.stringify({ question: text, history: chatHistory,
+                conversation_id: String(currentChatId)
+             })
         });
 
         const data = await response.json();
-        loadingMsg.remove();
+        if (document.body.contains(loadingMsg)) {
+            loadingMsg.remove();
+        }
 
         const relevantSources = (data.status === 'answered') ? data.sources : null;
         appendMessage('bot', data.answer, relevantSources);
-        speakText(data.answer);
+        try {
+            speakText(data.answer);
+        } catch(ttsErr) {
+            console.warn("Text-to-speech failed:", ttsErr);
+        }
 
         chatHistory.push({ role: 'user', content: text });
-        chatHistory.push({ role: 'assistant', content: data.answer });
+        chatHistory.push({ role: 'assistant', content: data.answer || "" });
 
         if (data.status === 'no_solution') {
             pendingEscalationData = { question: text, category: data.category };
             document.getElementById('escalation-ui').classList.remove('hidden');
             document.getElementById('input-area').classList.add('hidden');
         }
+
+        if (data.status === 'resolved' || data.status === 'unresolved') {
+            conversationClosed = true;
+            stopInactivityTimer();
+        } else {
+            resetInactivityTimer();
+        }
         saveCurrentSession();
 
     } catch (err) {
-        console.error(err);
-        loadingMsg.innerHTML = "Error connecting to server.";
+        console.error("Chat error:", err);
+        if (document.body.contains(loadingMsg)) {
+            loadingMsg.remove();
+        }
+        appendMessage('bot', '⚠️ Something went wrong! Please check the console (F12) for details.');
     }
 }
 
@@ -128,11 +205,42 @@ async function submitEscalation() {
     saveCurrentSession();
 }
 
-async function sendFeedback(encQuestion, encAnswer, rating) {
-    const question = decodeURIComponent(encQuestion);
-    const answer = decodeURIComponent(encAnswer);
-    await fetch('/api/feedback', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question, answer, rating }) });
-    alert("Thank you for your feedback!");
+function showToast(projectName, message) {
+    let toast = document.getElementById('custom-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'custom-toast';
+        toast.className = 'custom-toast';
+        document.body.appendChild(toast);
+    }
+    toast.innerHTML = `
+        <div class="toast-title">🔔 ${projectName}</div>
+        <div class="toast-message">${message}</div>
+    `;
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3500);
+}
+async function sendFeedback(b64Question, b64Answer, rating) {
+    try {
+        const question = decodeURIComponent(atob(b64Question));
+        const answer = decodeURIComponent(atob(b64Answer));
+
+        const response = await fetch('/api/feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question, answer, rating })
+        });
+        if (response.ok) {
+            showToast("Telecom AI", "Thank you for your feedback! It has been saved.");
+        } else {
+            showToast("Telecom AI Error", "Feedback failed. Check your server.");
+        }
+    } catch (err) {
+        console.error("Feedback error:", err);
+        showToast("Telecom AI Error", "Something went wrong! Check the console.");
+    }
 }
 
 function handleKeyPress(e) {
@@ -147,7 +255,9 @@ function saveCurrentSession() {
         id: currentChatId,
         title: chatTitle,
         history: [...chatHistory],
-        htmlContent: document.getElementById('chat-box').innerHTML
+        htmlContent: document.getElementById('chat-box').innerHTML,
+        lastMessageDateStr: lastMessageDateStr,
+        conversationClosed: conversationClosed
     };
 
     const existingIndex = savedChats.findIndex(chat => chat.id === currentChatId);
@@ -185,6 +295,7 @@ function renderRecentChatsUI() {
             e.stopPropagation();
             deleteChatSession(chat.id);
         };
+
         if (chat.id === currentChatId) {
             li.classList.add('active');
         }
@@ -208,7 +319,7 @@ async function deleteChatSession(id) {
                 await fetch('/api/feedback/delete', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ questions: userQuestions })
+                    body: JSON.stringify({ questions: userQuestions ,conversation_id: String(id)})
                 });
             } catch (err) {
                 console.error("Failed to delete feedback logs from server:", err);
@@ -262,4 +373,5 @@ function loadSavedSession(id) {
     renderRecentChatsUI();
     const chatBox = document.getElementById('chat-box');
     chatBox.scrollTop = chatBox.scrollHeight;
+     if (!conversationClosed) resetInactivityTimer();
 }
