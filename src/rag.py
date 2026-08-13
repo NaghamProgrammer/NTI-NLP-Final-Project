@@ -50,7 +50,7 @@ def load_json_documents(json_file_path):
         )
     return documents
 
-documents = load_json_documents(r"E:\VS Code stuff\NTI NLP Final Project\NTI-NLP-Final-Project\data\processed\processed_knowledge_base.json")
+documents = load_json_documents(r"data\processed\processed_knowledge_base.json")
 print("Number of documents:", len(documents))
 
 text_splitter = RecursiveCharacterTextSplitter(
